@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -121,6 +121,14 @@ const trainingStages: TrainingStage[] = [
   },
 ];
 
+const navItems = [
+  { id: 'principles', label: '高手判断' },
+  { id: 'force-path', label: '表现链' },
+  { id: 'training', label: '瓶颈训练' },
+  { id: 'lesson', label: '场上检查' },
+  { id: 'boundary', label: '证据边界' },
+] as const;
+
 function jumpTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ block: 'start' });
 }
@@ -144,15 +152,34 @@ export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
   const [activeNode, setActiveNode] = useState(0);
   const [activeTraining, setActiveTraining] = useState(0);
+  const [activeSection, setActiveSection] = useState('top');
   const step = lessonSteps[activeStep];
   const node = forceNodes[activeNode];
   const trainingStage = trainingStages[activeTraining];
 
+  useEffect(() => {
+    const sections = [...document.querySelectorAll<HTMLElement>('section[id]')];
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target instanceof HTMLElement) setActiveSection(visible.target.id);
+    }, { rootMargin: '-18% 0px -62% 0px', threshold: [0, .2, .5, .8] });
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const navigateTo = (id: string) => {
+    setActiveSection(id);
+    jumpTo(id);
+  };
+
   return (
     <main className="force-site">
       <header className="force-header">
-        <button className="force-brand" onClick={() => jumpTo('top')} aria-label="返回顶部"><span className="force-mark">↗</span><span><strong>力场</strong><small>BADMINTON FORCE LAB</small></span></button>
-        <nav aria-label="页面导航"><button onClick={() => jumpTo('principles')}>高手判断</button><button onClick={() => jumpTo('force-path')}>表现链</button><button onClick={() => jumpTo('training')}>瓶颈训练</button><button onClick={() => jumpTo('lesson')}>场上检查</button><button onClick={() => jumpTo('boundary')}>证据边界</button></nav>
+        <button className="force-brand" onClick={() => navigateTo('top')} aria-label="返回顶部"><span className="force-mark">↗</span><span><strong>力场</strong><small>BADMINTON FORCE LAB</small></span></button>
+        <nav aria-label="页面导航">{navItems.map((item) => <button key={item.id} className={activeSection === item.id ? 'active' : ''} onClick={() => navigateTo(item.id)} aria-current={activeSection === item.id ? 'location' : undefined}>{item.label}</button>)}</nav>
         <span className="header-index">01 / SMASH</span>
       </header>
 
@@ -163,7 +190,7 @@ export default function Home() {
           <p>顶级杀球不是把全身力量逐段“推到拍头”，而是提前到位、保留选择，在触球前形成快速而短促的拍头加速，再用稳定拍面把速度变成落点。</p>
           <div className="hero-question"><span>高手先问</span><strong>这次挥拍，是否同时保留速度、角度和下一拍？</strong></div>
           <div className="hero-ramp"><span>判断路径</span><strong>先判断能不能杀，再决定怎样杀</strong><div><b>窗口</b><i>→</i><b>拍速</b><i>→</i><b>碰撞</b><i>→</i><b>衔接</b></div></div>
-          <button className="dark-button" onClick={() => jumpTo('principles')}>进入高手判断 <span>↓</span></button>
+          <button className="dark-button" onClick={() => navigateTo('principles')}>进入高手判断 <span>↓</span></button>
         </div>
         <SmashVisual />
       </section>
@@ -193,6 +220,7 @@ export default function Home() {
             </div>
             <div className="path-legend" aria-label="发力路径四类任务"><span><i className="legend-support" />支撑条件</span><span><i className="legend-orient" />方向与空间</span><span><i className="legend-release" />末端释放</span><span><i className="legend-brake" />制动回位</span></div>
             <p className="path-footnote">箭头只是阅读顺序：真实动作会重叠发生，也会随完整杀球、点杀、起跳方式和来球位置改变。</p>
+            <div className="path-progress" aria-live="polite"><div><span>ACTIVE LENS</span><strong>{node.number} / {node.label} · {node.english}</strong></div><div className="progress-meter" aria-hidden="true"><i style={{ width: `${((activeNode + 1) / forceNodes.length) * 100}%` }} /></div><small>点击节点，右侧切换这一段的动作逻辑。</small></div>
           </div>
           <div id="node-panel" className="path-reading" role="tabpanel" tabIndex={0} aria-labelledby={`node-tab-${node.number}`}>
             <span className="section-label">NODE / {node.number} · {node.english}</span>
@@ -212,6 +240,7 @@ export default function Home() {
               {trainingStages.map((item, index) => <div className="training-track-item" key={item.number}><button id={`training-tab-${item.number}`} className={activeTraining === index ? 'training-node active' : 'training-node'} onClick={() => setActiveTraining(index)} role="tab" aria-selected={activeTraining === index} aria-controls="training-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.english}</small></button>{index < trainingStages.length - 1 && <span className="training-arrow" aria-hidden="true">→</span>}</div>)}
             </div>
             <div className="training-rules"><div><b>01</b><strong>先有球场指标</strong><p>记录窗口、目标和第二拍。</p></div><div><b>02</b><strong>高速动作要休息</strong><p>速度下降就结束这一组。</p></div><div><b>03</b><strong>负荷不能改动作</strong><p>力量离场练，拍速回场验。</p></div></div>
+            <div className="training-progress" aria-live="polite"><div><span>ACTIVE BLOCK</span><strong>{trainingStage.number} / {trainingStage.label}</strong></div><div className="progress-meter" aria-hidden="true"><i style={{ width: `${((activeTraining + 1) / trainingStages.length) * 100}%` }} /></div><small>{trainingStage.modules.length} 个任务 · 最后回到球场验证。</small></div>
             <div className="training-photo"><img src="/training-footwork.png" alt="羽毛球运动员进行低位分腿与减速控制训练" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>EXAMPLE / BASE + BRAKE</span><span>LOW · CONTROLLED · REPEATABLE</span></div><div className="training-photo-caption"><b>承载动作示例</b><strong>到位后能停住，才有下一次启动。</strong></div></div>
           </div>
           <div id="training-panel" className="training-reading" role="tabpanel" tabIndex={0} aria-labelledby={`training-tab-${trainingStage.number}`}>
@@ -234,7 +263,7 @@ export default function Home() {
           {lessonSteps.map((item, index) => <button key={item.number} id={`step-tab-${item.number}`} className={activeStep === index ? 'phase-tab active' : 'phase-tab'} onClick={() => setActiveStep(index)} role="tab" aria-selected={activeStep === index} aria-controls="step-panel"><span>{item.number}</span><strong>{item.label}</strong></button>)}
         </div>
         <div id="step-panel" className="phase-reading" role="tabpanel" tabIndex={0} aria-labelledby={`step-tab-${step.number}`}>
-          <div className="phase-main"><span className="section-label">STEP / {step.number}</span><h3>{step.title}</h3><div className="phase-action"><span>动作</span><p>{step.action}</p></div></div>
+          <div className="phase-main"><div className="phase-status"><span>ACTIVE CHECK</span><strong>{step.number} / {step.label}</strong><small>0{activeStep + 1} OF 04</small></div><span className="section-label">STEP / {step.number}</span><h3>{step.title}</h3><div className="phase-action"><span>动作</span><p>{step.action}</p></div></div>
           <div className="phase-coach"><div className="coach-row"><span>看见</span><p>{step.cue}</p></div><div className="coach-row"><span>避免</span><p>{step.avoid}</p></div><div className="coach-row coach-drill"><span>练法</span><p>{step.drill}</p></div></div>
         </div>
         <div className="practice-protocol"><div className="protocol-heading"><span>ONE ELITE PROTOCOL</span><strong>同时训练选择、碰撞和第二拍。</strong></div><div className="protocol-grid"><div><b>01</b><strong>随机判断 × 8</strong><p>触球前选择完整杀、点杀或过渡</p></div><div><b>02</b><strong>十球测试 × 2</strong><p>同时记录目标命中与偏心触球</p></div><div><b>03</b><strong>杀后两拍 × 6</strong><p>随机接封网或再次后退</p></div></div><p className="protocol-rule">升级条件：提高一档速度后，目标命中不明显下降、偏心触球不增加、第二拍仍能按时分腿。只要一项丢失，就不是有效的“更快”。</p></div>
