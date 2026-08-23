@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 
-type ViewKey = 'overview' | 'technique' | 'footwork' | 'chain' | 'training';
+type ViewKey = 'overview' | 'technique' | 'footwork' | 'chain' | 'training' | 'problems' | 'roadmap';
 
 const navItems: { key: ViewKey; label: string; en: string }[] = [
   { key: 'overview', label: '总览', en: 'Overview' },
@@ -10,6 +10,27 @@ const navItems: { key: ViewKey; label: string; en: string }[] = [
   { key: 'footwork', label: '步伐', en: 'Footwork' },
   { key: 'chain', label: '发力链', en: 'Kinetic chain' },
   { key: 'training', label: '功能训练', en: 'Training' },
+];
+
+const problemData = [
+  { number: '01', title: '总觉得打不远', description: '先检查击球空间和身体到位，不要先把问题归咎于手腕。', check: '击球点是否在身体前上方？最后一步后还能否转身？', next: '从“到位 → 击球”两帧无球练习开始。', view: 'technique' as ViewKey },
+  { number: '02', title: '总是来不及', description: '来不及通常不是单纯速度问题，而是启动时机、预判和第一步方向的问题。', check: '分腿垫步是否发生在对手击球前后？第一步是否直接朝任务区域？', next: '进入后场移动，先练启动和最后一步。', view: 'footwork' as ViewKey },
+  { number: '03', title: '落地后站不稳', description: '把减速和回位看成动作的一部分，避免只追求触球。', check: '落地时膝踝能否吸收，躯干是否仍然可控？', next: '加入单腿支撑和低速制动训练。', view: 'training' as ViewKey },
+  { number: '04', title: '连续几拍就累', description: '连续击球需要身体组织、肩部耐力和回位效率共同支持。', check: '是否每一拍都用最大力？击球后是否回到可启动位置？', next: '先把动作强度降下来，建立可重复的节奏。', view: 'chain' as ViewKey },
+];
+
+const roadmapData = [
+  { number: '01', title: '看懂动作', duration: '第 1 周', goal: '分辨准备、到位、击球、回位四个阶段。', task: '每次训练前，用无球动作完成 3 轮，逐帧检查身体和球的空间关系。' },
+  { number: '02', title: '建立到位', duration: '第 2–3 周', goal: '先让脚步把身体送到可以击球的位置。', task: '固定后场两点移动：启动、最后一步、击球位、回位，低速完成 5 组。' },
+  { number: '03', title: '连接发力', duration: '第 4–5 周', goal: '感受脚下支撑、躯干组织和上肢加速的顺序。', task: '无球挥拍与固定球交替，追踪“支撑 → 转向 → 击球 → 回收”。' },
+  { number: '04', title: '带进回合', duration: '第 6 周起', goal: '在不追求最大力的前提下，把技术放进下一拍。', task: '用限制条件打回合：只打高远球，并记录落点、回位和下一拍准备。' },
+];
+
+const sourceLinks = [
+  { label: 'BWF Shuttle Time Teachers’ Manual', note: '基础技术阶段与教学提示', href: 'https://badminton.org.au/wp-content/uploads/2020/12/Teachers-Manual.pdf' },
+  { label: 'Zhao & Li, 2019', note: '后场正手高远球的下肢动作研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6348812/' },
+  { label: 'Huang et al., 2025', note: '不同水平球员高远球动作差异', href: 'https://doi.org/10.1186/s13102-025-01163-w' },
+  { label: 'Wang et al., 2025', note: '羽毛球专项抗阻训练综述', href: 'https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1548869/full' },
 ];
 
 const phaseData = [
@@ -55,8 +76,15 @@ function CourtMap({ mode }: { mode: 'rear' | 'front' | 'recovery' }) {
 function Workspace({ activeView, activePhase, setActivePhase, activeChain, setActiveChain, openView }: { activeView: ViewKey; activePhase: number; setActivePhase: (value: number) => void; activeChain: number; setActiveChain: (value: number) => void; openView: (view: ViewKey) => void }) {
   const [footworkMode, setFootworkMode] = useState<'rear' | 'front' | 'recovery'>('rear');
   const [exercise, setExercise] = useState(0);
+  const [activeProblem, setActiveProblem] = useState(0);
   const currentPhase = phaseData[activePhase];
   const currentChain = chainData[activeChain];
+
+  if (activeView === 'overview') return null;
+
+  if (activeView === 'problems') return <section className="workspace-section problems-workspace" id="workspace"><div className="workspace-heading"><span className="section-kicker">TROUBLESHOOTING / 005</span><h2>先描述场上表现，<br /><em>再找可以观察的线索。</em></h2><p>把“没力量”“来不及”“站不稳”拆成可检查的动作问题，避免只靠感觉反复试错。</p></div><div className="problem-lab"><div className="problem-nav">{problemData.map((item, index) => <button key={item.number} className={activeProblem === index ? 'problem-tab active' : 'problem-tab'} onClick={() => setActiveProblem(index)}><span>{item.number}</span><strong>{item.title}</strong></button>)}</div><div className="problem-detail"><div className="problem-index">0{activeProblem + 1}<span> / 04</span></div><div><span className="workspace-label">FIELD CHECK</span><h3>{problemData[activeProblem].title}</h3><p>{problemData[activeProblem].description}</p></div><div className="problem-check"><span>先看这个</span><strong>{problemData[activeProblem].check}</strong></div><div className="problem-next"><span>下一步</span><p>{problemData[activeProblem].next}</p><button className="outline-button" onClick={() => openView(problemData[activeProblem].view)}>进入相关模块 <span>↗</span></button></div></div></div><div className="problem-note"><span>判断原则</span><p>一个表现可能有多个原因。这里提供学习线索，不把单一动作外形或单块肌肉当成诊断。</p></div></section>;
+
+  if (activeView === 'roadmap') return <section className="workspace-section roadmap-workspace" id="workspace"><div className="workspace-heading"><span className="section-kicker">LEARNING ROUTE / 006</span><h2>把知识变成训练，<br /><em>再把训练带进回合。</em></h2><p>每一阶段都有一个清晰任务和可观察的完成标准。你不需要一次学完整个羽毛球。</p></div><div className="roadmap-list">{roadmapData.map((item) => <article className="roadmap-card" key={item.number}><div className="roadmap-card-top"><span>{item.number}</span><small>{item.duration}</small></div><h3>{item.title}</h3><strong>{item.goal}</strong><p>{item.task}</p><div className="roadmap-status"><span>完成标准</span><span>能说出重点 · 能做慢速 · 能带进下一拍</span></div></article>)}</div><div className="roadmap-footer"><div><span className="workspace-label">START HERE</span><h3>今天只做一件事：找到自己的击球空间。</h3></div><button className="primary-button" onClick={() => openView('technique')}>从高远球开始 <span>↗</span></button></div></section>;
 
   if (activeView === 'footwork') return <section className="workspace-section" id="workspace"><div className="workspace-heading"><span className="section-kicker">FOOTWORK LAB / 002</span><h2>脚步不是路线图。<br /><em>是到位后的选择。</em></h2><p>同一个球场区域，可以用不同的步数和节奏到达。先看任务，再看脚步。</p></div><div className="footwork-lab"><div className="lab-visual"><div className="lab-toolbar">{(['rear', 'front', 'recovery'] as const).map((mode) => <button key={mode} className={footworkMode === mode ? 'toolbar-button active' : 'toolbar-button'} onClick={() => setFootworkMode(mode)}>{mode === 'rear' ? '后场到位' : mode === 'front' ? '前场弓步' : '击球回位'}</button>)}</div><CourtMap mode={footworkMode} /></div><div className="lab-copy"><span className="workspace-label">MOVEMENT TASK</span><h3>{footworkMode === 'rear' ? '先到侧后方，再找击球点' : footworkMode === 'front' ? '伸出去，也要能收回来' : '回位是下一拍的准备动作'}</h3><p>{footworkMode === 'rear' ? '后场移动的重点不是跑得快，而是让最后一步之后仍有空间完成击球和落地。' : footworkMode === 'front' ? '前场弓步需要把身体送到球旁边，同时维持膝踝、躯干和握拍的可控。' : '击球后观察下一拍方向，利用落地、制动和小步调整回到可以启动的位置。'}</p><div className="check-list"><span><b>01</b> 分腿垫步后再启动</span><span><b>02</b> 最后一步创造空间</span><span><b>03</b> 击球后完成回位</span></div><button className="outline-button" onClick={() => openView('technique')}>连接到技术页面 <span>↗</span></button></div></div></section>;
 
@@ -73,11 +101,13 @@ export default function Home() {
   const [activePhase, setActivePhase] = useState(1);
   const [activeChain, setActiveChain] = useState(2);
   const [showChain, setShowChain] = useState(true);
-  const openView = (view: ViewKey) => { setActiveView(view); window.setTimeout(() => workspaceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0); };
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const openView = (view: ViewKey) => { setActiveView(view); setMobileMenu(false); window.setTimeout(() => { if (view === 'overview') window.scrollTo({ top: 0, behavior: 'smooth' }); else workspaceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 0); };
   const currentPhase = phaseData[activePhase];
 
   return <main className="site-shell">
-    <header className="site-header"><button className="brand" onClick={() => openView('overview')} aria-label="返回总览"><span className="brand-mark"><span>↗</span></span><span className="brand-copy"><strong>落点</strong><small>BADMINTON LAB</small></span></button><nav className="main-nav" aria-label="主要导航">{navItems.map((item) => <button className={activeView === item.key ? 'nav-item active' : 'nav-item'} key={item.key} onClick={() => openView(item.key)}><span>{item.label}</span><small>{item.en}</small></button>)}</nav><div className="header-actions"><span className="version-pill">MVP / 02</span><button className="menu-button" aria-label="打开菜单">☰</button></div></header>
+    <header className="site-header"><button className="brand" onClick={() => openView('overview')} aria-label="返回总览"><span className="brand-mark"><span>↗</span></span><span className="brand-copy"><strong>落点</strong><small>BADMINTON LAB</small></span></button><nav className="main-nav" aria-label="主要导航">{navItems.slice(0, 5).map((item) => <button className={activeView === item.key ? 'nav-item active' : 'nav-item'} key={item.key} onClick={() => openView(item.key)}><span>{item.label}</span><small>{item.en}</small></button>)}</nav><div className="header-actions"><span className="version-pill">FIELD GUIDE / 01</span><button className={mobileMenu ? 'menu-button active' : 'menu-button'} onClick={() => setMobileMenu(!mobileMenu)} aria-label={mobileMenu ? '关闭菜单' : '打开菜单'}>{mobileMenu ? '×' : '☰'}</button></div></header>
+    {mobileMenu && <div className="mobile-menu"><span className="mobile-menu-label">EXPLORE THE LAB</span>{navItems.map((item) => <button key={item.key} className={activeView === item.key ? 'mobile-nav-item active' : 'mobile-nav-item'} onClick={() => openView(item.key)}><span>{item.label}</span><small>{item.en}</small><b>↗</b></button>)}<button className="mobile-nav-item" onClick={() => openView('problems')}><span>问题排查</span><small>Troubleshoot</small><b>↗</b></button><button className="mobile-nav-item" onClick={() => openView('roadmap')}><span>学习路线</span><small>Roadmap</small><b>↗</b></button></div>}
 
     <section className="hero-section"><div className="hero-copy"><div className="eyebrow"><span className="pulse-dot" />第一专题 / 后场正手高远球</div><h1>不是把球打远。<br /><em>是让下一拍变得更容易。</em></h1><p className="hero-lede">从来球判断和后场移动开始，建立击球空间；再用身体协同完成击球，并在击球后回到可以启动的位置。</p><div className="hero-actions"><button className="primary-button" onClick={() => openView('technique')}>进入动作拆解 <span>↗</span></button><button className="text-button" onClick={() => openView('training')}>看功能训练 <span>→</span></button></div><div className="hero-note"><span>●</span> 示意图用于理解动作关系，不是唯一标准姿势。</div></div><div className="hero-visual"><div className="visual-topline"><span>VISUAL STUDY / 001</span><span>右手 · 单打</span></div><div className="visual-stage"><div className="stage-label">{currentPhase.number} / {currentPhase.label}</div><MotionFigure phase={activePhase + 1} /><div className="visual-shuttle">●</div><div className="visual-line line-one" /><div className="visual-line line-two" /><div className="visual-axis axis-one"><span>击球空间</span></div><div className="visual-axis axis-two"><span>身体转向</span></div><div className="visual-stamp">到位<br /><strong>再发力</strong></div></div><div className="visual-footer"><span>点击下方时间线逐帧查看</span><button onClick={() => setShowChain(!showChain)}>{showChain ? '隐藏发力链' : '显示发力链'} <span>◉</span></button></div></div></section>
 
@@ -91,10 +121,11 @@ export default function Home() {
 
     {showChain && <section className="chain-section"><div className="section-heading"><div><span className="section-kicker">BODY / TIMING / CONTROL</span><h2>发力不是一条直线，<br /><em>是一次协同。</em></h2></div><button className="outline-button" onClick={() => openView('chain')}>打开完整发力链 <span>↗</span></button></div><ChainDiagram activeChain={activeChain} setActiveChain={setActiveChain} /><div className="chain-foot"><span>示意 / 非精确力学测量</span><span>支撑 → 移动 → 组织 → 加速 → 恢复</span></div></section>}
 
-    <section className="content-section"><div className="section-heading"><div><span className="section-kicker">THE LIBRARY</span><h2>一拍之外，还有这些连接。</h2></div><button className="text-button" onClick={() => openView('technique')}>查看全部 <span>→</span></button></div><div className="content-grid">{techniques.map((item, index) => <button key={item.title} className={`content-card ${item.tone}`} onClick={() => openView(item.view)}><div className="content-card-top"><span>0{index + 1}</span><span>↗</span></div><div className={`mini-motion mini-motion-${item.tone}`} /><span className="content-tag">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></button>)}</div></section>
+    <section className="content-section"><div className="section-heading"><div><span className="section-kicker">THE LIBRARY</span><h2>一拍之外，还有这些连接。</h2></div><button className="text-button" onClick={() => openView('roadmap')}>打开学习路线 <span>→</span></button></div><div className="content-grid">{techniques.map((item, index) => <button key={item.title} className={`content-card ${item.tone}`} onClick={() => openView(item.view)}><div className="content-card-top"><span>0{index + 1}</span><span>↗</span></div><div className={`mini-motion mini-motion-${item.tone}`} /><span className="content-tag">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></button>)}</div><div className="library-links"><button onClick={() => openView('problems')}><span>我遇到的问题</span><small>从场上表现开始排查</small><b>↗</b></button><button onClick={() => openView('roadmap')}><span>我的学习路线</span><small>从看懂到带进回合</small><b>↗</b></button></div></section>
 
     <section className="training-section"><div className="training-copy"><span className="section-kicker">TRAIN THE DEMAND</span><h2>不是练更多。<br /><em>是练对下一拍。</em></h2><p>功能训练从羽毛球的真实任务出发：快速到位、稳住身体、完成击球，再把自己带回可以启动的位置。</p><button className="primary-button" onClick={() => openView('training')}>进入训练库 <span>↗</span></button></div><div className="training-list">{trainingCards.map((item) => <button className="training-item" key={item.index} onClick={() => openView('training')}><span className="training-index">{item.index}</span><span className="training-title"><strong>{item.title}</strong><small>{item.metric}</small></span><p>{item.description}</p><span className="training-arrow">↗</span></button>)}</div></section>
 
+    <section className="sources-section"><div className="section-heading"><div><span className="section-kicker">HOW THIS IS BUILT</span><h2>每个结论，都有它的边界。</h2></div><span className="section-index">SOURCES</span></div><p className="sources-intro">本站把教练资料、运动科学研究和教学示意分开标注。研究支持的是动作关系与训练方向，不等于对个人动作的诊断。</p><div className="source-grid">{sourceLinks.map((source) => <a className="source-card" href={source.href} target="_blank" rel="noreferrer" key={source.label}><span>↗</span><strong>{source.label}</strong><small>{source.note}</small></a>)}</div></section>
     <section className="footer-note"><div><span className="section-kicker">FIELD NOTE / 001</span><h2>把动作看懂，<br />再把它带上场。</h2></div><div className="footer-note-copy"><p>这是一个正在生长的羽毛球教学知识库。首个专题从后场正手高远球开始，后续会继续展开前场、发接发、中场防守、双打轮转与身体能力。</p><span>研究版 · 2026.08</span></div></section><footer className="site-footer"><span>落点 / BADMINTON LAB</span><span>TECHNIQUE · FOOTWORK · CAPACITY</span><span>© 2026</span></footer>
   </main>;
 }
