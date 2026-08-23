@@ -3,7 +3,7 @@
 :root { --ink: #17231d; --forest: #173c2e; --forest-2: #23543e; --mint: #c8debb; --paper: #f4f1e8; --paper-2: #e9e5d8; --orange: #f2653d; --orange-soft: #f2aa78; --blue: #cbd9e5; --line: rgba(23, 35, 29, 0.17); --muted: #687267; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", Arial, Helvetica, sans-serif; }
 button { font: inherit; }
 .site-shell { min-height: 100vh; overflow: hidden; background: var(--paper); }
 .site-header { height: 84px; display: grid; grid-template-columns: 180px 1fr 180px; align-items: center; padding: 0 5vw; border-bottom: 1px solid var(--line); background: rgba(244, 241, 232, .92); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(12px); }
@@ -108,3 +108,20 @@ h1 em, h2 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400;
 @media (min-width: 701px) { .menu-button { display: none; } }
 @media (max-width: 1000px) { .problem-lab { grid-template-columns: 1fr; }.problem-nav { display: grid; grid-template-columns: repeat(4, 1fr); border-right: 0; border-bottom: 1px solid var(--line); }.problem-tab { display: block; padding: 15px; border-left: 0; border-bottom: 3px solid transparent; }.problem-tab.active { border-bottom-color: var(--orange); }.problem-tab span, .problem-tab strong { display: block; }.problem-tab strong { margin-top: 9px; font-size: 13px; }.problem-detail { grid-template-columns: 80px 1fr; }.roadmap-list, .source-grid { grid-template-columns: repeat(2, 1fr); }.roadmap-card { min-height: 290px; }.source-card { min-height: 135px; } }
 @media (max-width: 700px) { .mobile-menu { display: block; }.problem-nav { grid-template-columns: repeat(2, 1fr); }.problem-tab { padding: 14px 12px; }.problem-detail { display: block; min-height: 0; padding: 27px 20px; }.problem-index { margin-bottom: 25px; }.problem-detail h3 { font-size: 36px; }.problem-check, .problem-next { margin-top: 25px; }.problem-next { display: block; }.problem-next .outline-button { margin-top: 20px; }.problem-note { display: block; }.problem-note p { margin-top: 10px; }.roadmap-list, .source-grid, .library-links { grid-template-columns: 1fr; }.roadmap-card { min-height: 260px; }.roadmap-card h3 { margin-top: 50px; }.roadmap-footer { display: block; }.roadmap-footer .primary-button { margin-top: 22px; }.sources-section { padding: 66px 20px; }.sources-intro { margin-top: 0; }.source-card { min-height: 125px; }.source-card strong { margin-top: 14px; } }
+
+/* Hero visual pass: replace the placeholder figure with a real instructional asset and measured callouts. */
+.hero-visual { min-height: 560px; padding: 21px; box-shadow: 20px 20px 0 var(--paper-2); }
+.visual-stage { min-height: 475px; background: radial-gradient(circle at 52% 45%, rgba(200,222,187,.1), transparent 30%), linear-gradient(135deg, rgba(255,255,255,.06), transparent 52%), #204c39; }
+.visual-stage::before { left: 10%; top: 19%; bottom: 15%; box-shadow: 340px 0 rgba(244,241,232,.15); }
+.visual-stage::after { left: 10%; right: 10%; top: 52%; box-shadow: 0 -105px rgba(244,241,232,.1), 0 105px rgba(244,241,232,.1); }
+.athlete-hero-art { position: absolute; inset: 3% 17% 2% 11%; z-index: 3; }
+.athlete-hero-art::before { content: ''; position: absolute; left: 18%; right: 7%; bottom: 13%; height: 1px; background: linear-gradient(90deg, transparent, rgba(242,170,120,.8), transparent); transform: rotate(-9deg); }
+.athlete-hero-art img { position: absolute; width: 82%; height: 100%; left: 9%; top: 0; object-fit: contain; object-position: center; filter: drop-shadow(18px 20px 0 rgba(5,24,18,.15)); }
+.athlete-marker { position: absolute; width: 11px; height: 11px; border: 2px solid var(--orange-soft); background: var(--forest); border-radius: 50%; z-index: 5; box-shadow: 0 0 0 5px rgba(242,170,120,.12); }
+.marker-shoulder { left: 53%; top: 27%; }.marker-hip { left: 48%; top: 54%; }.marker-foot { left: 39%; bottom: 12%; }
+.athlete-ring { position: absolute; border: 1px dashed rgba(242,170,120,.75); border-radius: 50%; z-index: 4; }.ring-contact { width: 82px; height: 82px; left: 58%; top: 7%; }.ring-base { width: 126px; height: 44px; left: 25%; bottom: 8%; transform: rotate(-12deg); }
+.visual-axis.axis-three { bottom: 15%; left: 12%; }.visual-axis.axis-three::before { width: 35px; }.visual-shuttle { left: 76%; top: 17%; font-size: 22px; }
+.visual-line.line-one { width: 170px; left: 60%; top: 27%; }.visual-line.line-two { width: 155px; left: 34%; top: 68%; }
+.visual-stamp { bottom: 23px; right: 23px; }.visual-footer { margin-top: 17px; }
+@media (max-width: 1000px) { .hero-visual { min-height: 520px; }.visual-stage { min-height: 435px; }.athlete-hero-art { left: 8%; } }
+@media (max-width: 700px) { .hero-visual { min-height: 455px; padding: 14px; box-shadow: 10px 10px 0 var(--paper-2); }.visual-stage { min-height: 376px; }.athlete-hero-art { inset: 4% 6% 4% 1%; }.athlete-hero-art img { width: 87%; left: 6%; }.athlete-ring.ring-contact { width: 58px; height: 58px; }.athlete-ring.ring-base { width: 90px; height: 32px; }.marker-shoulder { left: 53%; }.marker-hip { left: 48%; }.visual-axis { font-size: 8px; }.visual-axis.axis-three { bottom: 14%; left: 7%; }.visual-line.line-one { width: 100px; }.visual-line.line-two { width: 95px; } }
