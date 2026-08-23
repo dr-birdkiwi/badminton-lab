@@ -22,6 +22,16 @@ type ForceNode = {
   cue: string;
 };
 
+type TrainingNode = {
+  number: string;
+  label: string;
+  english: string;
+  title: string;
+  function: string;
+  muscles: string;
+  transfer: string;
+};
+
 const lessonSteps: LessonStep[] = [
   {
     number: '01',
@@ -95,6 +105,16 @@ const forceNodes: ForceNode[] = [
   { number: '07', label: '随挥 · 回位', english: 'BRAKE', title: '收住，准备下一拍', action: '击球后让身体和球拍自然随挥，再逐步降低速度，回到可以移动的状态。', principle: '制动不是浪费力量，而是控制角动量和下一拍的位置。', cue: '击球后仍能平衡、落地和继续移动。' },
 ];
 
+const trainingNodes: TrainingNode[] = [
+  { number: '01', label: '脚下', english: 'SUPPORT', title: '先练能支撑、制动和再启动', function: '分腿垫步 → 侧向跨步 → 单脚停稳。先用低幅度移动，把“到位后还能动”练出来。', muscles: '小腿三头肌、股四头肌、臀中肌与臀大肌；重点是单腿控制和吸收落地力量。', transfer: '它服务的是方向改变和制动条件，不是把腿部力量直接“送到”球拍。' },
+  { number: '02', label: '下肢 · 髋', english: 'ORIENT', title: '练把重心送到可旋转的位置', function: '侧向台阶上步停稳，或做小幅度跨步 → 转髋 → 停住。每次都保留下一步的空间。', muscles: '臀肌、髋外展/内收与旋转肌群，配合腘绳肌和小腿完成重心管理。', transfer: '髋的任务是组织身体朝向和最后调整，让骨盆有可靠的旋转底座。' },
+  { number: '03', label: '骨盆', english: 'DIRECT', title: '练方向，不练腰椎硬拧', function: '交错站姿抗旋转 → 小幅转向；也可以用轻药球做低速 scoop toss，先保证骨盆可控。', muscles: '臀大肌、臀中肌、内收肌与腹斜肌；重点是稳定与转向之间的切换。', transfer: '骨盆提供方向参照和支撑条件，避免把“发力”误解成腰部单独扭转。' },
+  { number: '04', label: '胸廓', english: 'SEPARATE', title: '练相对关系，而不是追求极限幅度', function: '交错站姿胸廓旋转，或做轻阻力 lift / chop；骨盆只做必要配合，不要先把全身拧成一块。', muscles: '腹斜肌、前锯肌、胸椎伸肌与旋转肌群；肩胛控制是动作质量的一部分。', transfer: '胸廓与骨盆的相对关系，为上肢释放创造时序和空间；没有固定角度处方。' },
+  { number: '05', label: '肩 · 肘 · 前臂', english: 'RELEASE', title: '练连续释放，不练孤立甩腕', function: '轻药球推掷/过顶投掷，或用弹力带做半挥释放；从低速开始，拍头连续加速再逐级增加速度。', muscles: '胸大肌、三角肌、肩袖、前锯肌/下斜方肌，以及肱三头肌和前臂旋前旋后肌群。', transfer: '这些是协同工作的支持系统；目标是让肩、肘、前臂在合适时间接力，不宣称某块肌肉承担固定比例。' },
+  { number: '06', label: '球拍 · 羽毛球', english: 'IMPACT', title: '把能力转换成有效碰撞', function: '半挥 → 定点轻球 → 目标击球。先检查击球点、拍面和拍头速度，再逐级增加力度。', muscles: '前臂旋前/旋后、握拍与手指屈伸协调，配合肩袖对拍面和末端的控制。', transfer: '出球还取决于拍头速度、击球位置、拍面和球拍特性；肌肉更强不等于每球更快。' },
+  { number: '07', label: '随挥 · 回位', english: 'BRAKE', title: '把制动和恢复也练成技术', function: '杀球影子动作 → 落地停稳 → 回中分腿；加入减速步，但始终保持低量、高质量。', muscles: '臀肌、股四头肌、腘绳肌和小腿的离心控制，配合躯干抗旋转与后侧肩部稳定。', transfer: '好的输出包含“收得回来”：控制角动量、保护动作质量，并为下一拍保留位置。' },
+];
+
 function jumpTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ block: 'start' });
 }
@@ -116,6 +136,7 @@ function MechanicsPlate() {
 export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
   const [activeNode, setActiveNode] = useState(0);
+  const [activeTraining, setActiveTraining] = useState(0);
   const step = lessonSteps[activeStep];
   const node = forceNodes[activeNode];
 
@@ -123,7 +144,7 @@ export default function Home() {
     <main className="force-site">
       <header className="force-header">
         <button className="force-brand" onClick={() => jumpTo('top')} aria-label="返回顶部"><span className="force-mark">↗</span><span><strong>力场</strong><small>BADMINTON FORCE LAB</small></span></button>
-        <nav aria-label="页面导航"><button onClick={() => jumpTo('principles')}>核心结论</button><button onClick={() => jumpTo('force-path')}>力的路径</button><button onClick={() => jumpTo('lesson')}>照着练</button><button onClick={() => jumpTo('boundary')}>证据边界</button></nav>
+        <nav aria-label="页面导航"><button onClick={() => jumpTo('principles')}>核心结论</button><button onClick={() => jumpTo('force-path')}>力的路径</button><button onClick={() => jumpTo('training')}>训练映射</button><button onClick={() => jumpTo('lesson')}>照着练</button><button onClick={() => jumpTo('boundary')}>证据边界</button></nav>
         <span className="header-index">01 / SMASH</span>
       </header>
 
@@ -162,6 +183,27 @@ export default function Home() {
             <div className="path-reading-grid"><div><span>发生了什么</span><p>{node.action}</p></div><div><span>发力原理</span><p>{node.principle}</p></div><div><span>检查线索</span><p>{node.cue}</p></div></div>
           </div>
         </div>
+      </section>
+
+      <section id="training" className="training-section force-section">
+        <div className="section-heading"><div><span className="section-label">TRAIN THE CAPACITY</span><h2>把每一段，<br /><em>练成可用能力。</em></h2></div><span className="section-index">FUNCTION + MUSCLE</span></div>
+        <div className="training-statement"><span>训练观</span><strong>训练不是把某块肌肉“练成发力源”，而是把路径上的支撑、旋转、释放与制动能力练出来。</strong></div>
+        <div className="training-layout">
+          <div className="training-visual" role="tablist" aria-label="杀球阶段训练映射">
+            <div className="training-meta"><span>SEVEN CAPACITIES</span><span>CHOOSE ONE WEAK LINK</span></div>
+            <div className="training-track">
+              {trainingNodes.map((item, index) => <div className="training-track-item" key={item.number}><button id={`training-tab-${item.number}`} className={activeTraining === index ? 'training-node active' : 'training-node'} onClick={() => setActiveTraining(index)} role="tab" aria-selected={activeTraining === index} aria-controls="training-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.english}</small></button>{index < trainingNodes.length - 1 && <span className="training-arrow" aria-hidden="true">→</span>}</div>)}
+            </div>
+            <div className="training-rules"><div><b>01</b><strong>功能先于孤立</strong><p>先在接近球场的任务里验证。</p></div><div><b>02</b><strong>速度先于负重</strong><p>爆发动作一变形就停止。</p></div><div><b>03</b><strong>质量先于疲劳</strong><p>不把疲劳误当成技术进步。</p></div></div>
+          </div>
+          <div id="training-panel" className="training-reading" role="tabpanel" tabIndex={0} aria-labelledby={`training-tab-${trainingNodes[activeTraining].number}`}>
+            <span className="section-label">CAPACITY / {trainingNodes[activeTraining].number} · {trainingNodes[activeTraining].english}</span>
+            <h3>{trainingNodes[activeTraining].title}</h3>
+            <div className="training-reading-grid"><div><span>功能训练</span><p>{trainingNodes[activeTraining].function}</p></div><div><span>肌肉支持</span><p>{trainingNodes[activeTraining].muscles}</p></div><div><span>为什么对应</span><p>{trainingNodes[activeTraining].transfer}</p></div></div>
+          </div>
+        </div>
+        <p className="training-note">这是能力映射，不是固定处方：一次选择当前最弱的 2–3 段，先以可控速度建立质量，再回到轻球和真实击球验证。出现疼痛、麻木或明显不稳时停止，并寻求专业评估。</p>
+        <div className="training-sources"><span>训练证据</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12170632/" target="_blank" rel="noreferrer">2025 / 肩部肌肉协同 ↗</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12887704/" target="_blank" rel="noreferrer">2026 / 青少年爆发训练 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/38533062/" target="_blank" rel="noreferrer">2024 / 羽毛球增强式训练综述 ↗</a></div>
       </section>
 
       <section id="lesson" className="lesson-section force-section">
