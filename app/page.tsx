@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+
+/* eslint-disable @next/next/no-img-element */
 
 type LessonStep = {
   number: string;
@@ -126,7 +127,7 @@ function jumpTo(id: string) {
 function SmashVisual() {
   return (
     <div className="mechanics-plate hero-visual">
-      <Image src="/smash-hero.png" alt="右手羽毛球选手在高点击球点完成杀球动作" fill priority sizes="(max-width: 700px) 100vw, 55vw" />
+      <img src="/smash-hero.png" alt="右手羽毛球选手在高点击球点完成杀球动作" />
       <div className="hero-visual-shade" aria-hidden="true" />
       <div className="plate-meta"><span>PHOTO STUDY / 001</span><span>RIGHT-HAND SMASH</span></div>
       <div className="visual-label visual-label-base"><i aria-hidden="true" /><div><b>01 / BASE</b><strong>脚下先稳</strong><small>支撑 · 制动</small></div></div>
@@ -202,7 +203,7 @@ export default function Home() {
               {trainingStages.map((item, index) => <div className="training-track-item" key={item.number}><button id={`training-tab-${item.number}`} className={activeTraining === index ? 'training-node active' : 'training-node'} onClick={() => setActiveTraining(index)} role="tab" aria-selected={activeTraining === index} aria-controls="training-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.english}</small></button>{index < trainingStages.length - 1 && <span className="training-arrow" aria-hidden="true">→</span>}</div>)}
             </div>
             <div className="training-rules"><div><b>01</b><strong>功能先于孤立</strong><p>先在接近球场的任务里验证。</p></div><div><b>02</b><strong>速度先于负重</strong><p>动作一变形就停止。</p></div><div><b>03</b><strong>质量先于疲劳</strong><p>疲劳不是技术进步。</p></div></div>
-            <div className="training-photo"><Image src="/training-footwork.png" alt="羽毛球运动员进行低位分腿与减速控制训练" fill sizes="(max-width: 1000px) 88vw, 48vw" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>EXAMPLE / BASE + BRAKE</span><span>LOW · CONTROLLED · REPEATABLE</span></div><div className="training-photo-caption"><b>承载动作示例</b><strong>到位后能停住，才有下一次启动。</strong></div></div>
+            <div className="training-photo"><img src="/training-footwork.png" alt="羽毛球运动员进行低位分腿与减速控制训练" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>EXAMPLE / BASE + BRAKE</span><span>LOW · CONTROLLED · REPEATABLE</span></div><div className="training-photo-caption"><b>承载动作示例</b><strong>到位后能停住，才有下一次启动。</strong></div></div>
           </div>
           <div id="training-panel" className="training-reading" role="tabpanel" tabIndex={0} aria-labelledby={`training-tab-${trainingStage.number}`}>
             <span className="section-label">BLOCK / {trainingStage.number} · {trainingStage.english}</span>
