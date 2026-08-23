@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 type LessonStep = {
   number: string;
@@ -122,16 +123,17 @@ function jumpTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ block: 'start' });
 }
 
-function MechanicsPlate() {
+function SmashVisual() {
   return (
-    <div className="mechanics-plate" role="img" aria-label="杀球发力的静态机制示意">
-      <div className="plate-meta"><span>FORCE MAP / 001</span><span>FOREHAND SMASH</span></div>
-      <div className="plate-grid-line plate-grid-vertical" /><div className="plate-grid-line plate-grid-horizontal" />
-      <div className="plate-node plate-base"><small>BASE</small><strong>骨盆</strong><span>方向参照</span></div>
-      <div className="plate-node plate-trunk"><small>ROTATION</small><strong>胸廓</strong><span>方向变化</span></div>
-      <div className="plate-node plate-arm"><small>RELEASE</small><strong>肩 · 肘 · 前臂</strong><span>末端速度</span></div>
-      <div className="plate-callout callout-base">先稳定条件</div><div className="plate-callout callout-trunk">再发生旋转</div><div className="plate-callout callout-arm">最后释放拍头</div>
-      <div className="plate-footer"><span>教学模型</span><strong>不是力量比例</strong></div>
+    <div className="mechanics-plate hero-visual">
+      <Image src="/smash-hero.png" alt="右手羽毛球选手在高点击球点完成杀球动作" fill priority sizes="(max-width: 700px) 100vw, 55vw" />
+      <div className="hero-visual-shade" aria-hidden="true" />
+      <div className="plate-meta"><span>PHOTO STUDY / 001</span><span>RIGHT-HAND SMASH</span></div>
+      <div className="visual-label visual-label-base"><i aria-hidden="true" /><div><b>01 / BASE</b><strong>脚下先稳</strong><small>支撑 · 制动</small></div></div>
+      <div className="visual-label visual-label-rotation"><i aria-hidden="true" /><div><b>02 / ROTATION</b><strong>胸廓转向</strong><small>方向 · 空间</small></div></div>
+      <div className="visual-label visual-label-release"><i aria-hidden="true" /><div><b>03 / RELEASE</b><strong>末端释放</strong><small>肩 · 肘 · 前臂</small></div></div>
+      <div className="visual-label visual-label-recovery"><i aria-hidden="true" /><div><b>04 / RECOVERY</b><strong>落地回位</strong><small>制动 · 下一拍</small></div></div>
+      <div className="plate-footer"><span>视觉观察，不是动作模板</span><strong>先看关系，再练速度</strong></div>
     </div>
   );
 }
@@ -161,7 +163,7 @@ export default function Home() {
           <div className="hero-ramp"><span>阅读路径</span><strong>先看机制，再练能力，最后回到球上</strong><div><b>机制</b><i>→</i><b>训练</b><i>→</i><b>验证</b></div></div>
           <button className="dark-button" onClick={() => jumpTo('force-path')}>查看发力机制 <span>↓</span></button>
         </div>
-        <MechanicsPlate />
+        <SmashVisual />
       </section>
 
       <section id="principles" className="principles-section force-section">
@@ -179,6 +181,7 @@ export default function Home() {
             <div className="path-track">
               {forceNodes.map((item, index) => <div className="path-track-item" key={item.number}><button id={`node-tab-${item.number}`} className={activeNode === index ? 'path-node active' : 'path-node'} onClick={() => setActiveNode(index)} role="tab" aria-selected={activeNode === index} aria-controls="node-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.english}</small></button>{index < forceNodes.length - 1 && <span className="path-arrow" aria-hidden="true">→</span>}</div>)}
             </div>
+            <div className="path-legend" aria-label="发力路径四类任务"><span><i className="legend-support" />支撑条件</span><span><i className="legend-orient" />方向与空间</span><span><i className="legend-release" />末端释放</span><span><i className="legend-brake" />制动回位</span></div>
             <p className="path-footnote">箭头代表动作关系，不代表固定顺序、能量百分比或所有球员都一样的轨迹。</p>
           </div>
           <div id="node-panel" className="path-reading" role="tabpanel" tabIndex={0} aria-labelledby={`node-tab-${node.number}`}>
@@ -199,6 +202,7 @@ export default function Home() {
               {trainingStages.map((item, index) => <div className="training-track-item" key={item.number}><button id={`training-tab-${item.number}`} className={activeTraining === index ? 'training-node active' : 'training-node'} onClick={() => setActiveTraining(index)} role="tab" aria-selected={activeTraining === index} aria-controls="training-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.english}</small></button>{index < trainingStages.length - 1 && <span className="training-arrow" aria-hidden="true">→</span>}</div>)}
             </div>
             <div className="training-rules"><div><b>01</b><strong>功能先于孤立</strong><p>先在接近球场的任务里验证。</p></div><div><b>02</b><strong>速度先于负重</strong><p>动作一变形就停止。</p></div><div><b>03</b><strong>质量先于疲劳</strong><p>疲劳不是技术进步。</p></div></div>
+            <div className="training-photo"><Image src="/training-footwork.png" alt="羽毛球运动员进行低位分腿与减速控制训练" fill sizes="(max-width: 1000px) 88vw, 48vw" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>EXAMPLE / BASE + BRAKE</span><span>LOW · CONTROLLED · REPEATABLE</span></div><div className="training-photo-caption"><b>承载动作示例</b><strong>到位后能停住，才有下一次启动。</strong></div></div>
           </div>
           <div id="training-panel" className="training-reading" role="tabpanel" tabIndex={0} aria-labelledby={`training-tab-${trainingStage.number}`}>
             <span className="section-label">BLOCK / {trainingStage.number} · {trainingStage.english}</span>
