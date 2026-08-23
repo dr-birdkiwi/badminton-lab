@@ -90,6 +90,29 @@ button { cursor: pointer; }
 .principle-line span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .12em; }
 .principle-line strong { max-width: 720px; color: var(--paper); font: 26px var(--serif); font-weight: 400; line-height: 1.3; }
 
+.force-path-section { background: var(--paper); }
+.path-statement { display: grid; gap: 9px; max-width: 800px; margin: -14px 0 34px; padding: 16px 18px; border-left: 2px solid var(--orange); background: #eee6d9; }
+.path-statement span, .path-meta span, .path-reading-grid span { color: var(--orange); font: 9px var(--mono); letter-spacing: .1em; }
+.path-statement strong { font-size: 15px; font-weight: 400; line-height: 1.6; }
+.path-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 10px; }
+.path-visual { min-width: 0; padding: 20px; color: var(--paper); background: var(--forest); }
+.path-meta { display: flex; justify-content: space-between; gap: 20px; color: rgba(245, 242, 233, .62); font: 9px var(--mono); letter-spacing: .1em; }
+.path-track { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; margin: 28px 0 26px; }
+.path-track-item { position: relative; min-width: 0; }
+.path-node { width: 100%; min-height: 120px; display: grid; align-content: start; padding: 12px 10px; border: 1px solid var(--white-line); color: var(--paper); background: rgba(245, 242, 233, .05); text-align: left; }
+.path-node:hover, .path-node.active { border-color: var(--orange-soft); background: var(--forest-2); }
+.path-node b { color: var(--orange-soft); font: 10px var(--mono); font-weight: 400; }
+.path-node strong { margin-top: 26px; font-size: 14px; font-weight: 400; line-height: 1.35; }
+.path-node small { margin-top: 8px; color: rgba(245, 242, 233, .58); font: 8px var(--mono); letter-spacing: .07em; }
+.path-arrow { position: absolute; z-index: 2; top: 50%; right: -8px; color: var(--orange-soft); font-size: 16px; transform: translateY(-50%); }
+.path-footnote { margin: 0; color: rgba(245, 242, 233, .62); font-size: 11px; line-height: 1.7; }
+.path-reading { min-height: 300px; padding: 29px; background: var(--paper-2); }
+.path-reading:focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
+.path-reading h3 { max-width: 350px; margin: 20px 0 31px; font-size: clamp(28px, 3vw, 43px); font-weight: 400; line-height: 1; letter-spacing: -.08em; }
+.path-reading-grid { display: grid; gap: 18px; }
+.path-reading-grid > div { padding-top: 12px; border-top: 1px solid var(--line); }
+.path-reading-grid p { max-width: 360px; margin: 9px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
 .lesson-section { background: var(--paper-2); }
 .lesson-intro { max-width: 620px; margin: -14px 0 38px; color: var(--muted); font-size: 13px; line-height: 1.8; }
 .phase-tabs { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -144,6 +167,7 @@ button { cursor: pointer; }
   .plate-trunk { left: 41%; }
   .claim-grid { grid-template-columns: 1fr 1fr; }
   .claim-card:last-child { grid-column: 1 / -1; }
+  .path-layout { grid-template-columns: 1fr; }
   .phase-main { padding-right: 4vw; }
   .phase-coach { padding-left: 4vw; }
 }
@@ -177,6 +201,15 @@ button { cursor: pointer; }
   .claim-card h3, .boundary-grid h3 { margin-top: 43px; }
   .principle-line { display: block; }
   .principle-line strong { display: block; margin-top: 13px; font-size: 23px; }
+  .path-statement { margin-top: -10px; }
+  .path-visual { padding: 15px; }
+  .path-meta { display: grid; gap: 7px; }
+  .path-track { display: flex; margin-top: 22px; overflow-x: auto; padding-bottom: 6px; }
+  .path-track-item { display: flex; align-items: stretch; gap: 6px; min-width: 108px; }
+  .path-node { width: auto; min-height: 106px; padding: 11px; }
+  .path-arrow { position: static; display: grid; place-items: center; transform: none; }
+  .path-node strong { margin-top: 22px; font-size: 12px; }
+  .path-reading { min-height: 0; padding: 24px 20px; }
   .lesson-intro { margin-top: -10px; }
   .phase-tabs { grid-template-columns: repeat(6, minmax(75px, 1fr)); overflow-x: auto; }
   .phase-tab { min-height: 74px; padding: 12px 9px; }

@@ -12,6 +12,16 @@ type LessonStep = {
   drill: string;
 };
 
+type ForceNode = {
+  number: string;
+  label: string;
+  english: string;
+  title: string;
+  action: string;
+  principle: string;
+  cue: string;
+};
+
 const lessonSteps: LessonStep[] = [
   {
     number: '01',
@@ -75,6 +85,16 @@ const claims = [
   { number: '03', title: '稳定的协同', text: '高手往往少一些无效摆动，肩部肌肉也表现出协同工作；“更用力”不是唯一答案。' },
 ];
 
+const forceNodes: ForceNode[] = [
+  { number: '01', label: '脚下', english: 'SUPPORT', title: '建立支撑，不是蹬出速度', action: '脚与地面建立反作用，身体获得可控的加速、减速和转向条件。', principle: '地面是外部约束；主动能量来自肌肉和关节力矩。', cue: '脚下能改方向，不是原地蹬死。' },
+  { number: '02', label: '下肢 · 髋', english: 'ORIENT', title: '把身体送到可击球位置', action: '踝、膝、髋共同管理重心和最后调整，让身体停在可以旋转的位置。', principle: '最后一步把向后惯性变成支撑和旋转底座。', cue: '到位后仍然能转，不向后倒。' },
+  { number: '03', label: '骨盆', english: 'DIRECT', title: '给身体一个旋转方向', action: '骨盆先组织身体朝向，为胸廓保留相对运动的空间。', principle: '骨盆是方向组织器，不是把力量向上传送的传送带。', cue: '骨盆和胸口不要从一开始就像一块板。' },
+  { number: '04', label: '胸廓', english: 'SEPARATE', title: '形成可用的相对旋转', action: '胸廓在骨盆提供的条件上完成主要方向变化，躯干从“整体”变成有相对关系的两段。', principle: '相对旋转提供时序和活动空间，但不等于把腰椎拧到极限。', cue: '胸口能否先进入击球方向？' },
+  { number: '05', label: '肩 · 肘 · 前臂', english: 'RELEASE', title: '在窗口内共同加速', action: '肩部、肘部和前臂在胸廓旋转后进入释放区，拍头在触球前连续获得速度。', principle: '近端创造条件，远端在合适时间接管；不是孤立甩腕。', cue: '拍头触球前已经起来，而不是最后一下才补。' },
+  { number: '06', label: '球拍 · 羽毛球', english: 'IMPACT', title: '把身体协调变成出球', action: '拍头速度、拍面方向、击球位置和球拍特性在极短碰撞窗口内共同决定出球。', principle: '身体发力只有转化成有效碰撞，才真正变成羽毛球速度。', cue: '击球点在前方，拍面和身体仍然可控。' },
+  { number: '07', label: '随挥 · 回位', english: 'BRAKE', title: '收住，准备下一拍', action: '击球后让身体和球拍自然随挥，再逐步降低速度，回到可以移动的状态。', principle: '制动不是浪费力量，而是控制角动量和下一拍的位置。', cue: '击球后仍能平衡、落地和继续移动。' },
+];
+
 function jumpTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ block: 'start' });
 }
@@ -95,13 +115,15 @@ function MechanicsPlate() {
 
 export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
+  const [activeNode, setActiveNode] = useState(0);
   const step = lessonSteps[activeStep];
+  const node = forceNodes[activeNode];
 
   return (
     <main className="force-site">
       <header className="force-header">
         <button className="force-brand" onClick={() => jumpTo('top')} aria-label="返回顶部"><span className="force-mark">↗</span><span><strong>力场</strong><small>BADMINTON FORCE LAB</small></span></button>
-        <nav aria-label="页面导航"><button onClick={() => jumpTo('principles')}>核心结论</button><button onClick={() => jumpTo('lesson')}>照着练</button><button onClick={() => jumpTo('boundary')}>证据边界</button></nav>
+        <nav aria-label="页面导航"><button onClick={() => jumpTo('principles')}>核心结论</button><button onClick={() => jumpTo('force-path')}>力的路径</button><button onClick={() => jumpTo('lesson')}>照着练</button><button onClick={() => jumpTo('boundary')}>证据边界</button></nav>
         <span className="header-index">01 / SMASH</span>
       </header>
 
@@ -121,6 +143,25 @@ export default function Home() {
         <div className="section-heading"><div><span className="section-label">THE SHORT VERSION</span><h2>只记住<br /><em>三件事。</em></h2></div><span className="section-index">01 — 03</span></div>
         <div className="claim-grid">{claims.map((claim) => <article key={claim.number} className="claim-card"><span>{claim.number}</span><h3>{claim.title}</h3><p>{claim.text}</p></article>)}</div>
         <div className="principle-line"><span>核心句</span><strong>先让身体产生可用的旋转，再让上肢把它连续地释放到拍头。</strong></div>
+      </section>
+
+      <section id="force-path" className="force-path-section force-section">
+        <div className="section-heading"><div><span className="section-label">THE FORCE PATH</span><h2>力不是向上“传”，<br /><em>而是逐段组织。</em></h2></div><span className="section-index">CLICK A NODE</span></div>
+        <div className="path-statement"><span>先纠正一个误解</span><strong>脚下不直接把力量送到拍头。脚下先建立条件，身体再把条件组织成旋转，最后通过碰撞输出。</strong></div>
+        <div className="path-layout">
+          <div className="path-visual" role="tablist" aria-label="杀球发力路径">
+            <div className="path-meta"><span>FROM GROUND TO SHUTTLE</span><span>NOT A FIXED RATIO</span></div>
+            <div className="path-track">
+              {forceNodes.map((item, index) => <div className="path-track-item" key={item.number}><button id={`node-tab-${item.number}`} className={activeNode === index ? 'path-node active' : 'path-node'} onClick={() => setActiveNode(index)} role="tab" aria-selected={activeNode === index} aria-controls="node-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.english}</small></button>{index < forceNodes.length - 1 && <span className="path-arrow" aria-hidden="true">→</span>}</div>)}
+            </div>
+            <p className="path-footnote">箭头代表动作关系，不代表固定顺序、能量百分比或所有球员都一样的轨迹。</p>
+          </div>
+          <div id="node-panel" className="path-reading" role="tabpanel" tabIndex={0} aria-labelledby={`node-tab-${node.number}`}>
+            <span className="section-label">NODE / {node.number} · {node.english}</span>
+            <h3>{node.title}</h3>
+            <div className="path-reading-grid"><div><span>发生了什么</span><p>{node.action}</p></div><div><span>发力原理</span><p>{node.principle}</p></div><div><span>检查线索</span><p>{node.cue}</p></div></div>
+          </div>
+        </div>
       </section>
 
       <section id="lesson" className="lesson-section force-section">
