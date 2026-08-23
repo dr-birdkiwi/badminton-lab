@@ -63,7 +63,23 @@ const chainData = [
 ];
 
 function MotionFigure({ phase }: { phase: number }) {
-  return <div className={`motion-figure motion-phase-${phase}`} aria-hidden="true"><div className="figure-head" /><div className="figure-torso" /><div className="figure-arm arm-back" /><div className="figure-arm arm-front" /><div className="figure-leg leg-back" /><div className="figure-leg leg-front" /><div className="figure-racket" /></div>;
+  const poses = {
+    1: { head: [111, 58], shoulder: [106, 83], elbow: [81, 119], wrist: [63, 151], hip: [113, 148], kneeA: [137, 203], footA: [153, 246], kneeB: [94, 203], footB: [77, 244], racket: 'M58 151 C36 126 42 91 73 79 C99 69 117 85 108 112 L63 151', shuttle: [157, 55], marker: [113, 148], trail: 'M156 55 C137 62 121 73 106 88' },
+    2: { head: [123, 56], shoulder: [119, 83], elbow: [91, 114], wrist: [73, 143], hip: [130, 148], kneeA: [151, 196], footA: [168, 239], kneeB: [103, 203], footB: [76, 235], racket: 'M69 144 C49 119 57 82 89 73 C114 67 128 84 116 111 L73 144', shuttle: [166, 48], marker: [130, 148], trail: 'M166 48 C143 56 124 72 110 86' },
+    3: { head: [132, 56], shoulder: [128, 83], elbow: [119, 56], wrist: [106, 28], hip: [140, 148], kneeA: [163, 197], footA: [176, 239], kneeB: [112, 203], footB: [91, 239], racket: 'M105 28 C85 47 83 75 101 91 C116 104 136 94 134 70 L106 28', shuttle: [108, 16], marker: [140, 148], trail: 'M110 16 C111 34 115 51 121 68' },
+    4: { head: [123, 59], shoulder: [118, 85], elbow: [101, 111], wrist: [88, 143], hip: [128, 151], kneeA: [151, 207], footA: [171, 245], kneeB: [103, 205], footB: [80, 234], racket: 'M87 143 C68 120 74 87 101 79 C124 73 137 88 128 113 L88 143', shuttle: [166, 52], marker: [128, 151], trail: 'M167 52 C149 61 135 73 121 88' },
+  } as const;
+  const pose = poses[phase as keyof typeof poses] ?? poses[1];
+  return <svg className={`motion-figure motion-phase-${phase}`} viewBox="0 0 220 270" role="img" aria-label={`第 ${phase} 阶段动作示意`}>
+    <defs><marker id={`arrow-${phase}`} markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 z" fill="currentColor" /></marker></defs>
+    <path className="svg-floor" d="M27 246 H193" /><path className="svg-axis" d="M110 30 V252" />
+    <path className="svg-trail" d={pose.trail} markerEnd={`url(#arrow-${phase})`} /><path className="svg-racket" d={pose.racket} /><path className="svg-racket-handle" d={`M${pose.wrist[0]} ${pose.wrist[1]} l-25 34`} />
+    <circle className="svg-shuttle" cx={pose.shuttle[0]} cy={pose.shuttle[1]} r="7" /><g className="svg-athlete">
+      <circle className="svg-head" cx={pose.head[0]} cy={pose.head[1]} r="14" /><path className="svg-torso" d={`M${pose.shoulder[0] - 18} ${pose.shoulder[1]} Q${pose.shoulder[0]} ${pose.shoulder[1] - 11} ${pose.shoulder[0] + 19} ${pose.shoulder[1] + 6} L${pose.hip[0] + 14} ${pose.hip[1] + 20} Q${pose.hip[0]} ${pose.hip[1] + 34} ${pose.hip[0] - 16} ${pose.hip[1] + 18} L${pose.shoulder[0] - 21} ${pose.shoulder[1] + 15} Z`} />
+      <path className="svg-limb" d={`M${pose.shoulder[0] - 12} ${pose.shoulder[1] + 3} L${pose.elbow[0]} ${pose.elbow[1]} L${pose.wrist[0]} ${pose.wrist[1]}`} /><path className="svg-limb svg-limb-soft" d={`M${pose.shoulder[0] + 10} ${pose.shoulder[1] + 9} L${pose.shoulder[0] + 39} ${pose.shoulder[1] + 32} L${pose.shoulder[0] + 65} ${pose.shoulder[1] + 48}`} />
+      <path className="svg-limb" d={`M${pose.hip[0] - 2} ${pose.hip[1] + 16} L${pose.kneeA[0]} ${pose.kneeA[1]} L${pose.footA[0]} ${pose.footA[1]}`} /><path className="svg-limb svg-limb-soft" d={`M${pose.hip[0] - 9} ${pose.hip[1] + 15} L${pose.kneeB[0]} ${pose.kneeB[1]} L${pose.footB[0]} ${pose.footB[1]}`} />
+    </g><circle className="svg-center" cx={pose.marker[0]} cy={pose.marker[1]} r="4" /><circle className="svg-joint" cx={pose.elbow[0]} cy={pose.elbow[1]} r="3" /><circle className="svg-joint" cx={pose.kneeA[0]} cy={pose.kneeA[1]} r="3" />
+  </svg>;
 }
 
 function ChainDiagram({ activeChain, setActiveChain }: { activeChain: number; setActiveChain: (value: number) => void }) {
