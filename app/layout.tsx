@@ -3,10 +3,10 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: '力场 / Badminton Force Lab',
-  description: '只讨论进阶羽毛球发力：躯干分离、旋转时序与肩肘前臂的末端释放。',
+  description: '一套可照着练的进阶羽毛球发力课程：站位、躯干分离、旋转时序、末端释放与制动。',
   openGraph: {
     title: '力场 / Badminton Force Lab',
-    description: '只讨论进阶羽毛球发力：躯干分离、旋转时序与肩肘前臂的末端释放。',
+    description: '一套可照着练的进阶羽毛球发力课程：站位、躯干分离、旋转时序、末端释放与制动。',
     type: 'website',
   },
 };
