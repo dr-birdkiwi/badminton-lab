@@ -41,6 +41,14 @@ type TrainingStage = {
   modules: TrainingModule[];
 };
 
+type StudyMarker = {
+  number: string;
+  label: string;
+  title: string;
+  text: string;
+  position: string;
+};
+
 const lessonSteps: LessonStep[] = [
   {
     number: '01',
@@ -91,6 +99,26 @@ const claims = [
   { number: '04', title: '碰撞与衔接', text: '中心触球、拍面稳定，速度才会变成落点；落地后拍回身前，仍能接管下一拍。' },
 ];
 
+const principleMarkers: StudyMarker[] = [
+  { number: '01', label: '击球窗口', title: '球点在持拍肩前上方', text: '身体在球的侧后方，仍有向下击球的空间。', position: 'marker-window' },
+  { number: '02', label: '身体组织', title: '胸廓与骨盆不抢同一时刻', text: '先组织方向，再把拍臂放进加速通道。', position: 'marker-organise' },
+  { number: '03', label: '触球前加速', title: '最快的一段留到最后', text: '肩、肘、前臂共同加速，不是只甩手腕。', position: 'marker-speed' },
+  { number: '04', label: '碰撞与衔接', title: '击球后仍然能移动', text: '中心触球，落地后拍回身前，接管下一拍。', position: 'marker-connect' },
+];
+
+const forceMarkers: StudyMarker[] = [
+  { number: '01', label: '脚下', title: '建立可移动的支撑', text: '先解决位置、制动和改变方向。', position: 'marker-foot' },
+  { number: '03', label: '骨盆', title: '让身体朝向服从击球点', text: '方向组织为拍臂留下空间。', position: 'marker-pelvis' },
+  { number: '05', label: '肩 · 肘 · 前臂', title: '把最快一段留到触球前', text: '近端与远端共同完成拍头加速。', position: 'marker-arm' },
+  { number: '07', label: '落地 · 衔接', title: '为第二拍完成这次杀球', text: '吸收速度，再重新获得移动能力。', position: 'marker-recover' },
+];
+
+const lessonMarkers: StudyMarker[] = [
+  { number: '01', label: '中心触球', title: '速度先进入碰撞', text: '拍面稳定，出球方向才可控。', position: 'marker-impact' },
+  { number: '02', label: '拍面方向', title: '不要用偏心触球补速度', text: '更快不等于更有效，先守住接触质量。', position: 'marker-face' },
+  { number: '03', label: '下一拍', title: '落地后仍保留选择', text: '身体回到可动位置，回合才没有断。', position: 'marker-follow' },
+];
+
 const forceNodes: ForceNode[] = [
   { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面建立支撑和制动，让身体能够加速、减速、改变朝向，而不是只把力量往上顶。', principle: '地面提供外部约束；更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后还能微调，不是蹬死在原地。' },
   { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进攻击窗口', action: '踝、膝、髋共同管理重心，把球留在拍侧肩前上方，同时保留落地和再启动的空间。', principle: '下肢首先决定你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '不用后仰就能触球，落地后还能启动。' },
@@ -133,7 +161,7 @@ const trainingStages: TrainingStage[] = [
 ];
 
 const navItems = [
-  { id: 'principles', label: '高手判断' },
+  { id: 'principles', label: '击球决策' },
   { id: 'force-path', label: '表现链' },
   { id: 'training', label: '瓶颈训练' },
   { id: 'lesson', label: '上场验收' },
@@ -142,6 +170,18 @@ const navItems = [
 
 function jumpTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ block: 'start' });
+}
+
+function StudyPlate({ src, alt, meta, side, footer, markers, className = '' }: { src: string; alt: string; meta: string; side: string; footer: string; markers: StudyMarker[]; className?: string }) {
+  return (
+    <div className={`study-plate ${className}`}>
+      <img src={src} alt={alt} />
+      <div className="study-plate-shade" aria-hidden="true" />
+      <div className="study-plate-meta"><span>{meta}</span><span>{side}</span></div>
+      {markers.map((marker) => <div className={`study-marker ${marker.position}`} key={marker.number}><i aria-hidden="true" /><div><b>{marker.number} / {marker.label}</b><strong>{marker.title}</strong><small>{marker.text}</small></div></div>)}
+      <div className="study-plate-footer"><span>动作样本，不是唯一模板</span><strong>{footer}</strong></div>
+    </div>
+  );
 }
 
 function SmashVisual() {
@@ -209,6 +249,10 @@ export default function Home() {
         <div className="section-heading"><div><span className="section-label">击球决策</span><h2>这球该怎么打？<br /><em>先看条件，再选出手。</em></h2></div><span className="section-index">检查 · 选择 · 衔接</span></div>
         <div className="decision-board">
           <div className="decision-board-head"><div><span>现场问题</span><strong>这球现在具不具备完整发力条件？</strong></div><div className="decision-board-purpose"><span>本章作用</span><strong>检查这一拍，不给球员定级。</strong></div></div>
+          <div className="principles-visual-layout">
+            <StudyPlate src="/principles-study.png" alt="右手羽毛球运动员在后场起跳击球的动作研究图，标出击球窗口、身体组织、触球前加速和碰撞衔接" meta="动作研究 / 02" side="击球条件" footer="窗口 → 组织 → 加速 → 衔接" markers={principleMarkers} className="principles-study-plate" />
+            <div className="visual-reading-note"><span>先看主图</span><strong>每个出手，先由空间和时间决定。</strong><p>图中四个标记不是四个孤立动作，而是同一拍里必须同时成立的条件。窗口一旦丢失，就不再用更大动作补救。</p><div><b>图像读法</b><span>球与身体的关系 → 躯干留下的空间 → 触球前的速度 → 击球后的可动性</span></div></div>
+          </div>
           <div className="claim-grid">{claims.map((claim) => <article key={claim.number} className="claim-card"><span>{claim.number}</span><h3>{claim.title}</h3><p>{claim.text}</p></article>)}</div>
           <div className="principle-line"><span>判断路线</span><strong>窗口完整 + 有空间 + 碰撞可控 → 完整杀球；时间被压缩 → 点杀 / 半杀；窗口丢失或无法衔接 → 先过渡。</strong></div>
           <div className="shot-choice">
@@ -228,6 +272,7 @@ export default function Home() {
         <div className="path-layout">
           <div className="path-visual" role="tablist" aria-label="杀球发力路径">
             <div className="path-meta"><span>按任务读，不按关节背</span><span>组间有关联 · 组内会重叠</span></div>
+            <StudyPlate src="/force-study.png" alt="右手羽毛球运动员在触球前组织身体方向的动作研究图，标出脚下、骨盆、拍臂和落地衔接" meta="动作研究 / 03" side="七段发力链" footer="支撑 → 组织 → 加速 → 回到下一拍" markers={forceMarkers} className="force-study-plate" />
             <div className="path-groups">
               {forceGroups.map((group) => <div className={`path-group path-group-${group.number}`} key={group.number}>
                 <div className="path-group-head"><b>{group.number}</b><div><strong>{group.label}</strong><span>{group.note}</span></div></div>
@@ -256,7 +301,7 @@ export default function Home() {
               {trainingStages.map((item, index) => <div className="training-track-item" key={item.number}><button id={`training-tab-${item.number}`} className={activeTraining === index ? 'training-node active' : 'training-node'} onClick={() => setActiveTraining(index)} role="tab" aria-selected={activeTraining === index} aria-controls="training-panel"><b>{item.number}</b><strong>{item.label}</strong></button>{index < trainingStages.length - 1 && <span className="training-arrow" aria-hidden="true">→</span>}</div>)}
             </div>
             <div className="training-rules"><div><b>01</b><strong>先有球场指标</strong><p>窗口 · 目标 · 第二拍。</p></div><div><b>02</b><strong>高质量再加量</strong><p>速度下降，就结束这一组。</p></div><div><b>03</b><strong>负荷不改动作</strong><p>离场训练，回场验收。</p></div></div>
-            <div className="training-photo"><img src="/training-footwork.png" alt="羽毛球运动员进行低位分腿与减速控制训练" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>示例 / 到位 · 制动 · 再启动</span><span>看脚下，不看重量</span></div><div className="training-photo-caption"><b>支撑动作示例</b><strong>到位后能停住，才有下一次启动。</strong></div></div>
+            <div className="training-photo"><img src="/training-study.png" alt="羽毛球运动员进行侧向跨步和单腿制动训练，展示脚、膝、髋的支撑关系" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>动作研究 / 04</span><span>制动 · 再启动</span></div><div className="training-photo-caption"><b>功能训练示例</b><strong>先能吸收速度，才有下一次启动。</strong></div></div>
           </div>
           <div id="training-panel" className="training-reading" role="tabpanel" tabIndex={0} aria-labelledby={`training-tab-${trainingStage.number}`}>
             <span className="section-label">训练任务 · {trainingStage.number} · {trainingStage.label}</span>
@@ -274,6 +319,10 @@ export default function Home() {
       <section id="lesson" className="lesson-section force-section">
         <div className="section-heading"><div><span className="section-label">训练转化</span><h2>训练有没有变成<br /><em>比赛结果？</em></h2></div><span className="section-index">打一组 · 记录 · 回修</span></div>
         <div className="lesson-intro"><p>打一组球后，不再复盘脚、髋、肩、肘；只检查四个能在场上观察到的结果。哪一项先丢，就回到对应训练，不用继续加力补救。</p><strong>动作可以不同，结果必须可复现。</strong></div>
+        <div className="lesson-visual-layout">
+          <StudyPlate src="/impact-study.png" alt="羽毛球拍与羽毛球中心碰撞的高速动作研究图，展示拍面、触球位置和击球后的衔接关系" meta="动作研究 / 05" side="碰撞与衔接" footer="中心触球 → 稳定出球 → 回到下一拍" markers={lessonMarkers} className="lesson-study-plate" />
+          <div className="visual-reading-note"><span>这一章只看结果</span><strong>更快之后，碰撞和衔接不能塌。</strong><p>动作可以因人而异，但触球质量、出球方向和下一拍准备必须在连续回合中保持可观察、可重复。</p><div><b>验收顺序</b><span>击球窗口 → 拍头速度 → 中心碰撞 → 下一拍选择</span></div></div>
+        </div>
         <div className="phase-tabs" role="tablist" aria-label="训练转化的四项结果">
           {lessonSteps.map((item, index) => <button key={item.number} id={`step-tab-${item.number}`} className={activeStep === index ? 'phase-tab active' : 'phase-tab'} onClick={() => setActiveStep(index)} role="tab" aria-selected={activeStep === index} aria-controls="step-panel"><span>{item.number}</span><strong>{item.label}</strong></button>)}
         </div>
@@ -287,6 +336,10 @@ export default function Home() {
 
       <section id="boundary" className="boundary-section force-section">
         <div className="section-heading"><div><span className="section-label">证据边界</span><h2>科学能支持的，<br /><em>说到这里。</em></h2></div><span className="section-index">如实阅读</span></div>
+        <div className="boundary-visual-layout">
+          <StudyPlate src="/evidence-study.png" alt="羽毛球拍、羽毛球和场地测量网格组成的运动科学证据研究图" meta="证据研究 / 06" side="测量与边界" footer="观察 → 测量 → 解释 → 保留边界" markers={[]} className="boundary-study-plate" />
+          <div className="visual-reading-note"><span>不要把模型当定律</span><strong>先区分观察到的结果，再解释身体机制。</strong><p>研究可以帮助我们知道哪些变量更接近击球结果，但不能替每个球员规定唯一姿势。专业性也包括知道结论在哪里停止。</p><div><b>阅读层级</b><span>研究发现 · 生物力学解释 · 教练经验 · 个体差异</span></div></div>
+        </div>
         <div className="boundary-grid"><article><span>可以说</span><h3>拍速、触球配置与碰撞效率最接近结果</h3><p>精英研究反复指出，拍头速度、触球时的上肢配置，以及拍床上的实际触球位置，都与球速和方向有关。</p></article><article><span>不能说</span><h3>蹬地越大，不等于球一定越快</h3><p>精英跳杀研究中，垂直地面反作用力与力发展率并未和球速相关；“脚到手的固定传力链”不能当成已证实定律。</p></article><article><span>本站原则</span><h3>先看比赛结果，再解释关节动作</h3><p>先判断窗口、拍速、碰撞和第二拍，再用生物力学寻找瓶颈；不同打法、步法和个体可以有不同解法。</p></article></div>
         <div className="source-strip"><span>主要来源</span><a href="https://sfbadminton.tenniscity.org/wp-content/uploads/sites/29/2020/03/bwf_coach_education_coaches_manual_l1-2nd-edition-midres.pdf" target="_blank" rel="noreferrer">教练手册 · 杀球 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33663330/" target="_blank" rel="noreferrer">精英跳杀研究 ↗</a><a href="https://oars.uos.ac.uk/1325/" target="_blank" rel="noreferrer">触球位置研究 ↗</a><a href="https://figshare.com/articles/journal_contribution/28759388" target="_blank" rel="noreferrer">击球稳定性研究 ↗</a></div>
       </section>

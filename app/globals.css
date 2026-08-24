@@ -631,3 +631,97 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .boundary-grid h3 { margin-top: 37px; font-size: 23px; }
   .boundary-grid p { font-size: 13px; }
 }
+
+/* Visual study system: every chapter gets one purposeful image before its text. */
+.study-plate {
+  position: relative;
+  min-width: 0;
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid rgba(245, 242, 233, .32);
+  background: #10251d;
+  isolation: isolate;
+}
+.study-plate > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.study-plate-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(9, 24, 18, .14), rgba(9, 24, 18, .72)); pointer-events: none; }
+.study-plate-meta,
+.study-plate-footer { position: absolute; z-index: 4; right: 18px; left: 18px; display: flex; justify-content: space-between; gap: 15px; }
+.study-plate-meta { top: 16px; color: rgba(245, 242, 233, .78); font: 9px var(--mono); letter-spacing: .1em; }
+.study-plate-footer { bottom: 16px; align-items: end; }
+.study-plate-footer span { color: rgba(245, 242, 233, .72); font: 9px var(--mono); letter-spacing: .06em; }
+.study-plate-footer strong { color: var(--orange-soft); font: 19px var(--serif); font-weight: 400; letter-spacing: -.04em; text-align: right; }
+.study-marker { position: absolute; z-index: 3; display: flex; align-items: start; gap: 8px; max-width: 205px; }
+.study-marker i { flex: 0 0 10px; width: 10px; height: 10px; margin-top: 5px; border: 2px solid var(--orange-soft); border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(240, 94, 53, .12); }
+.study-marker > div { display: grid; gap: 3px; padding: 9px 11px; border-left: 1px solid var(--orange-soft); background: rgba(14, 35, 27, .76); backdrop-filter: blur(4px); }
+.study-marker b { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .08em; font-weight: 400; }
+.study-marker strong { color: var(--paper); font-size: 13px; line-height: 1.3; font-weight: 400; }
+.study-marker small { color: rgba(245, 242, 233, .7); font-size: 10px; line-height: 1.45; }
+.marker-window { left: 4%; bottom: 23%; }
+.marker-organise { left: 25%; top: 40%; }
+.marker-speed { right: 4%; top: 19%; }
+.marker-connect { right: 4%; bottom: 14%; }
+.marker-foot { left: 4%; bottom: 15%; }
+.marker-pelvis { left: 23%; top: 46%; }
+.marker-arm { right: 4%; top: 18%; }
+.marker-recover { right: 4%; bottom: 12%; }
+.marker-impact { right: 26%; top: 36%; }
+.marker-face { right: 4%; top: 16%; }
+.marker-follow { left: 4%; bottom: 13%; }
+.principles-visual-layout,
+.lesson-visual-layout,
+.boundary-visual-layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(220px, .45fr); gap: 10px; margin-bottom: 16px; }
+.principles-study-plate { aspect-ratio: 1.65; }
+.lesson-study-plate { aspect-ratio: 1.65; }
+.boundary-study-plate { aspect-ratio: 1.75; }
+.visual-reading-note { display: grid; align-content: center; gap: 12px; min-width: 0; padding: 24px 22px; border: 1px solid var(--white-line); border-left: 2px solid var(--orange); color: var(--paper); background: rgba(245, 242, 233, .045); }
+.visual-reading-note > span,
+.visual-reading-note > div > b { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; font-weight: 400; }
+.visual-reading-note > strong { color: var(--paper); font: 22px/1.18 var(--serif); font-weight: 400; }
+.visual-reading-note > p { margin: 0; color: rgba(245, 242, 233, .68); font-size: 12px; line-height: 1.7; }
+.visual-reading-note > div { display: grid; gap: 7px; margin-top: 5px; padding-top: 14px; border-top: 1px solid var(--white-line); }
+.visual-reading-note > div > span { color: rgba(245, 242, 233, .8); font-size: 11px; line-height: 1.6; }
+.path-visual .study-plate { min-height: 280px; margin-top: 18px; aspect-ratio: 1.78; }
+.path-visual .study-plate-footer strong { font-size: 17px; }
+.lesson-visual-layout { margin-bottom: 22px; }
+.lesson-section .visual-reading-note { background: rgba(245, 242, 233, .045); }
+.boundary-visual-layout { margin-bottom: 18px; }
+.boundary-section .visual-reading-note { background: rgba(245, 242, 233, .045); }
+.boundary-study-plate .study-plate-shade { background: linear-gradient(180deg, rgba(9, 24, 18, .08), rgba(9, 24, 18, .56)); }
+
+@media (max-width: 900px) {
+  .principles-visual-layout,
+  .lesson-visual-layout,
+  .boundary-visual-layout { grid-template-columns: 1fr; }
+  .visual-reading-note { min-height: 0; padding: 19px 18px; }
+  .visual-reading-note > strong { font-size: 21px; }
+  .visual-reading-note > p { max-width: 680px; }
+}
+
+@media (max-width: 700px) {
+  .study-plate { min-height: 258px; }
+  .study-plate-meta,
+  .study-plate-footer { right: 12px; left: 12px; }
+  .study-plate-meta { top: 12px; font-size: 8px; }
+  .study-plate-footer { bottom: 12px; }
+  .study-plate-footer span { font-size: 8px; }
+  .study-plate-footer strong { max-width: 210px; font-size: 16px; }
+  .study-marker { max-width: 156px; }
+  .study-marker > div { padding: 7px 8px; }
+  .study-marker strong { font-size: 11px; }
+  .study-marker small { display: none; }
+  .marker-window { left: 3%; bottom: 20%; }
+  .marker-organise { left: 20%; top: 38%; }
+  .marker-speed { right: 3%; top: 17%; }
+  .marker-connect { right: 3%; bottom: 12%; }
+  .marker-foot { left: 3%; bottom: 12%; }
+  .marker-pelvis { left: 17%; top: 44%; }
+  .marker-arm { right: 3%; top: 17%; }
+  .marker-recover { right: 3%; bottom: 10%; }
+  .marker-impact { right: 21%; top: 34%; }
+  .marker-face { right: 3%; top: 14%; }
+  .marker-follow { left: 3%; bottom: 11%; }
+  .path-visual .study-plate { min-height: 255px; margin-top: 15px; }
+  .visual-reading-note { padding: 17px 15px; }
+  .visual-reading-note > strong { font-size: 20px; }
+  .visual-reading-note > p { font-size: 13px; }
+}
