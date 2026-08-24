@@ -42,8 +42,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 
 .force-section { scroll-margin-top: 82px; padding: 9vw 10vw; }
 .force-hero { position: relative; display: grid; grid-template-columns: .78fr 1.22fr; gap: 4vw; min-height: calc(100svh - 76px); overflow: hidden; padding: 6vw 5vw 5vw; color: var(--paper); background: radial-gradient(circle at 83% 32%, rgba(242, 99, 59, .16), transparent 27%), linear-gradient(112deg, #0d2119 0%, var(--ink) 47%, #173f2f 100%); }
-.force-hero::before { content: 'FORCE / 01'; position: absolute; z-index: 0; top: 52%; left: 16px; color: rgba(245, 242, 233, .18); font: 9px var(--mono); letter-spacing: .22em; transform: rotate(-90deg); }
-.force-hero::after { content: 'WINDOW  →  SPEED  →  IMPACT  →  NEXT'; position: absolute; right: 5vw; bottom: 22px; color: rgba(245, 242, 233, .42); font: 8px var(--mono); letter-spacing: .16em; }
+.force-hero::before { content: '发力 / 01'; position: absolute; z-index: 0; top: 52%; left: 16px; color: rgba(245, 242, 233, .18); font: 9px var(--mono); letter-spacing: .22em; transform: rotate(-90deg); }
+.force-hero::after { content: '窗口  →  拍速  →  碰撞  →  下一拍'; position: absolute; right: 5vw; bottom: 22px; color: rgba(245, 242, 233, .42); font: 8px var(--mono); letter-spacing: .16em; }
 .eyebrow, .section-label { color: var(--orange); font: 700 10px var(--mono); letter-spacing: .15em; text-transform: uppercase; }
 .force-hero .eyebrow { color: var(--orange-soft); }
 .hero-copy { position: relative; z-index: 2; align-self: center; max-width: 570px; transform: translateY(-3vw); }
