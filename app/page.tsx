@@ -136,14 +136,14 @@ function jumpTo(id: string) {
 function SmashVisual() {
   return (
     <div className="mechanics-plate hero-visual">
-      <img src="/smash-hero.png" alt="右手羽毛球选手在高点击球点完成杀球动作" />
+      <img src="/smash-hero.png" alt="右手羽毛球选手从后场起跳完成杀球，图中标注击球窗口、身体定向、触球前加速与落地衔接四个关键阶段" />
       <div className="hero-visual-shade" aria-hidden="true" />
       <div className="plate-meta"><span>PHOTO STUDY / 001</span><span>RIGHT-HAND SMASH</span></div>
-      <div className="visual-label visual-label-base"><i aria-hidden="true" /><div><b>01 / POSITION</b><strong>赢得窗口</strong><small>到位 · 制动</small></div></div>
-      <div className="visual-label visual-label-rotation"><i aria-hidden="true" /><div><b>02 / ORGANISE</b><strong>身体定向</strong><small>空间 · 协同</small></div></div>
-      <div className="visual-label visual-label-release"><i aria-hidden="true" /><div><b>03 / ACCELERATE</b><strong>拍头加速</strong><small>触球前 · 短促</small></div></div>
-      <div className="visual-label visual-label-recovery"><i aria-hidden="true" /><div><b>04 / CONNECT</b><strong>准备第二拍</strong><small>落地 · 衔接</small></div></div>
-      <div className="plate-footer"><span>动作样本，不是唯一模板</span><strong>窗口 → 拍速 → 碰撞</strong></div>
+      <div className="visual-label visual-label-base"><i aria-hidden="true" /><div><b>01 / 击球窗口</b><strong>先站到球的侧后方</strong><small>理想击球点在持拍肩前上方<br />身体不后仰，也能向下击球</small></div></div>
+      <div className="visual-label visual-label-rotation"><i aria-hidden="true" /><div><b>02 / 身体定向</b><strong>胸口先对准击球方向</strong><small>非持拍侧帮助定位<br />躯干转开，为拍臂留出加速空间</small></div></div>
+      <div className="visual-label visual-label-release"><i aria-hidden="true" /><div><b>03 / 拍头加速</b><strong>让最快一段发生在触球前</strong><small>躯干、肩、肘与前臂协同加速<br />握拍在触球瞬间变紧，不是只甩腕</small></div></div>
+      <div className="visual-label visual-label-recovery"><i aria-hidden="true" /><div><b>04 / 落地衔接</b><strong>落地马上回到可动位置</strong><small>脚和髋吸收起跳速度<br />拍回身前，下一步还能启动</small></div></div>
+      <div className="plate-footer"><span>动作样本，不是唯一模板</span><strong>窗口 → 定向 → 加速 → 衔接</strong></div>
     </div>
   );
 }
@@ -187,10 +187,9 @@ export default function Home() {
         <div className="hero-copy">
           <span className="eyebrow">ADVANCED FORCE TECHNIQUE</span>
           <h1>先争窗口<br /><em>再争拍速</em></h1>
-          <p>顶级杀球不是把全身力量逐段“推到拍头”，而是提前到位、保留选择，在触球前形成快速而短促的拍头加速，再用稳定拍面把速度变成落点。</p>
-          <div className="hero-question"><span>高手先问</span><strong>这次挥拍，是否同时保留速度、角度和下一拍？</strong></div>
-          <div className="hero-ramp"><span>判断路径</span><strong>先判断能不能杀，再决定怎样杀</strong><div><b>窗口</b><i>→</i><b>拍速</b><i>→</i><b>碰撞</b><i>→</i><b>衔接</b></div></div>
-          <button className="dark-button" onClick={() => navigateTo('principles')}>进入高手判断 <span>↓</span></button>
+          <p>先移动到球的侧后方，让击球点落在持拍肩前上方；再让躯干为拍臂留出空间，把最快的拍头加速留到触球前。中心触球与稳定拍面，才会把速度变成向下落点。</p>
+          <div className="hero-question"><span>高手先问</span><strong>身体在球的侧后方吗？击球点在身前上方吗？落地后还能移动吗？</strong></div>
+          <div className="hero-ramp"><span>读图路径</span><strong>先定位身体，再把速度留到触球前</strong><div><b>窗口</b><i>→</i><b>定向</b><i>→</i><b>加速</b><i>→</i><b>衔接</b></div></div>
         </div>
         <SmashVisual />
       </section>

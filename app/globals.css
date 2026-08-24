@@ -59,9 +59,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .hero-ramp div { display: flex; align-items: center; gap: 12px; color: rgba(245, 242, 233, .58); font-size: 11px; }
 .hero-ramp b { color: var(--paper); font-weight: 500; }
 .hero-ramp i { color: var(--orange); font-style: normal; }
-.dark-button { margin-top: 20px; padding: 16px 20px; border: 0; color: var(--ink); background: var(--orange-soft); font-size: 12px; font-weight: 600; box-shadow: 0 12px 30px rgba(242, 99, 59, .16); }
-.dark-button span { margin-left: 21px; font-size: 16px; }
-
 .mechanics-plate { position: relative; z-index: 1; min-height: min(70vh, 700px); height: min(70vh, 700px); overflow: hidden; padding: 21px; color: var(--paper); border: 1px solid rgba(245, 242, 233, .32); box-shadow: 20px 20px 0 rgba(10, 27, 20, .32); background: var(--forest); }
 .hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 64% center; filter: saturate(1.12) contrast(1.05); }
 .hero-visual::before { content: '01'; position: absolute; z-index: 1; top: 28%; left: 2%; color: rgba(245, 242, 233, .13); font: 280px/.72 var(--mono); letter-spacing: -.18em; mix-blend-mode: screen; pointer-events: none; }
@@ -70,10 +67,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .plate-meta, .plate-footer { position: relative; z-index: 2; display: flex; justify-content: space-between; color: rgba(245, 242, 233, .78); font: 9px var(--mono); letter-spacing: .12em; }
 .visual-label { position: absolute; z-index: 3; display: flex; align-items: start; gap: 9px; color: var(--paper); }
 .visual-label i { display: block; width: 9px; height: 9px; margin-top: 4px; border: 1px solid var(--orange-soft); border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(242, 170, 120, .16); }
-.visual-label div { display: grid; gap: 4px; min-width: 110px; padding: 9px 11px; border-left: 1px solid var(--orange-soft); background: rgba(20, 37, 30, .72); }
+.visual-label div { display: grid; gap: 4px; min-width: 148px; max-width: 192px; padding: 10px 12px; border-left: 1px solid var(--orange-soft); background: rgba(20, 37, 30, .78); }
 .visual-label b { color: var(--orange-soft); font: 8px var(--mono); letter-spacing: .08em; font-weight: 400; }
-.visual-label strong { font-size: 14px; font-weight: 400; }
-.visual-label small { color: rgba(245, 242, 233, .68); font-size: 9px; }
+.visual-label strong { font-size: 13px; line-height: 1.3; font-weight: 400; }
+.visual-label small { color: rgba(245, 242, 233, .72); font-size: 10px; line-height: 1.45; }
 .visual-label-base { bottom: 23%; left: 8%; }
 .visual-label-rotation { top: 42%; left: 28%; }
 .visual-label-release { top: 23%; right: 8%; }
@@ -289,9 +286,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .hero-visual img { object-position: 63% center; }
   .hero-visual::after { inset: 9% 6%; }
   .hero-visual-shade { background: linear-gradient(90deg, rgba(20, 60, 45, .88) 0%, rgba(20, 60, 45, .22) 55%, rgba(20, 60, 45, .05) 100%); }
-  .visual-label div { min-width: 0; padding: 7px 8px; }
-  .visual-label strong { font-size: 11px; }
-  .visual-label small { font-size: 8px; }
+  .visual-label div { min-width: 0; max-width: 132px; padding: 7px 8px; }
+  .visual-label strong { font-size: 10.5px; line-height: 1.28; }
+  .visual-label small { font-size: 8.3px; line-height: 1.4; }
   .visual-label-base { bottom: 25%; left: 5%; }
   .visual-label-rotation { top: 39%; left: 28%; }
   .visual-label-release { top: 21%; right: 4%; }
