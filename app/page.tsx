@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -23,6 +23,8 @@ type ForceNode = {
   action: string;
   principle: string;
   cue: string;
+  image: string;
+  imageAlt: string;
 };
 
 type TrainingModule = {
@@ -113,13 +115,13 @@ const lessonMarkers: StudyMarker[] = [
 ];
 
 const forceNodes: ForceNode[] = [
-  { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面建立支撑和制动，让身体能够加速、减速、改变朝向，而不是只把力量往上顶。', principle: '地面提供外部约束；更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后还能微调，不是蹬死在原地。' },
-  { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进攻击窗口', action: '踝、膝、髋共同管理重心，把球留在拍侧肩前上方，同时保留落地和再启动的空间。', principle: '下肢首先决定你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '不用后仰就能触球，落地后还能启动。' },
-  { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服从击球点', action: '骨盆随步法和来球条件调整朝向，为躯干和击球臂提供可用空间。', principle: '不同步法、起跳方式和击球选择会改变时序；不存在每球统一的“先转骨盆”。', cue: '身体朝向服务击球点，而不是为了转体而转体。' },
-  { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动创造挥拍空间', action: '胸廓与骨盆共同改变朝向，并在需要时保留相对旋转，让拍臂有一条不被身体挤掉的加速通道。', principle: '骨盆—胸廓的相对运动可能帮助加速，但不是越大越好，也不是每种来球都要复制同一幅姿势。', cue: '转体没有挤掉挥拍空间，身体和拍臂能在触球前合流。' },
-  { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把最快的一段留到触球前', action: '肩内旋、肘伸与前臂旋转在短暂的加速窗口内协同，提高拍头速度。', principle: '研究支持多关节协同，不支持把拍速归功于单一关节或孤立“甩腕”。', cue: '拍头快但身体不僵；触球时肘不过度锁死，上臂不过度耸高。' },
-  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍速成为可控的出球', action: '拍头速度、拍面方向和实际触球位置共同决定出球速度、方向和下压角度。', principle: '拍头速度与出球速度高度相关，但并非一一相等；触球位置、拍面和器材特性都会改变碰撞效率。', cue: '连续 10 球的声音、方向和目标命中都稳定，而不是只看其中最快一球。' },
-  { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '为第二拍完成这次杀球', action: '随挥与落地吸收速度，再根据落点和对手回球方向选择跟进位置。', principle: '杀球不是只看首球速度；能否迫使弱回球并接管下一拍，才是动作在比赛中的完整价值。', cue: '对手触球前完成分腿，球拍回到身体前方。' },
+  { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面建立支撑和制动，让身体能够加速、减速、改变朝向，而不是只把力量往上顶。', principle: '地面提供外部约束；更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后还能微调，不是蹬死在原地。', image: '/force-action-01.png', imageAlt: '羽毛球后场击球前分腿进入与脚下支撑动作' },
+  { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进攻击窗口', action: '踝、膝、髋共同管理重心，把球留在拍侧肩前上方，同时保留落地和再启动的空间。', principle: '下肢首先决定你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '不用后仰就能触球，落地后还能启动。', image: '/force-action-02.png', imageAlt: '羽毛球后场击球前最后制动步与踝膝髋支撑动作' },
+  { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服从击球点', action: '骨盆随步法和来球条件调整朝向，为躯干和击球臂提供可用空间。', principle: '不同步法、起跳方式和击球选择会改变时序；不存在每球统一的“先转骨盆”。', cue: '身体朝向服务击球点，而不是为了转体而转体。', image: '/force-action-03.png', imageAlt: '羽毛球后场击球前骨盆开始转向并组织身体方向' },
+  { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动创造挥拍空间', action: '胸廓与骨盆共同改变朝向，并在需要时保留相对旋转，让拍臂有一条不被身体挤掉的加速通道。', principle: '骨盆—胸廓的相对运动可能帮助加速，但不是越大越好，也不是每种来球都要复制同一幅姿势。', cue: '转体没有挤掉挥拍空间，身体和拍臂能在触球前合流。', image: '/force-action-04.png', imageAlt: '羽毛球后场击球前胸廓与骨盆形成相对旋转并为拍臂留出空间' },
+  { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把最快的一段留到触球前', action: '肩内旋、肘伸与前臂旋转在短暂的加速窗口内协同，提高拍头速度。', principle: '研究支持多关节协同，不支持把拍速归功于单一关节或孤立“甩腕”。', cue: '拍头快但身体不僵；触球时肘不过度锁死，上臂不过度耸高。', image: '/force-action-05.png', imageAlt: '羽毛球击球前肩肘前臂协同加速动作' },
+  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍速成为可控的出球', action: '拍头速度、拍面方向和实际触球位置共同决定出球速度、方向和下压角度。', principle: '拍头速度与出球速度高度相关，但并非一一相等；触球位置、拍面和器材特性都会改变碰撞效率。', cue: '连续 10 球的声音、方向和目标命中都稳定，而不是只看其中最快一球。', image: '/force-action-06.png', imageAlt: '羽毛球拍面与羽毛球在高点击球点发生碰撞' },
+  { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '为第二拍完成这次杀球', action: '随挥与落地吸收速度，再根据落点和对手回球方向选择跟进位置。', principle: '杀球不是只看首球速度；能否迫使弱回球并接管下一拍，才是动作在比赛中的完整价值。', cue: '对手触球前完成分腿，球拍回到身体前方。', image: '/force-action-07.png', imageAlt: '羽毛球杀球后的剪式落地、收拍与下一拍衔接动作' },
 ];
 
 const forceGroups = [
@@ -279,7 +281,17 @@ export default function Home() {
         <div className="path-layout">
           <div className="path-visual" role="tablist" aria-label="杀球发力路径">
             <div className="path-meta"><span>按任务读，不按关节背</span><span>组间有关联 · 组内会重叠</span></div>
-            <StudyPlate src="/force-study.png" alt="右手羽毛球运动员在触球前组织身体方向的动作研究图，标出脚下、骨盆、拍臂和落地衔接" meta="动作研究 / 03" side="七段发力链" footer="支撑 → 组织 → 加速 → 回到下一拍" markers={forceMarkers} className="force-study-plate" />
+            <div className="path-action-viewer">
+              <div className="path-action-viewer-head"><span>动作图 · {node.number} / 07</span><span>{node.group}</span></div>
+              <figure className="path-action-figure">
+                <img src={node.image} alt={node.imageAlt} />
+                <figcaption>{node.label} · {node.title}</figcaption>
+              </figure>
+              <div className="path-action-slider-head"><span>左右滑动查看动作</span><strong>{node.number} / 07</strong></div>
+              <input className="path-action-slider" type="range" min="0" max={forceNodes.length - 1} step="1" value={activeNode} onChange={(event) => setActiveNode(Number(event.target.value))} style={{ '--slider-progress': `${(activeNode / (forceNodes.length - 1)) * 100}%` } as CSSProperties} aria-label="左右滑动切换七段发力动作" />
+              <div className="path-action-slider-scale" aria-hidden="true"><span>建立条件</span><i>组织拍速</i><b>回到下一拍</b></div>
+              <div className="path-action-caption" aria-live="polite"><span>这一格看什么</span><strong>{node.title}</strong><p>{node.cue}</p></div>
+            </div>
             <div className="path-groups">
               {forceGroups.map((group) => <div className={`path-group path-group-${group.number}`} key={group.number}>
                 <div className="path-group-head"><b>{group.number}</b><div><strong>{group.label}</strong><span>{group.note}</span></div></div>
