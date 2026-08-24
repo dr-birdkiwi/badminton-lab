@@ -328,21 +328,21 @@ export default function Home() {
       </section>
 
       <section id="lesson" className="lesson-section force-section">
-        <div className="section-heading"><div><span className="section-label">训练转化</span><h2>训练有没有变成<br /><em>比赛结果？</em></h2></div><span className="section-index">打一组 · 记录 · 回修</span></div>
-        <div className="lesson-intro"><p>打一组球后，不再复盘脚、髋、肩、肘；只检查四个能在场上观察到的结果。哪一项先丢，就回到对应训练，不用继续加力补救。</p><strong>动作可以不同，结果必须可复现。</strong></div>
+        <div className="section-heading"><div><span className="section-label">上场验收</span><h2>更快之后，<br /><em>结果不能塌。</em></h2></div><span className="section-index">4 个结果 · 1 组球</span></div>
+        <div className="lesson-intro"><p>打一组真实回合，只观察四个比赛结果：击球窗口、拍头速度、中心碰撞和下一拍。哪一项先丢，就回到对应训练，不用继续加力补救。</p><strong>动作可以不同，结果必须可复现。</strong></div>
         <div className="lesson-visual-layout">
           <StudyPlate src="/impact-study.png" alt="羽毛球拍与羽毛球中心碰撞的高速动作研究图，展示拍面、触球位置和击球后的衔接关系" meta="动作研究 / 05" side="碰撞与衔接" footer="中心触球 → 稳定出球 → 回到下一拍" markers={lessonMarkers} className="lesson-study-plate" />
-          <div className="visual-reading-note"><span>这一章只看结果</span><strong>更快之后，碰撞和衔接不能塌。</strong><p>动作可以因人而异，但触球质量、出球方向和下一拍准备必须在连续回合中保持可观察、可重复。</p><div><b>验收顺序</b><span>击球窗口 → 拍头速度 → 中心碰撞 → 下一拍选择</span></div></div>
+          <div className="visual-reading-note lesson-result-note"><span>本章作用</span><strong>不评判姿势，只验收结果。</strong><p>动作可以因人而异，但触球质量、出球方向和下一拍准备必须在连续回合中保持可观察、可重复。</p><div><b>验收顺序</b><span>击球窗口 → 拍头速度 → 中心碰撞 → 下一拍选择</span></div><div className="lesson-result-legend"><span><b>01</b>窗口</span><span><b>02</b>拍速</span><span><b>03</b>碰撞</span><span><b>04</b>下一拍</span></div></div>
         </div>
-        <div className="phase-tabs" role="tablist" aria-label="训练转化的四项结果">
+        <div className="lesson-check-label"><span>现场检查</span><strong>点击一项，只看这一项是否仍然成立。</strong></div>
+        <div className="phase-tabs" role="tablist" aria-label="上场验收的四项结果">
           {lessonSteps.map((item, index) => <button key={item.number} id={`step-tab-${item.number}`} className={activeStep === index ? 'phase-tab active' : 'phase-tab'} onClick={() => setActiveStep(index)} role="tab" aria-selected={activeStep === index} aria-controls="step-panel"><span>{item.number}</span><strong>{item.label}</strong></button>)}
         </div>
         <div id="step-panel" className="phase-reading" role="tabpanel" tabIndex={0} aria-labelledby={`step-tab-${step.number}`}>
-          <div className="phase-main"><div className="phase-status"><span>当前检查</span><strong>{step.label}</strong></div><span className="section-label">看什么</span><h3>{step.title}</h3><div className="phase-action"><span>判断标准</span><p>{step.action}</p></div><div className="phase-next"><span>失效后</span><strong>{step.next}</strong></div></div>
+          <div className="phase-main"><div className="phase-status"><span>当前检查</span><strong>{step.label}</strong></div><span className="section-label">观察问题</span><h3>{step.title}</h3><div className="phase-action"><span>关键观察</span><p>{step.action}</p></div><div className="phase-next"><span>失效后回到</span><strong>{step.next}</strong></div></div>
           <div className="phase-coach"><div className="coach-row"><span>合格表现</span><p>{step.cue}</p></div><div className="coach-row"><span>失效信号</span><p>{step.avoid}</p></div><div className="coach-row coach-drill"><span>现场验证</span><p>{step.drill}</p></div></div>
         </div>
-        <div className="lesson-verdict"><div className="verdict-head"><span>这一章的判定</span><strong>更快之后，结果不能塌。</strong></div><div className="verdict-grid"><div><b>01</b><strong>窗口不丢</strong><p>不用后仰，仍能在身前完成击球。</p></div><div><b>02</b><strong>碰撞不散</strong><p>中心触球与目标命中保持稳定。</p></div><div><b>03</b><strong>下一拍不断</strong><p>对手触球前已完成分腿和选择。</p></div></div><p className="verdict-rule">任何一项丢失，就先降速、换打法或回到对应训练。不要把“更用力”误判成“更有效”。</p></div>
-        <p className="lesson-note">这不是动作评分，也不是判断谁是高手；它是训练后的结果验收。用结果约束动作，而不是复制某位顶级球员的一帧姿势。</p>
+        <div className="lesson-close"><span>回修原则</span><strong>先修最先丢掉的结果，再追求拍速。</strong><p>这不是动作评分，也不是判断谁是高手；它是训练后的结果验收。用结果约束动作，而不是复制某位顶级球员的一帧姿势。</p><div><span>窗口丢失 → 到位与再启动</span><span>拍速丢失 → 旋转与肩胛</span><span>碰撞或下一拍丢失 → 回到球场复测</span></div></div>
       </section>
 
       <section id="boundary" className="boundary-section force-section">

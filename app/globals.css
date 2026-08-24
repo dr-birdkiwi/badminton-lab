@@ -809,6 +809,53 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .visual-reading-note > p { font-size: 13px; }
 }
 
+/* Final chapter: turn the lesson into a compact on-court result audit. */
+.lesson-section .lesson-intro { max-width: 980px; margin-bottom: 22px; }
+.lesson-section .lesson-visual-layout { grid-template-columns: minmax(0, 1.62fr) minmax(250px, .38fr); gap: 14px; margin-bottom: 18px; }
+.lesson-section .lesson-study-plate { aspect-ratio: 1.72; }
+.lesson-section .lesson-result-note { align-content: start; gap: 13px; min-height: 0; padding: 25px 20px 20px; }
+.lesson-result-note > strong { font-size: 23px; }
+.lesson-result-note > p { max-width: 280px; }
+.lesson-result-note > div { margin-top: 3px; }
+.lesson-result-legend { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 10px !important; padding-top: 12px !important; }
+.lesson-result-legend span { color: rgba(245, 242, 233, .76); font-size: 10px; line-height: 1.4; }
+.lesson-result-legend b { display: inline-block; margin-right: 5px; color: var(--orange-soft); font: 9px var(--mono); font-weight: 400; }
+.lesson-check-label { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; margin: 0 0 10px; padding-bottom: 10px; border-bottom: 1px solid var(--white-line); }
+.lesson-check-label span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; }
+.lesson-check-label strong { color: rgba(245, 242, 233, .72); font: 14px var(--serif); font-weight: 400; }
+.lesson-section .phase-tabs { border-top: 0; }
+.lesson-section .phase-reading { grid-template-columns: 1.12fr .88fr; min-height: 0; }
+.lesson-section .phase-main { padding-top: 30px; padding-bottom: 27px; }
+.lesson-section .phase-main h3 { max-width: 620px; margin-top: 14px; font-size: clamp(32px, 3.5vw, 54px); }
+.lesson-section .phase-action { max-width: 610px; }
+.lesson-section .phase-coach { padding-top: 26px; padding-bottom: 26px; }
+.lesson-close { display: grid; grid-template-columns: minmax(150px, .36fr) minmax(0, 1.64fr); gap: 8px 25px; margin-top: 16px; padding: 16px 18px; border: 1px solid var(--white-line); border-left: 3px solid var(--orange); background: rgba(245, 242, 233, .055); }
+.lesson-close > span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; }
+.lesson-close > strong { color: var(--paper); font: 23px/1.15 var(--serif); font-weight: 400; }
+.lesson-close > p { grid-column: 2; max-width: 660px; margin: 0; color: rgba(245, 242, 233, .68); font-size: 12px; line-height: 1.62; }
+.lesson-close > div { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px 18px; padding-top: 11px; border-top: 1px solid var(--white-line); color: rgba(245, 242, 233, .76); font: 10px var(--mono); letter-spacing: .02em; }
+
+@media (max-width: 900px) {
+  .lesson-section .lesson-visual-layout { grid-template-columns: 1fr; }
+  .lesson-section .lesson-result-note { min-height: 0; }
+  .lesson-section .phase-reading { grid-template-columns: 1fr; }
+  .lesson-section .phase-coach { border-top: 1px solid var(--white-line); border-left: 0; }
+}
+
+@media (max-width: 700px) {
+  .lesson-check-label { display: grid; gap: 7px; }
+  .lesson-check-label strong { font-size: 16px; }
+  .lesson-section .lesson-study-plate { aspect-ratio: 1.5; }
+  .lesson-section .lesson-result-note { padding: 18px 15px 16px; }
+  .lesson-result-note > strong { font-size: 21px; }
+  .lesson-section .phase-main { padding-top: 27px; padding-bottom: 25px; }
+  .lesson-close { grid-template-columns: 1fr; gap: 9px; padding: 15px; }
+  .lesson-close > strong,
+  .lesson-close > p,
+  .lesson-close > div { grid-column: 1; }
+  .lesson-close > div { display: grid; gap: 7px; }
+}
+
 /* Training prescription board: the selected stage owns both the image and the reading. */
 .training-section .training-layout { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 16px; align-items: start; }
 .training-section .training-visual { padding: 22px; border: 1px solid var(--white-line); background: rgba(8, 26, 19, .52); }
