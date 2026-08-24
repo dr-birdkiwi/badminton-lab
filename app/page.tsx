@@ -259,15 +259,15 @@ export default function Home() {
             <div className="shot-choice-head"><span>根据结果选择打法</span><strong>每次出手先服从来球条件，再追求拍速。</strong></div>
             <figure className="shot-choice-board">
               <div className="shot-choice-board-visual">
-                <img src="/shot-choice-board.png" alt="三种后场击球条件对照：完整杀球、点杀或半杀、以及窗口丢失后的过渡处理" />
-                <div className="shot-choice-board-labels" aria-hidden="true"><span><b>01</b><em>完整杀球</em></span><span><b>02</b><em>点杀 · 半杀</em></span><span><b>03</b><em>先过渡</em></span></div>
-                <figcaption>窗口完整 → 时间压缩 → 窗口丢失</figcaption>
+                <img src="/shot-choice-board-v2.png" alt="三种后场击球条件对照：窗口完整时完整杀球，窗口变短时用短准备点杀或半杀，窗口丢失时用高远或吊球先过渡" />
+                <div className="shot-choice-board-labels"><span><b>01</b><em>完整杀球<small>球在身前 · 完整加载</small></em></span><span><b>02</b><em>点杀 · 半杀<small>短准备 · 触球后可回位</small></em></span><span><b>03</b><em>先过渡<small>窗口丢失 · 先换时间</small></em></span></div>
+                <figcaption>窗口完整 → 窗口变短 → 窗口丢失</figcaption>
               </div>
             </figure>
             <div className="shot-choice-grid">
               <article><b>01 / 完整杀球</b><h3>完整杀球</h3><p><span>窗口</span>球在拍侧肩前上方，身体不用后仰，落地仍可控。</p><p><span>目标</span>用速度或落点直接得分，或制造确定的弱回球。</p></article>
-              <article><b>02 / 点杀 · 半杀</b><h3>点杀 · 半杀</h3><p><span>窗口</span>时间或空间被压缩，但仍能在较高点向下触球。</p><p><span>目标</span>缩短准备，优先抢节奏、空档和下一拍。</p></article>
-              <article><b>03 / 先过渡</b><h3>先过渡</h3><p><span>窗口</span>球已在身后、身体后仰，或落地后无法继续移动。</p><p><span>目标</span>用高远、吊球或安全落点重建位置，不勉强硬杀。</p></article>
+              <article><b>02 / 点杀 · 半杀</b><h3>点杀 · 半杀</h3><p><span>窗口</span>还能在身前较高点击球，但没有时间做完整引拍或起跳。</p><p><span>目标</span>用短准备快速下压；击球后立刻回到可移动的支撑。</p></article>
+              <article><b>03 / 先过渡</b><h3>先过渡</h3><p><span>窗口</span>球已超过最佳击球窗，继续硬杀只会把身体和拍面一起带乱。</p><p><span>目标</span>先把球打深或放慢，换回准备时间，再重建站位。</p></article>
             </div>
           </div>
         </div>

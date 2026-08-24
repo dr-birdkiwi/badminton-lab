@@ -118,11 +118,12 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .shot-choice-board-visual::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(9, 24, 18, .02) 72%, rgba(9, 24, 18, .5)); }
 .shot-choice-board img { display: block; width: 100%; height: auto; }
 .shot-choice-board-labels { position: absolute; z-index: 1; top: 15px; right: 0; left: 0; display: grid; grid-template-columns: repeat(3, 1fr); pointer-events: none; }
-.shot-choice-board-labels span { display: flex; align-items: baseline; gap: 9px; margin: 0 14px; padding: 8px 10px; border-left: 2px solid var(--orange-soft); background: rgba(14, 35, 27, .72); }
+.shot-choice-board-labels span { display: flex; align-items: start; gap: 9px; margin: 0 14px; padding: 8px 10px 9px; border-left: 2px solid var(--orange-soft); background: rgba(14, 35, 27, .78); }
 .shot-choice-board-labels span:nth-child(2) { border-left-color: var(--mint); }
 .shot-choice-board-labels span:nth-child(3) { border-left-color: var(--orange); }
 .shot-choice-board-labels b { color: var(--orange-soft); font: 10px var(--mono); font-weight: 400; }
-.shot-choice-board-labels em { color: var(--paper); font: 14px var(--sans); font-style: normal; }
+.shot-choice-board-labels em { display: grid; gap: 3px; color: var(--paper); font: 14px var(--sans); font-style: normal; }
+.shot-choice-board-labels small { color: rgba(245, 242, 233, .66); font: 9px var(--sans); letter-spacing: 0; white-space: nowrap; }
 .shot-choice-board figcaption { position: absolute; z-index: 1; right: 14px; bottom: 12px; color: rgba(245, 242, 233, .82); font: 9px var(--mono); letter-spacing: .07em; }
 .shot-choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .shot-choice article { position: relative; min-height: 0; overflow: hidden; padding: 0 0 17px; border: 1px solid var(--white-line); border-top: 2px solid var(--orange-soft); background: rgba(245, 242, 233, .04); }
@@ -607,6 +608,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .shot-choice-board-labels { top: 9px; }
   .shot-choice-board-labels span { gap: 6px; margin: 0 6px; padding: 6px 7px; }
   .shot-choice-board-labels em { font-size: 11px; }
+  .shot-choice-board-labels small { font-size: 8px; }
   .shot-choice-board figcaption { right: 8px; bottom: 8px; font-size: 8px; }
   .claim-card { padding: 15px; }
   .claim-card h3 { margin-top: 34px; font-size: 24px; }
