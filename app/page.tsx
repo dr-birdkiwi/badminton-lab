@@ -17,6 +17,7 @@ type LessonStep = {
 type ForceNode = {
   number: string;
   label: string;
+  group: string;
   title: string;
   action: string;
   principle: string;
@@ -86,13 +87,19 @@ const claims = [
 ];
 
 const forceNodes: ForceNode[] = [
-  { number: '01', label: '脚下', title: '建立可移动的支撑', action: '脚与地面建立反作用，让身体能够加速、减速和改变朝向。', principle: '地面提供外部约束，但更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后仍能微调，不是蹬死在原地。' },
-  { number: '02', label: '下肢 · 髋', title: '把身体送进攻击窗口', action: '踝、膝、髋共同管理重心，把球留在拍侧肩前上方，同时保留落地空间。', principle: '下肢首先决定你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '不用后仰就能触球，落地后还能启动。' },
-  { number: '03', label: '骨盆', title: '组织朝向，不抢动作', action: '骨盆随步法和来球条件调整朝向，为躯干和击球臂提供可用空间。', principle: '不同步法、起跳方式和击球选择会改变骨盆时序；不存在每球统一的“先转骨盆”。', cue: '身体朝向服务击球点，而不是为了转体而转体。' },
-  { number: '04', label: '胸廓', title: '用相对运动创造空间', action: '胸廓与骨盆共同改变朝向，并在需要时保留相对旋转；幅度与先后随来球和打法变化。', principle: '相对旋转可能帮助加速路径，但不是越大越好，也不是顶级动作的唯一模板。', cue: '转体没有挤掉挥拍空间，身体和拍臂能在触球前合流。' },
-  { number: '05', label: '肩 · 肘 · 前臂', title: '把速度留到触球前', action: '肩内旋、肘伸和前臂旋转相互耦合，在较短的加速窗口内提高拍头速度。', principle: '研究支持多关节协同，但不支持把拍速归功于单一关节或孤立“甩腕”。', cue: '触球时肘不过度锁死，上臂不过度耸高，握拍也不是全程僵紧。' },
-  { number: '06', label: '球拍 · 羽毛球', title: '用甜区把拍速变成球速', action: '拍头速度、拍面方向和拍床上的实际触球位置，共同决定出球速度与方向。', principle: '精英球员之间，同一人的快慢球差异常常首先出现在拍头速度、触球位置和碰撞效率。', cue: '连续 10 球的声音、方向和目标命中是否稳定，而不是只看其中最快一球。' },
-  { number: '07', label: '落地 · 衔接', title: '为第二拍完成这次杀球', action: '随挥与落地吸收速度，根据落点和对手回球方向选择跟进位置。', principle: '顶级杀球的价值不只在首球速度，还在能否迫使弱回球并接管下一拍。', cue: '对手触球前完成分腿，球拍回到身体前方。' },
+  { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面建立支撑和制动，让身体能够加速、减速、改变朝向，而不是只把力量往上顶。', principle: '地面提供外部约束；更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后还能微调，不是蹬死在原地。' },
+  { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进攻击窗口', action: '踝、膝、髋共同管理重心，把球留在拍侧肩前上方，同时保留落地和再启动的空间。', principle: '下肢首先决定你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '不用后仰就能触球，落地后还能启动。' },
+  { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服从击球点', action: '骨盆随步法和来球条件调整朝向，为躯干和击球臂提供可用空间。', principle: '不同步法、起跳方式和击球选择会改变时序；不存在每球统一的“先转骨盆”。', cue: '身体朝向服务击球点，而不是为了转体而转体。' },
+  { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动创造挥拍空间', action: '胸廓与骨盆共同改变朝向，并在需要时保留相对旋转，让拍臂有一条不被身体挤掉的加速通道。', principle: '骨盆—胸廓的相对运动可能帮助加速，但不是越大越好，也不是每种来球都要复制同一幅姿势。', cue: '转体没有挤掉挥拍空间，身体和拍臂能在触球前合流。' },
+  { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把最快的一段留到触球前', action: '肩内旋、肘伸与前臂旋转在短暂的加速窗口内协同，提高拍头速度。', principle: '研究支持多关节协同，不支持把拍速归功于单一关节或孤立“甩腕”。', cue: '拍头快但身体不僵；触球时肘不过度锁死，上臂不过度耸高。' },
+  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍速成为可控的出球', action: '拍头速度、拍面方向和实际触球位置共同决定出球速度、方向和下压角度。', principle: '拍头速度与出球速度高度相关，但并非一一相等；触球位置、拍面和器材特性都会改变碰撞效率。', cue: '连续 10 球的声音、方向和目标命中都稳定，而不是只看其中最快一球。' },
+  { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '为第二拍完成这次杀球', action: '随挥与落地吸收速度，再根据落点和对手回球方向选择跟进位置。', principle: '杀球不是只看首球速度；能否迫使弱回球并接管下一拍，才是动作在比赛中的完整价值。', cue: '对手触球前完成分腿，球拍回到身体前方。' },
+];
+
+const forceGroups = [
+  { number: '01', label: '建立条件', note: '位置 · 方向 · 空间', nodes: forceNodes.slice(0, 4) },
+  { number: '02', label: '组织拍速', note: '加速 · 碰撞', nodes: forceNodes.slice(4, 6) },
+  { number: '03', label: '回到下一拍', note: '落地 · 再组织', nodes: forceNodes.slice(6) },
 ];
 
 const trainingStages: TrainingStage[] = [
@@ -211,22 +218,28 @@ export default function Home() {
       </section>
 
       <section id="force-path" className="force-path-section force-section">
-        <div className="section-heading"><div><span className="section-label">表现链</span><h2>这不是传送带，<br /><em>是一组相互约束。</em></h2></div><span className="section-index">07 个关键任务</span></div>
-        <div className="path-statement"><span>专家修正</span><strong>不要寻找唯一的“起力点”。脚下决定位置和约束，躯干与上肢共同组织拍速，碰撞决定有多少拍速真正进入羽毛球；不同步法和杀球类型会改变各段时序。</strong></div>
+        <div className="section-heading"><div><span className="section-label">表现链</span><h2>这不是传送带，<br /><em>是一组相互约束。</em></h2></div><span className="section-index">07 个动作任务</span></div>
+        <div className="path-statement"><span>先定义模型</span><strong>每个节点不是“把力传给下一个关节”，而是在当下解决一个问题：位置、方向、空间、拍速、碰撞，最后回到下一拍。</strong><p>研究支持多关节协同和近端—远端的速度关系；不支持一套每球固定、单向、分毫不差的时序。</p></div>
         <div className="path-layout">
           <div className="path-visual" role="tablist" aria-label="杀球发力路径">
-            <div className="path-meta"><span>从约束到碰撞</span><span>任务 · 不代表固定顺序</span></div>
-            <div className="path-track">
-              {forceNodes.map((item, index) => <div className="path-track-item" key={item.number}><button id={`node-tab-${item.number}`} className={activeNode === index ? 'path-node active' : 'path-node'} onClick={() => setActiveNode(index)} role="tab" aria-selected={activeNode === index} aria-controls="node-panel"><b>{item.number}</b><strong>{item.label}</strong></button>{index < forceNodes.length - 1 && <span className="path-arrow" aria-hidden="true">→</span>}</div>)}
+            <div className="path-meta"><span>按任务读，不按关节背</span><span>组间有关联 · 组内会重叠</span></div>
+            <div className="path-groups">
+              {forceGroups.map((group) => <div className={`path-group path-group-${group.number}`} key={group.number}>
+                <div className="path-group-head"><b>{group.number}</b><div><strong>{group.label}</strong><span>{group.note}</span></div></div>
+                <div className="path-group-nodes">
+                  {group.nodes.map((item) => { const index = forceNodes.indexOf(item); return <div className="path-track-item" key={item.number}><button id={`node-tab-${item.number}`} className={activeNode === index ? 'path-node active' : 'path-node'} onClick={() => setActiveNode(index)} role="tab" aria-selected={activeNode === index} aria-controls="node-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.title}</small></button></div>; })}
+                </div>
+              </div>)}
             </div>
-            <div className="path-legend" aria-label="发力路径四类任务"><span><i className="legend-support" />支撑条件</span><span><i className="legend-orient" />方向与空间</span><span><i className="legend-release" />末端释放</span><span><i className="legend-brake" />制动回位</span></div>
-            <p className="path-footnote">箭头只是阅读顺序：真实动作会重叠发生，也会随完整杀球、点杀、起跳方式和来球位置改变。</p>
+            <div className="path-legend" aria-label="动作任务三类阶段"><span><i className="legend-support" />建立条件</span><span><i className="legend-release" />组织拍速</span><span><i className="legend-brake" />回到下一拍</span></div>
+            <p className="path-footnote">阅读从左到右，但不是固定生理顺序；完整杀球、点杀、起跳与来球位置都会改变各段的时序和权重。</p>
             <div className="path-progress" aria-live="polite"><div><span>当前观察</span><strong>{node.number} / {node.label}</strong></div><div className="progress-meter" aria-hidden="true"><i style={{ width: `${((activeNode + 1) / forceNodes.length) * 100}%` }} /></div><small>点击节点，右侧切换这一段的动作逻辑。</small></div>
           </div>
           <div id="node-panel" className="path-reading" role="tabpanel" tabIndex={0} aria-labelledby={`node-tab-${node.number}`}>
-            <span className="section-label">当前环节 · {node.number} · {node.label}</span>
+            <div className="path-reading-top"><span className="section-label">当前任务 · {node.number} · {node.group}</span><b>{node.label}</b></div>
             <h3>{node.title}</h3>
-            <div className="path-reading-grid"><div><span>这一段发生什么</span><p>{node.action}</p></div><div><span>它解决什么问题</span><p>{node.principle}</p></div><div><span>场上怎么检查</span><p>{node.cue}</p></div></div>
+            <div className="path-reading-lead"><span>动作任务</span><p>{node.action}</p></div>
+            <div className="path-reading-grid"><div><span>科学边界</span><p>{node.principle}</p></div><div><span>场上检查</span><p>{node.cue}</p></div></div>
           </div>
         </div>
       </section>
