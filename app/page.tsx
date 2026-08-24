@@ -231,9 +231,6 @@ export default function Home() {
                 </div>
               </div>)}
             </div>
-            <div className="path-legend" aria-label="动作任务三类阶段"><span><i className="legend-support" />建立条件</span><span><i className="legend-release" />组织拍速</span><span><i className="legend-brake" />回到下一拍</span></div>
-            <p className="path-footnote">阅读从左到右，但不是固定生理顺序；完整杀球、点杀、起跳与来球位置都会改变各段的时序和权重。</p>
-            <div className="path-progress" aria-live="polite"><div><span>当前观察</span><strong>{node.number} / {node.label}</strong></div><div className="progress-meter" aria-hidden="true"><i style={{ width: `${((activeNode + 1) / forceNodes.length) * 100}%` }} /></div><small>点击节点，右侧切换这一段的动作逻辑。</small></div>
           </div>
           <div id="node-panel" className="path-reading" role="tabpanel" tabIndex={0} aria-labelledby={`node-tab-${node.number}`}>
             <div className="path-reading-top"><span className="section-label">当前任务 · {node.number} · {node.group}</span><b>{node.label}</b></div>
