@@ -573,6 +573,19 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .source-strip { gap: 9px 18px; margin-top: 23px; padding-top: 14px; }
 .source-strip a { font-size: 12px; }
 
+.phase-next {
+  display: grid;
+  gap: 6px;
+  max-width: 520px;
+  margin-top: 12px;
+  padding: 11px 14px;
+  border: 1px solid var(--white-line);
+  border-left: 2px solid var(--orange-soft);
+  background: rgba(245, 242, 233, .035);
+}
+.phase-next span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; }
+.phase-next strong { color: var(--paper); font-size: 13px; font-weight: 400; }
+
 @media (max-width: 700px) {
   .force-section:not(.force-hero) { padding-top: 50px; padding-bottom: 50px; }
   .section-heading { margin-bottom: 23px; }
@@ -610,6 +623,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .phase-main h3 { font-size: 40px; }
   .phase-action p,
   .coach-row p { font-size: 13px; }
+  .phase-next { margin-top: 10px; padding: 10px 12px; }
+  .phase-next strong { font-size: 13px; }
   .lesson-verdict { margin-top: 20px; padding: 17px; }
   .verdict-head strong { font-size: 22px; }
   .verdict-grid > div { padding: 12px; }

@@ -12,6 +12,7 @@ type LessonStep = {
   cue: string;
   avoid: string;
   drill: string;
+  next: string;
 };
 
 type ForceNode = {
@@ -49,6 +50,7 @@ const lessonSteps: LessonStep[] = [
     cue: '不用后仰、不挤到球下方，也能在身前触球。',
     avoid: '为了“打重”追到球后面；起跳很高，却失去击球空间。',
     drill: '随机喂两个后场点，触球前只报“完整 / 点杀 / 过渡”；记录哪一种选择能保住下一拍。',
+    next: '回到训练：到位与再启动。',
   },
   {
     number: '02',
@@ -58,6 +60,7 @@ const lessonSteps: LessonStep[] = [
     cue: '触球前才出现明显加速，拍头快但身体没有提前僵住。',
     avoid: '从引拍开始就握死；过早把速度用完；把拍速归因于孤立甩腕。',
     drill: '同一点 10 球：先以约 70% 速度找中心触球，再逐档提速；速度上升但中心率下降，就退回上一档。',
+    next: '回到训练：旋转与肩胛。',
   },
   {
     number: '03',
@@ -67,6 +70,7 @@ const lessonSteps: LessonStep[] = [
     cue: '击球声音、出球方向和目标命中率在连续几球中都相近。',
     avoid: '只追求某一球的最快；偏心触球后仍继续加力；把手臂更紧当成碰撞更好。',
     drill: '连续 10 球同时记录目标命中和偏心触球；两项任一明显变差，就不要继续加速。',
+    next: '回到训练：拍速与碰撞。',
   },
   {
     number: '04',
@@ -76,6 +80,7 @@ const lessonSteps: LessonStep[] = [
     cue: '对手触球前已经完成分腿，能接封网、扑球或再次后退。',
     avoid: '落地后看球；每次都机械回到中心；为了急停而打断随挥。',
     drill: '杀球后随机接“挡网 / 挑后场”第二球，连续 3 组；以能否按时启动作为通过标准。',
+    next: '回到训练：到位与再启动。',
   },
 ];
 
@@ -267,16 +272,16 @@ export default function Home() {
       </section>
 
       <section id="lesson" className="lesson-section force-section">
-        <div className="section-heading"><div><span className="section-label">上场验收</span><h2>练完之后，<br /><em>只验收四件事。</em></h2></div><span className="section-index">窗口 · 拍速 · 碰撞 · 下一拍</span></div>
-        <div className="lesson-intro"><p>这一章不再解释脚、髋、肩、肘。它只回答一个问题：前面练出的发力，是否已经转化成可重复的比赛结果。</p><strong>动作可以不同，结果必须可复现。</strong></div>
-        <div className="phase-tabs" role="tablist" aria-label="上场验收的四项结果">
+        <div className="section-heading"><div><span className="section-label">训练转化</span><h2>训练有没有变成<br /><em>比赛结果？</em></h2></div><span className="section-index">打一组 · 记录 · 回修</span></div>
+        <div className="lesson-intro"><p>打一组球后，不再复盘脚、髋、肩、肘；只检查四个能在场上观察到的结果。哪一项先丢，就回到对应训练，不用继续加力补救。</p><strong>动作可以不同，结果必须可复现。</strong></div>
+        <div className="phase-tabs" role="tablist" aria-label="训练转化的四项结果">
           {lessonSteps.map((item, index) => <button key={item.number} id={`step-tab-${item.number}`} className={activeStep === index ? 'phase-tab active' : 'phase-tab'} onClick={() => setActiveStep(index)} role="tab" aria-selected={activeStep === index} aria-controls="step-panel"><span>{item.number}</span><strong>{item.label}</strong></button>)}
         </div>
         <div id="step-panel" className="phase-reading" role="tabpanel" tabIndex={0} aria-labelledby={`step-tab-${step.number}`}>
-          <div className="phase-main"><div className="phase-status"><span>当前验收</span><strong>{step.number} / {step.label}</strong><small>结果 {activeStep + 1} / 04</small></div><span className="section-label">判定问题 / {step.number}</span><h3>{step.title}</h3><div className="phase-action"><span>验收逻辑</span><p>{step.action}</p></div></div>
+          <div className="phase-main"><div className="phase-status"><span>当前检查</span><strong>{step.label}</strong></div><span className="section-label">看什么</span><h3>{step.title}</h3><div className="phase-action"><span>判断标准</span><p>{step.action}</p></div><div className="phase-next"><span>失效后</span><strong>{step.next}</strong></div></div>
           <div className="phase-coach"><div className="coach-row"><span>合格表现</span><p>{step.cue}</p></div><div className="coach-row"><span>失效信号</span><p>{step.avoid}</p></div><div className="coach-row coach-drill"><span>现场验证</span><p>{step.drill}</p></div></div>
         </div>
-        <div className="lesson-verdict"><div className="verdict-head"><span>通过标准</span><strong>更快之后，结果不能塌。</strong></div><div className="verdict-grid"><div><b>01</b><strong>窗口不丢</strong><p>不用后仰，仍能在身前完成击球。</p></div><div><b>02</b><strong>碰撞不散</strong><p>中心触球与目标命中保持稳定。</p></div><div><b>03</b><strong>下一拍不断</strong><p>对手触球前已完成分腿和选择。</p></div></div><p className="verdict-rule">任何一项丢失，就先降速、换打法或回到对应训练。不要把“更用力”误判成“更有效”。</p></div>
+        <div className="lesson-verdict"><div className="verdict-head"><span>这一章的判定</span><strong>更快之后，结果不能塌。</strong></div><div className="verdict-grid"><div><b>01</b><strong>窗口不丢</strong><p>不用后仰，仍能在身前完成击球。</p></div><div><b>02</b><strong>碰撞不散</strong><p>中心触球与目标命中保持稳定。</p></div><div><b>03</b><strong>下一拍不断</strong><p>对手触球前已完成分腿和选择。</p></div></div><p className="verdict-rule">任何一项丢失，就先降速、换打法或回到对应训练。不要把“更用力”误判成“更有效”。</p></div>
         <p className="lesson-note">这不是动作评分，也不是判断谁是高手；它是训练后的结果验收。用结果约束动作，而不是复制某位顶级球员的一帧姿势。</p>
       </section>
 
