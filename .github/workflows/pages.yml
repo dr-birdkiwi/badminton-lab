@@ -37,14 +37,8 @@ jobs:
 
       - name: Prepare project Pages path
         run: |
-          repo_name="${GITHUB_REPOSITORY#*/}"
-          mkdir -p "dist/client/${repo_name}"
-          cp dist/client/index.html "dist/client/${repo_name}/index.html"
-          cp dist/client/index.rsc "dist/client/${repo_name}/index.rsc"
-          cp dist/client/*.png dist/client/*.svg "dist/client/${repo_name}/"
-          cp -R dist/client/_next "dist/client/${repo_name}/_next"
-          sed -i "s#/_next/#/${repo_name}/_next/#g" "dist/client/${repo_name}/index.html"
-          sed -i "s#/_next/#/${repo_name}/_next/#g" "dist/client/${repo_name}/index.rsc"
+          sed -i 's#/_next/#_next/#g' dist/client/index.html
+          sed -i 's#/_next/#_next/#g' dist/client/index.rsc
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
