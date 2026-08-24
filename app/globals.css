@@ -525,6 +525,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .training-node { min-height: 106px; padding: 11px 10px; }
 .training-node strong { margin-top: 20px; font-size: 15px; }
 .training-rules { padding-top: 14px; }
+.training-rules > div { padding: 13px 14px 14px; }
 .training-rules strong { margin-top: 15px; font-size: 13px; }
 .training-rules p { font-size: 11px; line-height: 1.55; }
 .training-photo { min-height: 246px; margin-top: 18px; }
@@ -599,6 +600,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .path-reading-grid p,
   .training-module p { font-size: 13px; }
   .training-rules p { font-size: 12px; }
+  .training-rules > div { padding: 14px 12px; }
   .lesson-intro { margin-bottom: 23px; padding: 13px 16px 12px; }
   .lesson-intro p { font-size: 13px; }
   .lesson-intro strong { font-size: 20px; }
