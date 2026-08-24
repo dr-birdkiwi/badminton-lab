@@ -105,13 +105,6 @@ const principleSequence = [
   { number: '04', label: '击球与衔接', title: '速度进入碰撞，再回到下一拍', text: '稳定拍面完成中心触球，落地后仍然保留继续移动和选择的能力。', alt: '羽毛球拍面与羽毛球碰撞并准备衔接下一拍的阶段' },
 ];
 
-const forceMarkers: StudyMarker[] = [
-  { number: '01', label: '脚下', title: '建立可移动的支撑', text: '先解决位置、制动和改变方向。', position: 'marker-foot' },
-  { number: '03', label: '骨盆', title: '让身体朝向服从击球点', text: '方向组织为拍臂留下空间。', position: 'marker-pelvis' },
-  { number: '05', label: '肩 · 肘 · 前臂', title: '把最快一段留到触球前', text: '近端与远端共同完成拍头加速。', position: 'marker-arm' },
-  { number: '07', label: '落地 · 衔接', title: '为第二拍完成这次杀球', text: '吸收速度，再重新获得移动能力。', position: 'marker-recover' },
-];
-
 const lessonMarkers: StudyMarker[] = [
   { number: '01', label: '中心触球', title: '速度先进入碰撞', text: '拍面稳定，出球方向才可控。', position: 'marker-impact' },
   { number: '02', label: '拍面方向', title: '不要用偏心触球补速度', text: '更快不等于更有效，先守住接触质量。', position: 'marker-face' },
