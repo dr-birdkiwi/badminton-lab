@@ -125,8 +125,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .shot-choice-board-labels em { display: grid; gap: 3px; color: var(--paper); font: 14px var(--sans); font-style: normal; }
 .shot-choice-board-labels small { color: rgba(245, 242, 233, .66); font: 9px var(--sans); letter-spacing: 0; white-space: nowrap; }
 .shot-choice-board figcaption { position: absolute; z-index: 1; right: 14px; bottom: 12px; color: rgba(245, 242, 233, .82); font: 9px var(--mono); letter-spacing: .07em; }
-.shot-choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.shot-choice article { position: relative; min-height: 0; overflow: hidden; padding: 0 0 17px; border: 1px solid var(--white-line); border-top: 2px solid var(--orange-soft); background: rgba(245, 242, 233, .04); }
+.shot-choice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--white-line); border-top: 0; }
+.shot-choice article { position: relative; min-height: 0; overflow: hidden; padding: 0 0 17px; border: 0; border-top: 2px solid var(--orange-soft); background: rgba(245, 242, 233, .04); }
+.shot-choice article + article { border-left: 1px solid var(--white-line); }
 .shot-choice article:nth-child(2) { border-top-color: var(--mint); }
 .shot-choice article:nth-child(3) { border-top-color: var(--orange); }
 .shot-choice article h3 { margin: 45px 0 18px; color: var(--paper); font-size: 21px; font-weight: 400; letter-spacing: -.05em; }
