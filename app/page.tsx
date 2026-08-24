@@ -104,7 +104,7 @@ const forceGroups = [
 
 const trainingStages: TrainingStage[] = [
   {
-    number: '01', label: '窗口与制动', title: '先把高质量击球窗口做得可重复', goal: '这一阶段解决“能不能反复到球后、在前上方触球，并立刻接下一拍”。顶级脚下不是停得最死，而是到位后仍然可调整。',
+    number: '01', label: '到位与再启动', title: '先把击球窗口做稳定', goal: '这一阶段解决“能不能反复到球后、在前上方触球，并立刻接下一拍”。顶级脚下不是停得最死，而是到位后仍然保留调整能力。',
     modules: [
       { phase: '后场到位 · 再启动', exercise: '随机启动到两个后场点 → 定住击球窗口 → 影子触球 → 教练再指一个方向启动。', dose: '3 组 × 4 次/侧；每次完整回位，组间休息 60–90 秒。', muscles: '臀肌、股四头肌、腘绳肌与小腿共同完成推进、制动和再次启动。', check: '触球位置不向后漂，第二次启动方向仍然清楚。' },
       { phase: '单腿 · 侧向制动', exercise: '低幅度侧向跳或跨步落地，单腿承载后立即向相反方向小步启动。', dose: '3 组 × 4 次/侧；落地声音和膝髋控制变差就停止。', muscles: '臀中肌、臀大肌、股四头肌、腘绳肌和小腿的离心控制。', check: '髋、膝、脚方向一致，身体没有塌向一侧。' },
@@ -112,14 +112,14 @@ const trainingStages: TrainingStage[] = [
     ],
   },
   {
-    number: '02', label: '旋转与肩胛', title: '让转体服务拍臂，而不是抢走空间', goal: '这一阶段解决“躯干改变朝向时，拍臂是否仍能自由加速”。负荷要轻到足以保持速度，不用大重量复制杀球轨迹。',
+    number: '02', label: '旋转与肩胛', title: '让躯干为拍臂留出空间', goal: '这一阶段解决“躯干改变朝向时，拍臂是否仍能自由加速”。负荷要轻到足以保持速度，不用大重量复制杀球轨迹。',
     modules: [
       { phase: '交错站姿 · 旋转投掷', exercise: '用轻药球做侧向旋转投掷，强调快速出手和稳定回收；左右侧都练。', dose: '4 组 × 3 次/侧；每次追求速度，组间充分休息。', muscles: '臀肌、内收肌、腹斜肌与背部肌群共同改变朝向。', check: '球速快但脚下不乱，腰椎没有被迫拧到终点。' },
       { phase: '胸廓 · 肩胛协同', exercise: '交错站姿轻阻力 lift / chop，随后立刻做一次无阻力半挥拍。', dose: '3 组 × 5 次/侧；阻力只要能保持肩胛平顺移动。', muscles: '腹斜肌、前锯肌、下斜方肌和肩袖共同维持胸廓与上臂的关系。', check: '转体后手臂仍有空间，肩不耸、头部不被动作带走。' },
     ],
   },
   {
-    number: '03', label: '拍速与碰撞', title: '最后把速度稳定地送进甜区', goal: '这一阶段解决“能不能反复打出快拍头和干净碰撞”。先保留准确率，再缩短加速时间；不要用疲劳中的乱快冒充爆发力。',
+    number: '03', label: '拍速与碰撞', title: '把速度送进稳定碰撞', goal: '这一阶段解决“能不能反复打出快拍头和干净碰撞”。先保留准确率，再缩短加速时间；不要用疲劳中的乱快冒充爆发力。',
     modules: [
       { phase: '过顶投掷 · 无球快挥', exercise: '轻药球过顶投掷与无球快速半挥成对进行；投掷训练整体出手，挥拍训练具体拍速。', dose: '4 组 × 3 次；每次高质量，组间休息 60–90 秒。', muscles: '胸大肌、背阔肌、三角肌、肩袖、肱三头肌与前臂旋转肌群协同工作。', check: '速度提高时肩仍然放松，肘没有提前锁死。' },
       { phase: '十球 · 碰撞测试', exercise: '同一喂球点连续 10 球，记录目标命中和明显偏心触球；再提高一档速度重复。', dose: '2–3 轮 × 10 球；两项指标下降，就退回上一档速度。', muscles: '前臂旋转、握拍与手指屈伸配合肩袖，控制拍面和触球位置。', check: '更快一档仍能保持相近的目标命中和中心触球。' },
@@ -242,29 +242,28 @@ export default function Home() {
       </section>
 
       <section id="training" className="training-section force-section">
-        <div className="section-heading"><div><span className="section-label">训练瓶颈</span><h2>力量只是底座，<br /><em>转化才是成绩。</em></h2></div><span className="section-index">03 个训练阶段</span></div>
-        <div className="training-statement"><span>顶级训练逻辑</span><strong>先用球场结果找到瓶颈：窗口不稳、拍速不足、碰撞不净或第二拍掉速。再选择力量、爆发或技术任务，最后必须回到真实击球验证。</strong></div>
+        <div className="section-heading"><div><span className="section-label">训练瓶颈</span><h2>训练不追疲劳，<br /><em>只追可转化。</em></h2></div><span className="section-index">03 个训练阶段</span></div>
+        <div className="training-statement"><span>训练原则</span><strong>先用球场结果定位瓶颈：到位不稳、旋转空间不足、拍速不够、碰撞不净或第二拍掉速。训练只补一个短板，最后必须回到真实击球验收。</strong></div>
         <div className="training-layout">
           <div className="training-visual" role="tablist" aria-label="杀球训练阶段">
             <div className="training-meta"><span>三个训练阶段</span><span>只练一个短板</span></div>
             <div className="training-track">
               {trainingStages.map((item, index) => <div className="training-track-item" key={item.number}><button id={`training-tab-${item.number}`} className={activeTraining === index ? 'training-node active' : 'training-node'} onClick={() => setActiveTraining(index)} role="tab" aria-selected={activeTraining === index} aria-controls="training-panel"><b>{item.number}</b><strong>{item.label}</strong></button>{index < trainingStages.length - 1 && <span className="training-arrow" aria-hidden="true">→</span>}</div>)}
             </div>
-            <div className="training-rules"><div><b>01</b><strong>先有球场指标</strong><p>记录窗口、目标和第二拍。</p></div><div><b>02</b><strong>高速动作要休息</strong><p>速度下降就结束这一组。</p></div><div><b>03</b><strong>负荷不能改动作</strong><p>力量离场练，拍速回场验。</p></div></div>
-            <div className="training-progress" aria-live="polite"><div><span>当前训练阶段</span><strong>{trainingStage.number} / {trainingStage.label}</strong></div><div className="progress-meter" aria-hidden="true"><i style={{ width: `${((activeTraining + 1) / trainingStages.length) * 100}%` }} /></div><small>{trainingStage.modules.length} 个任务 · 最后回到球场验证。</small></div>
-            <div className="training-photo"><img src="/training-footwork.png" alt="羽毛球运动员进行低位分腿与减速控制训练" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>训练示例 / 支撑与制动</span><span>低位 · 可控 · 可重复</span></div><div className="training-photo-caption"><b>承载动作示例</b><strong>到位后能停住，才有下一次启动。</strong></div></div>
+            <div className="training-rules"><div><b>01</b><strong>先有球场指标</strong><p>窗口 · 目标 · 第二拍。</p></div><div><b>02</b><strong>高质量再加量</strong><p>速度下降，就结束这一组。</p></div><div><b>03</b><strong>负荷不改动作</strong><p>离场训练，回场验收。</p></div></div>
+            <div className="training-photo"><img src="/training-footwork.png" alt="羽毛球运动员进行低位分腿与减速控制训练" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>示例 / 到位 · 制动 · 再启动</span><span>看脚下，不看重量</span></div><div className="training-photo-caption"><b>支撑动作示例</b><strong>到位后能停住，才有下一次启动。</strong></div></div>
           </div>
           <div id="training-panel" className="training-reading" role="tabpanel" tabIndex={0} aria-labelledby={`training-tab-${trainingStage.number}`}>
-            <span className="section-label">训练阶段 · {trainingStage.number} · {trainingStage.label}</span>
+            <span className="section-label">训练任务 · {trainingStage.number} · {trainingStage.label}</span>
             <h3>{trainingStage.title}</h3>
-            <div className="training-goal"><span>这一组要解决什么</span><p>{trainingStage.goal}</p></div>
+            <div className="training-goal"><span>本阶段目标</span><p>{trainingStage.goal}</p></div>
             <div className="training-module-list">
-              {trainingStage.modules.map((module) => <article className="training-module" key={module.phase}><div className="training-module-head"><strong>{module.phase}</strong><span>瓶颈训练</span></div><div><span>训练任务</span><p>{module.exercise}</p></div><div><span>建议剂量</span><p>{module.dose}</p></div><div><span>肌肉支持</span><p>{module.muscles}</p></div><div><span>回场标准</span><p>{module.check}</p></div></article>)}
+              {trainingStage.modules.map((module) => <article className="training-module" key={module.phase}><div className="training-module-head"><strong>{module.phase}</strong></div><div><span>训练任务</span><p>{module.exercise}</p></div><div><span>建议剂量</span><p>{module.dose}</p></div><div><span>肌肉与功能</span><p>{module.muscles}</p></div><div><span>回场标准</span><p>{module.check}</p></div></article>)}
             </div>
           </div>
         </div>
-        <p className="training-note">剂量是保守起点，不是统一处方。增强式训练可能改善爆发、敏捷、速度和平衡，但目前证据确定性偏低；训练效果必须由你的目标命中、中心触球与第二拍能力来判断。出现疼痛、麻木或明显不稳时停止，并寻求专业评估。</p>
-        <div className="training-sources"><span>训练证据</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12170632/" target="_blank" rel="noreferrer">2025 / 肩部肌肉协同 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/38533062/" target="_blank" rel="noreferrer">2024 / 增强式训练综述 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33663330/" target="_blank" rel="noreferrer">2024 / 精英跳杀决定因素 ↗</a></div>
+        <p className="training-note">增强式训练可能改善力量表现、敏捷、速度和平衡，但现有羽毛球研究的证据确定性较低；本站把它作为补充，不把它直接等同于杀球变快。疼痛、麻木或明显不稳时停止，并寻求专业评估。</p>
+        <div className="training-sources"><span>训练证据</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12170632/" target="_blank" rel="noreferrer">2025 / 肌肉协同 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/38533062/" target="_blank" rel="noreferrer">2024 / 增强式训练综述 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33663330/" target="_blank" rel="noreferrer">2024 / 精英跳杀决定因素 ↗</a></div>
       </section>
 
       <section id="lesson" className="lesson-section force-section">
