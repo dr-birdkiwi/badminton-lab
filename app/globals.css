@@ -474,3 +474,143 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .boundary-section .boundary-grid p,
 .boundary-section .source-strip a { color: rgba(245, 242, 233, .68); }
 .boundary-section .source-strip { border-color: var(--white-line); }
+
+/* Type and rhythm calibration: slightly larger reading type, tighter editorial spacing. */
+.force-section:not(.force-hero) {
+  padding-top: clamp(68px, 6.8vw, 96px);
+  padding-bottom: clamp(68px, 6.8vw, 96px);
+}
+.eyebrow,
+.section-label { font-size: 11px; }
+.section-heading { margin-bottom: 28px; }
+.section-heading h2 { font-size: clamp(40px, 5vw, 72px); }
+.hero-copy > p { font-size: 15px; line-height: 1.78; }
+.hero-question strong { font-size: 16px; }
+.hero-ramp strong { font-size: 14px; }
+.hero-ramp div { font-size: 12px; }
+.decision-board { padding: 20px; }
+.claim-card { min-height: 190px; padding: 16px; }
+.claim-card h3 { margin-top: 38px; font-size: 25px; }
+.claim-card p { font-size: 13px; line-height: 1.62; }
+.principle-line { margin-top: 14px; padding: 14px 0 15px; }
+.principle-line strong { font-size: 22px; }
+.shot-choice { padding-top: 16px; }
+.shot-choice-head { margin-bottom: 14px; }
+.shot-choice article { min-height: 194px; padding: 16px; }
+.shot-choice article h3 { margin: 36px 0 14px; font-size: 22px; }
+.shot-choice article p { margin-top: 8px; font-size: 12px; line-height: 1.58; }
+.path-statement,
+.training-statement { margin-bottom: 24px; padding: 15px 18px 14px; }
+.path-statement strong,
+.training-statement strong { font-size: 19px; line-height: 1.48; }
+.path-statement p { font-size: 12px; line-height: 1.55; }
+.path-layout,
+.training-layout { gap: 14px; }
+.path-visual,
+.training-visual { padding: 24px; }
+.path-groups { margin: 21px 0 16px; }
+.path-group { padding: 10px; }
+.path-node { min-height: 100px; padding: 11px 10px; }
+.path-node strong { margin-top: 17px; font-size: 14px; }
+.path-node small { margin-top: 6px; font-size: 11px; }
+.path-reading,
+.training-reading { padding: 24px; }
+.path-reading h3,
+.training-reading h3 { margin-top: 16px; margin-bottom: 17px; font-size: clamp(30px, 3.15vw, 45px); }
+.path-reading-lead { padding: 13px 0 15px; }
+.path-reading-lead p { font-size: 18px; line-height: 1.48; }
+.path-reading-grid { gap: 13px; }
+.path-reading-grid p { font-size: 13px; line-height: 1.62; }
+.training-track { margin: 22px 0 20px; }
+.training-node { min-height: 106px; padding: 11px 10px; }
+.training-node strong { margin-top: 20px; font-size: 15px; }
+.training-rules { padding-top: 14px; }
+.training-rules strong { margin-top: 15px; font-size: 13px; }
+.training-rules p { font-size: 11px; line-height: 1.55; }
+.training-photo { min-height: 246px; margin-top: 18px; }
+.training-reading h3 { margin-bottom: 19px; }
+.training-goal { margin-bottom: 19px; }
+.training-goal p { font-size: 13px; line-height: 1.62; }
+.training-module { padding-top: 12px; }
+.training-module-head { margin-bottom: 10px; }
+.training-module-head strong { font-size: 17px; }
+.training-module > div:not(.training-module-head) { margin-top: 7px; }
+.training-module p { font-size: 12px; line-height: 1.58; }
+.training-note { margin-top: 18px; font-size: 12px; line-height: 1.62; }
+.training-sources { gap: 9px 18px; margin-top: 19px; padding-top: 14px; }
+.training-sources a { font-size: 12px; }
+.lesson-intro { margin-bottom: 28px; padding: 14px 18px 13px; }
+.lesson-intro p { font-size: 14px; line-height: 1.7; }
+.lesson-intro strong { font-size: 22px; }
+.phase-tab { min-height: 78px; padding: 13px; }
+.phase-tab strong { font-size: 16px; }
+.phase-reading { min-height: 360px; }
+.phase-main { padding-top: 36px; padding-bottom: 31px; }
+.phase-status { margin-bottom: 22px; }
+.phase-status strong { font-size: 14px; }
+.phase-main h3 { margin: 15px 0 19px; font-size: clamp(33px, 3.8vw, 58px); }
+.phase-action { padding: 14px 17px; }
+.phase-action p { font-size: 14px; line-height: 1.7; }
+.phase-coach { padding-top: 30px; padding-bottom: 30px; }
+.coach-row { padding: 14px 0; }
+.coach-row p { font-size: 13px; line-height: 1.62; }
+.lesson-verdict { margin-top: 24px; padding: 19px; }
+.verdict-head { padding-bottom: 14px; }
+.verdict-head strong { font-size: 24px; }
+.verdict-grid { margin-top: 15px; }
+.verdict-grid > div { min-height: 102px; padding: 13px; }
+.verdict-grid strong { margin-top: 21px; font-size: 16px; }
+.verdict-grid p,
+.verdict-rule,
+.lesson-note { font-size: 12px; line-height: 1.62; }
+.verdict-rule { margin-top: 17px; }
+.lesson-note { margin-top: 18px; }
+.boundary-grid { gap: 9px; }
+.boundary-grid article { min-height: 205px; padding: 17px; }
+.boundary-grid h3 { margin-top: 45px; font-size: 24px; }
+.boundary-grid p { font-size: 13px; line-height: 1.62; }
+.source-strip { gap: 9px 18px; margin-top: 23px; padding-top: 14px; }
+.source-strip a { font-size: 12px; }
+
+@media (max-width: 700px) {
+  .force-section:not(.force-hero) { padding-top: 50px; padding-bottom: 50px; }
+  .section-heading { margin-bottom: 23px; }
+  .section-heading h2 { font-size: clamp(40px, 10.8vw, 52px); }
+  .hero-copy > p { font-size: 14px; line-height: 1.72; }
+  .hero-question strong { font-size: 15px; }
+  .decision-board { padding: 14px; }
+  .claim-card { padding: 15px; }
+  .claim-card h3 { margin-top: 34px; font-size: 24px; }
+  .claim-card p,
+  .shot-choice article p { font-size: 13px; }
+  .principle-line strong { font-size: 21px; line-height: 1.42; }
+  .path-statement,
+  .training-statement { margin-bottom: 20px; padding: 14px 16px 13px; }
+  .path-statement strong,
+  .training-statement strong { font-size: 18px; }
+  .path-statement p { font-size: 12px; }
+  .path-visual,
+  .training-visual { padding: 14px; }
+  .path-reading,
+  .training-reading { padding: 21px 17px; }
+  .path-reading h3,
+  .training-reading h3 { font-size: 31px; }
+  .path-reading-lead p { font-size: 17px; }
+  .path-reading-grid p,
+  .training-module p { font-size: 13px; }
+  .training-rules p { font-size: 12px; }
+  .lesson-intro { margin-bottom: 23px; padding: 13px 16px 12px; }
+  .lesson-intro p { font-size: 13px; }
+  .lesson-intro strong { font-size: 20px; }
+  .phase-tab { min-height: 72px; padding: 11px 9px; }
+  .phase-tab strong { font-size: 13px; }
+  .phase-main { padding-top: 28px; padding-bottom: 27px; }
+  .phase-main h3 { font-size: 40px; }
+  .phase-action p,
+  .coach-row p { font-size: 13px; }
+  .lesson-verdict { margin-top: 20px; padding: 17px; }
+  .verdict-head strong { font-size: 22px; }
+  .verdict-grid > div { padding: 12px; }
+  .boundary-grid h3 { margin-top: 37px; font-size: 23px; }
+  .boundary-grid p { font-size: 13px; }
+}
