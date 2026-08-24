@@ -284,7 +284,9 @@ export default function Home() {
             <div className="path-action-viewer">
               <div className="path-action-viewer-head"><span>动作图 · {node.number} / 07</span><span>{node.group}</span></div>
               <figure className="path-action-figure">
-                <img src={node.image} alt={node.imageAlt} />
+                <div className="path-action-figure-stage">
+                  {forceNodes.map((item, index) => <img key={item.number} className={activeNode === index ? 'is-active' : ''} src={item.image} alt={activeNode === index ? item.imageAlt : ''} aria-hidden={activeNode !== index} />)}
+                </div>
                 <figcaption>{node.label} · {node.title}</figcaption>
               </figure>
               <div className="path-action-slider-head"><span>左右滑动查看动作</span><strong>{node.number} / 07</strong></div>
