@@ -89,24 +89,30 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .section-index { display: inline-flex; align-items: center; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line); color: var(--muted); font: 9px var(--mono); letter-spacing: .13em; }
 .section-index::before { content: '↗'; color: var(--orange); font-size: 13px; }
 .principles-section .section-index { border-color: var(--white-line); }
+.decision-board { padding: 22px; border: 1px solid var(--white-line); background: rgba(245, 242, 233, .035); }
+.decision-board-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 14px; padding-bottom: 17px; border-bottom: 1px solid var(--white-line); }
+.decision-board-head > div { display: grid; gap: 8px; }
+.decision-board-head > div > span, .decision-board-head > span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; }
+.decision-board-head > div > strong { color: var(--paper); font: 22px var(--serif); font-weight: 400; }
+.decision-board-head > span { white-space: nowrap; }
 .claim-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.claim-card { position: relative; min-height: 238px; overflow: hidden; padding: 19px; border: 1px solid var(--white-line); background: rgba(245, 242, 233, .05); transition: background .2s ease, border-color .2s ease; }
+.claim-card { position: relative; min-height: 218px; overflow: hidden; padding: 19px; border: 1px solid var(--white-line); background: rgba(245, 242, 233, .05); transition: background .2s ease, border-color .2s ease; }
 .claim-card::after { content: ''; position: absolute; top: 0; right: 0; left: 0; height: 3px; background: var(--orange-soft); }
 .claim-card:nth-child(2)::after { background: var(--mint); }
 .claim-card:nth-child(3)::after { background: var(--orange); }
 .claim-card:hover { border-color: rgba(245, 242, 233, .46); background: rgba(245, 242, 233, .09); }
 .claim-card > span { color: var(--orange-soft); font: 10px var(--mono); }
-.claim-card h3 { margin: 63px 0 13px; font-size: 24px; font-weight: 400; letter-spacing: -.06em; }
+.claim-card h3 { margin: 48px 0 13px; font-size: 24px; font-weight: 400; letter-spacing: -.06em; }
 .claim-card p { max-width: 270px; margin: 0; color: rgba(245, 242, 233, .64); font-size: 12px; line-height: 1.7; }
-.principle-line { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-top: 31px; padding-top: 22px; border-top: 1px solid var(--white-line); }
+.principle-line { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-top: 18px; padding: 18px 0 19px; border-top: 1px solid var(--white-line); border-bottom: 1px solid var(--white-line); }
 .principle-line span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .12em; }
 .principle-line strong { max-width: 720px; color: var(--paper); font: 26px var(--serif); font-weight: 400; line-height: 1.3; }
-.shot-choice { margin-top: 46px; padding-top: 24px; border-top: 1px solid var(--white-line); }
+.shot-choice { margin-top: 0; padding-top: 21px; }
 .shot-choice-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 18px; }
 .shot-choice-head span, .shot-choice article > b, .shot-choice article p span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; font-weight: 400; }
 .shot-choice-head strong { color: var(--paper); font: 22px var(--serif); font-weight: 400; }
 .shot-choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.shot-choice article { position: relative; min-height: 245px; padding: 18px; border: 1px solid var(--white-line); border-top: 2px solid var(--orange-soft); background: rgba(245, 242, 233, .04); }
+.shot-choice article { position: relative; min-height: 226px; padding: 18px; border: 1px solid var(--white-line); border-top: 2px solid var(--orange-soft); background: rgba(245, 242, 233, .04); }
 .shot-choice article:nth-child(2) { border-top-color: var(--mint); }
 .shot-choice article:nth-child(3) { border-top-color: var(--orange); }
 .shot-choice article h3 { margin: 45px 0 18px; color: var(--paper); font-size: 21px; font-weight: 400; letter-spacing: -.05em; }
@@ -297,6 +303,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .plate-footer strong { font-size: 16px; }
   .section-heading { display: block; margin-bottom: 29px; }
   .section-index { display: block; margin-top: 19px; }
+  .decision-board { padding: 15px; }
+  .decision-board-head { display: grid; align-items: start; gap: 10px; }
+  .decision-board-head > span { white-space: normal; line-height: 1.5; }
   .claim-grid, .boundary-grid { grid-template-columns: 1fr; }
   .claim-card, .boundary-grid article { min-height: 0; }
   .claim-card h3, .boundary-grid h3 { margin-top: 43px; }

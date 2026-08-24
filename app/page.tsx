@@ -194,14 +194,17 @@ export default function Home() {
 
       <section id="principles" className="principles-section force-section">
         <div className="section-heading"><div><span className="section-label">高手判断</span><h2>高手先过<br /><em>三道门。</em></h2></div><span className="section-index">击球窗口 · 拍速 · 碰撞</span></div>
-        <div className="claim-grid">{claims.map((claim) => <article key={claim.number} className="claim-card"><span>{claim.number}</span><h3>{claim.title}</h3><p>{claim.text}</p></article>)}</div>
-        <div className="principle-line"><span>高手判断顺序</span><strong>能否向下击球 → 拍头能否快速到达 → 甜区和方向是否稳定 → 能否接管第二拍。</strong></div>
-        <div className="shot-choice">
-          <div className="shot-choice-head"><span>击球选择</span><strong>不是每个后场高球，都值得完整发力。</strong></div>
-          <div className="shot-choice-grid">
-            <article><b>01 / 完整杀球</b><h3>完整杀球</h3><p><span>窗口</span>球在拍侧肩前上方，身体不用后仰，落地仍可控。</p><p><span>目标</span>用速度或落点直接得分，或制造确定的弱回球。</p></article>
-            <article><b>02 / 点杀 · 半杀</b><h3>点杀 · 半杀</h3><p><span>窗口</span>时间或空间被压缩，但仍能在较高点向下触球。</p><p><span>目标</span>缩短准备，优先抢节奏、空档和下一拍。</p></article>
-            <article><b>03 / 先过渡</b><h3>先过渡</h3><p><span>窗口</span>球已在身后、身体后仰，或落地后无法继续移动。</p><p><span>目标</span>用高远、吊球或安全落点重建位置，不勉强硬杀。</p></article>
+        <div className="decision-board">
+          <div className="decision-board-head"><div><span>从检查到出手</span><strong>三个质量检查，直接决定这球怎么打。</strong></div><span>窗口 → 拍速 → 碰撞 → 下一拍</span></div>
+          <div className="claim-grid">{claims.map((claim) => <article key={claim.number} className="claim-card"><span>{claim.number}</span><h3>{claim.title}</h3><p>{claim.text}</p></article>)}</div>
+          <div className="principle-line"><span>判断路线</span><strong>能否向下击球 → 拍头能否快速到达 → 甜区和方向是否稳定 → 能否接管第二拍。</strong></div>
+          <div className="shot-choice">
+            <div className="shot-choice-head"><span>根据结果选择打法</span><strong>别把所有后场高球，都当成完整杀球。</strong></div>
+            <div className="shot-choice-grid">
+              <article><b>01 / 完整杀球</b><h3>完整杀球</h3><p><span>窗口</span>球在拍侧肩前上方，身体不用后仰，落地仍可控。</p><p><span>目标</span>用速度或落点直接得分，或制造确定的弱回球。</p></article>
+              <article><b>02 / 点杀 · 半杀</b><h3>点杀 · 半杀</h3><p><span>窗口</span>时间或空间被压缩，但仍能在较高点向下触球。</p><p><span>目标</span>缩短准备，优先抢节奏、空档和下一拍。</p></article>
+              <article><b>03 / 先过渡</b><h3>先过渡</h3><p><span>窗口</span>球已在身后、身体后仰，或落地后无法继续移动。</p><p><span>目标</span>用高远、吊球或安全落点重建位置，不勉强硬杀。</p></article>
+            </div>
           </div>
         </div>
       </section>
