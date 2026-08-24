@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -122,12 +122,6 @@ const forceNodes: ForceNode[] = [
   { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把最快的一段留到触球前', action: '肩内旋、肘伸与前臂旋转在短暂的加速窗口内协同，提高拍头速度。', principle: '研究支持多关节协同，不支持把拍速归功于单一关节或孤立“甩腕”。', cue: '拍头快但身体不僵；触球时肘不过度锁死，上臂不过度耸高。', image: '/force-action-05.png', imageAlt: '羽毛球击球前肩肘前臂协同加速动作' },
   { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍速成为可控的出球', action: '拍头速度、拍面方向和实际触球位置共同决定出球速度、方向和下压角度。', principle: '拍头速度与出球速度高度相关，但并非一一相等；触球位置、拍面和器材特性都会改变碰撞效率。', cue: '连续 10 球的声音、方向和目标命中都稳定，而不是只看其中最快一球。', image: '/force-action-06.png', imageAlt: '羽毛球拍面与羽毛球在高点击球点发生碰撞' },
   { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '为第二拍完成这次杀球', action: '随挥与落地吸收速度，再根据落点和对手回球方向选择跟进位置。', principle: '杀球不是只看首球速度；能否迫使弱回球并接管下一拍，才是动作在比赛中的完整价值。', cue: '对手触球前完成分腿，球拍回到身体前方。', image: '/force-action-07.png', imageAlt: '羽毛球杀球后的剪式落地、收拍与下一拍衔接动作' },
-];
-
-const forceGroups = [
-  { number: '01', label: '建立条件', note: '位置 · 方向 · 空间', nodes: forceNodes.slice(0, 4) },
-  { number: '02', label: '组织拍速', note: '加速 · 碰撞', nodes: forceNodes.slice(4, 6) },
-  { number: '03', label: '回到下一拍', note: '落地 · 再组织', nodes: forceNodes.slice(6) },
 ];
 
 const trainingStages: TrainingStage[] = [
@@ -279,31 +273,18 @@ export default function Home() {
         <div className="section-heading"><div><span className="section-label">表现链</span><h2>这不是传送带，<br /><em>是一组相互约束。</em></h2></div><span className="section-index">07 个动作任务</span></div>
         <div className="path-statement"><span>先定义模型</span><strong>每个节点不是“把力传给下一个关节”，而是在当下解决一个问题：位置、方向、空间、拍速、碰撞，最后回到下一拍。</strong><p>研究支持多关节协同和近端—远端的速度关系；不支持一套每球固定、单向、分毫不差的时序。</p></div>
         <div className="path-layout">
-          <div className="path-visual" role="tablist" aria-label="杀球发力路径">
+          <div className="path-visual">
             <div className="path-meta"><span>按任务读，不按关节背</span><span>组间有关联 · 组内会重叠</span></div>
-            <div className="path-action-viewer">
-              <div className="path-action-viewer-head"><span>动作图 · {node.number} / 07</span><span>{node.group}</span></div>
-              <figure className="path-action-figure">
-                <div className="path-action-figure-stage">
-                  {forceNodes.map((item, index) => <img key={item.number} className={activeNode === index ? 'is-active' : ''} src={item.image} alt={activeNode === index ? item.imageAlt : ''} aria-hidden={activeNode !== index} />)}
-                </div>
-                <figcaption>{node.label} · {node.title}</figcaption>
-              </figure>
-              <div className="path-action-slider-head"><span>左右滑动查看动作</span><strong>{node.number} / 07</strong></div>
-              <input className="path-action-slider" type="range" min="0" max={forceNodes.length - 1} step="1" value={activeNode} onChange={(event) => setActiveNode(Number(event.target.value))} style={{ '--slider-progress': `${(activeNode / (forceNodes.length - 1)) * 100}%` } as CSSProperties} aria-label="左右滑动切换七段发力动作" />
-              <div className="path-action-slider-scale" aria-hidden="true"><span>建立条件</span><i>组织拍速</i><b>回到下一拍</b></div>
-              <div className="path-action-caption" aria-live="polite"><span>这一格看什么</span><strong>{node.title}</strong><p>{node.cue}</p></div>
-            </div>
-            <div className="path-groups">
-              {forceGroups.map((group) => <div className={`path-group path-group-${group.number}`} key={group.number}>
-                <div className="path-group-head"><b>{group.number}</b><div><strong>{group.label}</strong><span>{group.note}</span></div></div>
-                <div className="path-group-nodes">
-                  {group.nodes.map((item) => { const index = forceNodes.indexOf(item); return <div className="path-track-item" key={item.number}><button id={`node-tab-${item.number}`} className={activeNode === index ? 'path-node active' : 'path-node'} onClick={() => setActiveNode(index)} role="tab" aria-selected={activeNode === index} aria-controls="node-panel"><b>{item.number}</b><strong>{item.label}</strong><small>{item.title}</small></button></div>; })}
-                </div>
-              </div>)}
+            <div className="path-action-group-row" aria-hidden="true"><span>01 · 建立条件<br /><small>位置 · 方向 · 空间</small></span><span>02 · 组织拍速<br /><small>加速 · 碰撞</small></span><span>03 · 回到下一拍<br /><small>落地 · 再组织</small></span></div>
+            <div className="path-action-grid" role="tablist" aria-label="七段杀球发力动作">
+              {forceNodes.map((item, index) => <button id={`node-tab-${item.number}`} className={`path-action-card ${index < 4 ? 'path-action-card-condition' : index < 6 ? 'path-action-card-speed' : 'path-action-card-next'}${activeNode === index ? ' active' : ''}`} key={item.number} onClick={() => setActiveNode(index)} role="tab" aria-selected={activeNode === index} aria-controls="node-panel" aria-label={`${item.number} ${item.label} ${item.title}`}>
+                <span className="path-action-card-index">{item.number}</span>
+                <span className="path-action-card-image"><img src={item.image} alt={item.imageAlt} /></span>
+                <span className="path-action-card-caption"><b>{item.label}</b><strong>{item.title}</strong></span>
+              </button>)}
             </div>
           </div>
-          <div id="node-panel" className="path-reading" role="tabpanel" tabIndex={0} aria-labelledby={`node-tab-${node.number}`}>
+          <div id="node-panel" className="path-reading path-reading-inline" role="tabpanel" tabIndex={0} aria-labelledby={`node-tab-${node.number}`}>
             <div className="path-reading-top"><span className="section-label">当前任务 · {node.number} · {node.group}</span><b>{node.label}</b></div>
             <h3>{node.title}</h3>
             <div className="path-reading-lead"><span>动作任务</span><p>{node.action}</p></div>
