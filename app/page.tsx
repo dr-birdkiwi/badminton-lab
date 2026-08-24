@@ -92,18 +92,11 @@ const lessonSteps: LessonStep[] = [
   },
 ];
 
-const claims = [
-  { number: '01', title: '击球窗口', text: '身体在球的侧后方，理想击球点位于持拍肩前上方；不用后仰，也能向下击球。' },
-  { number: '02', title: '身体组织', text: '躯干先转开，为拍臂留出通道；非持拍侧帮助定位来球，不让身体挤掉挥拍空间。' },
-  { number: '03', title: '触球前加速', text: '把最快的一段留在触球前；肩、肘、前臂共同加速，不是全程握死或只甩手腕。' },
-  { number: '04', title: '碰撞与衔接', text: '中心触球、拍面稳定，速度才会变成落点；落地后拍回身前，仍能接管下一拍。' },
-];
-
-const principleMarkers: StudyMarker[] = [
-  { number: '01', label: '击球窗口', title: '球点在持拍肩前上方', text: '身体在球的侧后方，仍有向下击球的空间。', position: 'marker-window' },
-  { number: '02', label: '身体组织', title: '胸廓与骨盆不抢同一时刻', text: '先组织方向，再把拍臂放进加速通道。', position: 'marker-organise' },
-  { number: '03', label: '触球前加速', title: '最快的一段留到最后', text: '肩、肘、前臂共同加速，不是只甩手腕。', position: 'marker-speed' },
-  { number: '04', label: '碰撞与衔接', title: '击球后仍然能移动', text: '中心触球，落地后拍回身前，接管下一拍。', position: 'marker-connect' },
+const principleSequence = [
+  { number: '01', label: '击球窗口', title: '移动与制动', text: '先到球的侧后方，再把速度吸收住；球点才能停在持拍肩前上方。', src: '/principles-window.png', alt: '羽毛球后场击球前的移动与制动阶段' },
+  { number: '02', label: '身体组织', title: '骨盆与胸廓组织方向', text: '脚下停住以后，身体不是僵住，而是为拍臂保留可用的加速空间。', src: '/principles-organise.png', alt: '羽毛球后场击球前的身体组织阶段' },
+  { number: '03', label: '触球前加速', title: '把最快一段留到最后', text: '肩、肘、前臂在短窗口内共同加速，让拍头速度靠近触球时刻。', src: '/principles-accelerate.png', alt: '羽毛球击球前拍头加速阶段' },
+  { number: '04', label: '击球与衔接', title: '速度进入碰撞，再回到下一拍', text: '稳定拍面完成中心触球，落地后仍然保留继续移动和选择的能力。', src: '/principles-impact.png', alt: '羽毛球拍面与羽毛球碰撞并准备衔接下一拍的阶段' },
 ];
 
 const forceMarkers: StudyMarker[] = [
@@ -249,11 +242,12 @@ export default function Home() {
         <div className="section-heading"><div><span className="section-label">击球决策</span><h2>这球该怎么打？<br /><em>先看条件，再选出手。</em></h2></div><span className="section-index">检查 · 选择 · 衔接</span></div>
         <div className="decision-board">
           <div className="decision-board-head"><div><span>现场问题</span><strong>这球现在具不具备完整发力条件？</strong></div><div className="decision-board-purpose"><span>本章作用</span><strong>检查这一拍，不给球员定级。</strong></div></div>
-          <div className="principles-visual-layout">
-            <StudyPlate src="/principles-study.png" alt="右手羽毛球运动员在后场起跳击球的动作研究图，标出击球窗口、身体组织、触球前加速和碰撞衔接" meta="动作研究 / 02" side="击球条件" footer="窗口 → 组织 → 加速 → 衔接" markers={principleMarkers} className="principles-study-plate" />
-            <div className="visual-reading-note"><span>先看主图</span><strong>每个出手，先由空间和时间决定。</strong><p>图中四个标记不是四个孤立动作，而是同一拍里必须同时成立的条件。窗口一旦丢失，就不再用更大动作补救。</p><div><b>图像读法</b><span>球与身体的关系 → 躯干留下的空间 → 触球前的速度 → 击球后的可动性</span></div></div>
+          <div className="principles-sequence-layout">
+            <div className="principles-sequence-grid">
+              {principleSequence.map((item) => <article className="sequence-card" key={item.number}><div className="sequence-image"><img src={item.src} alt={item.alt} /><span>{item.number}</span></div><div className="sequence-copy"><b>{item.label}</b><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
+            </div>
+            <div className="visual-reading-note"><span>按顺序看，不要跳步</span><strong>这不是四张姿势图，而是一拍动作的时间关系。</strong><p>身体先移动并制动，随后组织方向，再把速度集中到触球前；最后用碰撞和落地把这次击球接回下一拍。</p><div><b>图像读法</b><span>移动制动 → 身体组织 → 触球前加速 → 碰撞衔接</span></div></div>
           </div>
-          <div className="claim-grid">{claims.map((claim) => <article key={claim.number} className="claim-card"><span>{claim.number}</span><h3>{claim.title}</h3><p>{claim.text}</p></article>)}</div>
           <div className="principle-line"><span>判断路线</span><strong>窗口完整 + 有空间 + 碰撞可控 → 完整杀球；时间被压缩 → 点杀 / 半杀；窗口丢失或无法衔接 → 先过渡。</strong></div>
           <div className="shot-choice">
             <div className="shot-choice-head"><span>根据结果选择打法</span><strong>每次出手先服从来球条件，再追求拍速。</strong></div>
