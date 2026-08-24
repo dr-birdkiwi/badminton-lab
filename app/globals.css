@@ -912,3 +912,157 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .training-reading-top { display: grid; gap: 7px; }
   .training-reading-top > b { text-align: left; }
 }
+
+/* Final responsive calibration: increase reading clarity while preserving the editorial frame. */
+.force-header {
+  padding-inline: clamp(18px, 5vw, 72px);
+}
+
+.force-header nav button {
+  font-size: 13px;
+}
+
+.force-section:not(.force-hero) {
+  padding-inline: clamp(20px, 5.5vw, 86px);
+}
+
+.section-heading {
+  margin-bottom: clamp(28px, 3vw, 38px);
+}
+
+.decision-board-head > div > strong,
+.shot-choice-head strong {
+  font-size: 23px;
+}
+
+.claim-card p,
+.path-statement p,
+.path-reading-grid p,
+.visual-reading-note > p,
+.shot-choice article p,
+.training-module p,
+.training-note,
+.lesson-note,
+.boundary-grid p {
+  font-size: 13px;
+}
+
+.path-reading-lead p {
+  font-size: 18px;
+}
+
+.training-section .training-module p {
+  font-size: 12px;
+}
+
+.force-footer {
+  font-size: 10px;
+}
+
+@media (max-width: 700px) {
+  .force-header {
+    gap: 12px;
+    padding-inline: 16px;
+    overflow: hidden;
+  }
+
+  .force-brand {
+    flex: 0 0 auto;
+  }
+
+  .force-header nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    margin-right: 0;
+    scrollbar-width: none;
+  }
+
+  .force-header nav::-webkit-scrollbar,
+  .training-track::-webkit-scrollbar,
+  .path-action-grid::-webkit-scrollbar,
+  .phase-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .force-section,
+  .force-section:not(.force-hero) {
+    padding: 48px 16px;
+  }
+
+  .force-hero {
+    padding-top: 56px;
+    padding-bottom: 44px;
+  }
+
+  .force-header nav button {
+    font-size: 11px;
+  }
+
+  .hero-copy > p {
+    font-size: 14px;
+    line-height: 1.76;
+  }
+
+  .section-heading {
+    margin-bottom: 24px;
+  }
+
+  .section-heading h2 {
+    max-width: 100%;
+    font-size: clamp(34px, 9.3vw, 42px);
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .section-index {
+    font-size: 10px;
+  }
+
+  .decision-board-head > div > strong,
+  .shot-choice-head strong {
+    font-size: 21px;
+  }
+
+  .claim-card p,
+  .path-statement p,
+  .path-reading-grid p,
+  .visual-reading-note > p,
+  .shot-choice article p,
+  .training-module p,
+  .training-note,
+  .lesson-note,
+  .boundary-grid p {
+    font-size: 13px;
+    line-height: 1.68;
+  }
+
+  .path-reading-lead p {
+    font-size: 17px;
+  }
+
+  .shot-choice-board-labels span {
+    gap: 5px;
+    margin-inline: 4px;
+    padding: 7px 6px 8px;
+  }
+
+  .shot-choice-board-labels em {
+    font-size: 11px;
+  }
+
+  .shot-choice-board-labels small {
+    max-width: 90px;
+    font-size: 8px;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .training-section .training-module p {
+    font-size: 13px;
+  }
+
+  .force-footer {
+    font-size: 10px;
+  }
+}
