@@ -167,15 +167,15 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .path-action-group-row span:nth-child(3) { border-top-color: var(--orange); }
 .path-action-group-row small { color: rgba(245, 242, 233, .5); font-size: 9px; letter-spacing: .02em; }
 .path-action-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 7px; margin-top: 7px; overflow-x: auto; padding-bottom: 4px; }
-.path-action-card { position: relative; display: grid; grid-template-rows: minmax(360px, 38vw) auto; min-width: 0; padding: 0; overflow: hidden; border: 1px solid var(--white-line); color: var(--paper); background: rgba(20, 37, 30, .46); text-align: left; scroll-snap-align: start; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.path-action-card { position: relative; display: grid; grid-template-rows: auto auto; min-width: 0; padding: 0; overflow: hidden; border: 1px solid var(--white-line); color: var(--paper); background: rgba(20, 37, 30, .46); text-align: left; scroll-snap-align: start; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .path-action-card::before { content: ''; position: absolute; z-index: 2; top: -1px; right: -1px; left: -1px; height: 3px; background: var(--orange-soft); }
 .path-action-card-speed::before { background: var(--mint); }
 .path-action-card-next::before { background: var(--orange); }
 .path-action-card:hover, .path-action-card.active { border-color: var(--orange-soft); background: var(--forest-2); transform: translateY(-2px); }
 .path-action-card.active { box-shadow: inset 0 -3px 0 var(--orange-soft); }
 .path-action-card-index { position: absolute; z-index: 3; top: 11px; left: 10px; color: var(--orange-soft); font: 10px var(--mono); }
-.path-action-card-image { display: grid; place-items: center; min-width: 0; min-height: 0; overflow: hidden; background: #10251d; }
-.path-action-card-image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.path-action-card-image { display: grid; place-items: center; min-width: 0; min-height: 0; aspect-ratio: 362 / 1024; overflow: hidden; background: #10251d; }
+.path-action-card-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .path-action-card-caption { display: grid; gap: 6px; min-height: 77px; padding: 10px 10px 12px; border-top: 1px solid var(--white-line); background: rgba(9, 24, 18, .68); }
 .path-action-card-caption b { color: var(--orange-soft); font: 9px var(--mono); font-weight: 400; }
 .path-action-card-caption strong { color: var(--paper); font-size: 12px; font-weight: 400; line-height: 1.35; }
@@ -755,7 +755,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .path-action-group-row span { padding: 8px 7px 7px; }
   .path-action-group-row small { font-size: 8px; }
   .path-action-grid { grid-template-columns: repeat(7, minmax(126px, 1fr)); }
-  .path-action-card { grid-template-rows: 390px auto; }
   .path-action-card-caption { min-height: 72px; padding: 9px 8px 10px; }
   .path-action-card-caption strong { font-size: 11px; }
   .path-reading-inline { grid-template-columns: 1fr; gap: 0; padding: 20px; }
