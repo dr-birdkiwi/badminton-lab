@@ -17,6 +17,383 @@
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
+/* Late cascade: keep the editorial skin above the component defaults. */
+.force-path-section,
+.training-section,
+.lesson-section,
+.boundary-section {
+  color: var(--paper);
+  background-color: var(--ink);
+  background-image: radial-gradient(circle at 82% 8%, rgba(242, 170, 120, .12), transparent 23%), linear-gradient(135deg, #102a20 0%, var(--ink) 56%, #183d2e 100%);
+}
+.force-path-section .section-label,
+.training-section .section-label,
+.lesson-section .section-label,
+.boundary-section .section-label,
+.force-path-section .section-index,
+.training-section .section-index,
+.lesson-section .section-index,
+.boundary-section .section-index { color: var(--orange-soft); }
+.force-path-section .section-index,
+.training-section .section-index,
+.lesson-section .section-index,
+.boundary-section .section-index { border-color: var(--white-line); }
+.force-path-section h2,
+.training-section h2,
+.lesson-section h2,
+.boundary-section h2,
+.force-path-section h2 em,
+.training-section h2 em,
+.lesson-section h2 em,
+.boundary-section h2 em { color: var(--paper); }
+.force-path-section h2 em,
+.training-section h2 em,
+.lesson-section h2 em,
+.boundary-section h2 em { color: var(--orange-soft); }
+.force-path-section .path-statement,
+.training-section .training-statement,
+.lesson-section .lesson-intro { border: 1px solid var(--white-line); border-left: 3px solid var(--orange); color: var(--paper); background: rgba(245, 242, 233, .055); }
+.force-path-section .path-statement strong,
+.training-section .training-statement strong,
+.lesson-section .lesson-intro strong { color: var(--paper); }
+.force-path-section .path-statement p,
+.lesson-section .lesson-intro p { color: rgba(245, 242, 233, .68); }
+.force-path-section .path-layout,
+.training-section .training-layout { gap: 16px; }
+.force-path-section .path-visual,
+.training-section .training-visual { padding: 28px; border: 1px solid var(--white-line); background: rgba(245, 242, 233, .035); }
+.force-path-section .path-group,
+.training-section .training-node,
+.training-section .training-rules > div { border-color: var(--white-line); background: rgba(245, 242, 233, .035); }
+.force-path-section .path-node { border-color: var(--white-line); background: rgba(20, 37, 30, .42); }
+.force-path-section .path-node:hover,
+.force-path-section .path-node.active,
+.training-section .training-node:hover,
+.training-section .training-node.active { border-color: var(--orange-soft); background: var(--forest-2); }
+.force-path-section .path-reading,
+.training-section .training-reading { min-height: 100%; border: 1px solid var(--white-line); border-left: 3px solid var(--orange); color: var(--paper); background: rgba(245, 242, 233, .055); }
+.force-path-section .path-reading h3,
+.training-section .training-reading h3,
+.training-section .training-module-head strong { color: var(--paper); }
+.force-path-section .path-reading-lead,
+.force-path-section .path-reading-grid > div,
+.training-section .training-module,
+.training-section .training-sources,
+.training-section .training-rules > div { border-color: var(--white-line); }
+.force-path-section .path-reading-lead p,
+.training-section .training-goal p,
+.training-section .training-module p,
+.training-section .training-note,
+.training-section .training-sources a { color: rgba(245, 242, 233, .7); }
+.training-section .training-goal { border: 1px solid var(--white-line); border-left: 2px solid var(--orange); background: rgba(245, 242, 233, .055); }
+.training-section .training-goal span,
+.training-section .training-module span,
+.training-section .training-sources > span,
+.training-section .training-rules b { color: var(--orange-soft); }
+.training-section .training-photo { border-color: var(--white-line); }
+.lesson-section .phase-tabs { border-color: var(--white-line); }
+.lesson-section .phase-tab { border-color: var(--white-line); color: rgba(245, 242, 233, .66); }
+.lesson-section .phase-tab.active { color: var(--paper); background: var(--forest-2); box-shadow: inset 0 -3px 0 var(--orange-soft); }
+.lesson-section .phase-reading { border-top-color: var(--orange); border-bottom-color: var(--white-line); }
+.lesson-section .phase-status strong,
+.lesson-section .phase-main h3,
+.lesson-section .phase-action p,
+.lesson-section .coach-drill p,
+.lesson-section .verdict-head strong,
+.lesson-section .verdict-grid strong { color: var(--paper); }
+.lesson-section .phase-status span,
+.lesson-section .phase-action span,
+.lesson-section .coach-row span,
+.lesson-section .verdict-head span { color: var(--orange-soft); }
+.lesson-section .phase-status small,
+.lesson-section .coach-row p,
+.lesson-section .lesson-note { color: rgba(245, 242, 233, .68); }
+.lesson-section .phase-action { border-left-color: var(--orange); background: rgba(245, 242, 233, .075); }
+.lesson-section .phase-coach,
+.lesson-section .coach-row,
+.lesson-section .lesson-verdict,
+.lesson-section .verdict-grid > div { border-color: var(--white-line); }
+.lesson-section .lesson-verdict { background: rgba(245, 242, 233, .055); }
+.lesson-section .verdict-grid > div { background: rgba(245, 242, 233, .025); }
+.lesson-section .verdict-grid b,
+.lesson-section .verdict-grid p,
+.lesson-section .verdict-rule { color: rgba(245, 242, 233, .7); }
+.boundary-section .boundary-grid article { border-color: var(--white-line); background: rgba(245, 242, 233, .045); }
+.boundary-section .boundary-grid article > span,
+.boundary-section .source-strip span { color: var(--orange-soft); }
+.boundary-section .boundary-grid h3 { color: var(--paper); }
+.boundary-section .boundary-grid p,
+.boundary-section .source-strip a { color: rgba(245, 242, 233, .68); }
+.boundary-section .source-strip { border-color: var(--white-line); }
+
+@media (max-width: 1000px) {
+  .force-path-section .path-visual,
+  .training-section .training-visual { padding: 20px; }
+}
+@media (max-width: 700px) {
+  .force-path-section .path-visual,
+  .training-section .training-visual { padding: 15px; }
+  .force-path-section .path-reading,
+  .training-section .training-reading { min-height: 0; }
+}
+
+/* Editorial finish for the second half of the site. Keep the interaction,
+   but bring every chapter back into the same dark, spacious visual system. */
+.force-path-section,
+.training-section,
+.lesson-section,
+.boundary-section {
+  color: var(--paper);
+  background-color: var(--ink);
+  background-image: radial-gradient(circle at 82% 8%, rgba(242, 170, 120, .12), transparent 23%), linear-gradient(135deg, #102a20 0%, var(--ink) 56%, #183d2e 100%);
+}
+
+.force-path-section .section-label,
+.training-section .section-label,
+.lesson-section .section-label,
+.boundary-section .section-label,
+.force-path-section .section-index,
+.training-section .section-index,
+.lesson-section .section-index,
+.boundary-section .section-index {
+  color: var(--orange-soft);
+}
+
+.force-path-section .section-index,
+.training-section .section-index,
+.lesson-section .section-index,
+.boundary-section .section-index {
+  border-color: var(--white-line);
+}
+
+.force-path-section h2,
+.training-section h2,
+.lesson-section h2,
+.boundary-section h2,
+.force-path-section h2 em,
+.training-section h2 em,
+.lesson-section h2 em,
+.boundary-section h2 em {
+  color: var(--paper);
+}
+
+.force-path-section h2 em,
+.training-section h2 em,
+.lesson-section h2 em,
+.boundary-section h2 em {
+  color: var(--orange-soft);
+}
+
+.force-path-section .path-statement,
+.training-section .training-statement,
+.lesson-section .lesson-intro {
+  border: 1px solid var(--white-line);
+  border-left: 3px solid var(--orange);
+  color: var(--paper);
+  background: rgba(245, 242, 233, .055);
+}
+
+.force-path-section .path-statement strong,
+.training-section .training-statement strong,
+.lesson-section .lesson-intro strong {
+  color: var(--paper);
+}
+
+.force-path-section .path-statement p,
+.lesson-section .lesson-intro p {
+  color: rgba(245, 242, 233, .68);
+}
+
+.force-path-section .path-layout,
+.training-section .training-layout {
+  gap: 16px;
+}
+
+.force-path-section .path-visual,
+.training-section .training-visual {
+  padding: 28px;
+  border: 1px solid var(--white-line);
+  background: rgba(245, 242, 233, .035);
+}
+
+.force-path-section .path-group,
+.training-section .training-node,
+.training-section .training-rules > div {
+  border-color: var(--white-line);
+  background: rgba(245, 242, 233, .035);
+}
+
+.force-path-section .path-node {
+  border-color: var(--white-line);
+  background: rgba(20, 37, 30, .42);
+}
+
+.force-path-section .path-node:hover,
+.force-path-section .path-node.active,
+.training-section .training-node:hover,
+.training-section .training-node.active {
+  border-color: var(--orange-soft);
+  background: var(--forest-2);
+}
+
+.force-path-section .path-reading,
+.training-section .training-reading {
+  min-height: 100%;
+  border: 1px solid var(--white-line);
+  border-left: 3px solid var(--orange);
+  color: var(--paper);
+  background: rgba(245, 242, 233, .055);
+}
+
+.force-path-section .path-reading h3,
+.training-section .training-reading h3,
+.training-section .training-module-head strong {
+  color: var(--paper);
+}
+
+.force-path-section .path-reading-lead,
+.force-path-section .path-reading-grid > div,
+.training-section .training-module,
+.training-section .training-sources,
+.training-section .training-rules > div {
+  border-color: var(--white-line);
+}
+
+.force-path-section .path-reading-lead p,
+.training-section .training-goal p,
+.training-section .training-module p,
+.training-section .training-note,
+.training-section .training-sources a {
+  color: rgba(245, 242, 233, .7);
+}
+
+.training-section .training-goal {
+  border: 1px solid var(--white-line);
+  border-left: 2px solid var(--orange);
+  background: rgba(245, 242, 233, .055);
+}
+
+.training-section .training-goal span,
+.training-section .training-module span,
+.training-section .training-sources > span,
+.training-section .training-rules b {
+  color: var(--orange-soft);
+}
+
+.training-section .training-photo {
+  border-color: var(--white-line);
+}
+
+.lesson-section .phase-tabs {
+  border-color: var(--white-line);
+}
+
+.lesson-section .phase-tab {
+  border-color: var(--white-line);
+  color: rgba(245, 242, 233, .66);
+}
+
+.lesson-section .phase-tab.active {
+  color: var(--paper);
+  background: var(--forest-2);
+  box-shadow: inset 0 -3px 0 var(--orange-soft);
+}
+
+.lesson-section .phase-reading {
+  border-top-color: var(--orange);
+  border-bottom-color: var(--white-line);
+}
+
+.lesson-section .phase-status strong,
+.lesson-section .phase-main h3,
+.lesson-section .phase-action p,
+.lesson-section .coach-drill p,
+.lesson-section .verdict-head strong,
+.lesson-section .verdict-grid strong {
+  color: var(--paper);
+}
+
+.lesson-section .phase-status span,
+.lesson-section .phase-action span,
+.lesson-section .coach-row span,
+.lesson-section .verdict-head span {
+  color: var(--orange-soft);
+}
+
+.lesson-section .phase-status small,
+.lesson-section .coach-row p,
+.lesson-section .lesson-note {
+  color: rgba(245, 242, 233, .68);
+}
+
+.lesson-section .phase-action {
+  border-left-color: var(--orange);
+  background: rgba(245, 242, 233, .075);
+}
+
+.lesson-section .phase-coach,
+.lesson-section .coach-row,
+.lesson-section .lesson-verdict,
+.lesson-section .verdict-grid > div {
+  border-color: var(--white-line);
+}
+
+.lesson-section .lesson-verdict {
+  background: rgba(245, 242, 233, .055);
+}
+
+.lesson-section .verdict-grid > div {
+  background: rgba(245, 242, 233, .025);
+}
+
+.lesson-section .verdict-grid b,
+.lesson-section .verdict-grid p,
+.lesson-section .verdict-rule {
+  color: rgba(245, 242, 233, .7);
+}
+
+.boundary-section .boundary-grid article {
+  border-color: var(--white-line);
+  background: rgba(245, 242, 233, .045);
+}
+
+.boundary-section .boundary-grid article > span,
+.boundary-section .source-strip span {
+  color: var(--orange-soft);
+}
+
+.boundary-section .boundary-grid h3 {
+  color: var(--paper);
+}
+
+.boundary-section .boundary-grid p,
+.boundary-section .source-strip a {
+  color: rgba(245, 242, 233, .68);
+}
+
+.boundary-section .source-strip {
+  border-color: var(--white-line);
+}
+
+@media (max-width: 1000px) {
+  .force-path-section .path-visual,
+  .training-section .training-visual {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .force-path-section .path-visual,
+  .training-section .training-visual {
+    padding: 15px;
+  }
+
+  .force-path-section .path-reading,
+  .training-section .training-reading {
+    min-height: 0;
+  }
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: auto; }
 body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); }
@@ -366,3 +743,108 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .force-footer { display: grid; gap: 9px; padding: 18px 20px; }
   .force-footer strong { order: -1; }
 }
+
+/* Final editorial cascade for the lower chapters. */
+.force-path-section,
+.training-section,
+.lesson-section,
+.boundary-section {
+  color: var(--paper);
+  background-color: var(--ink);
+  background-image: radial-gradient(circle at 82% 8%, rgba(242, 170, 120, .12), transparent 23%), linear-gradient(135deg, #102a20 0%, var(--ink) 56%, #183d2e 100%);
+}
+.force-path-section .section-label,
+.training-section .section-label,
+.lesson-section .section-label,
+.boundary-section .section-label,
+.force-path-section .section-index,
+.training-section .section-index,
+.lesson-section .section-index,
+.boundary-section .section-index { color: var(--orange-soft); }
+.force-path-section .section-index,
+.training-section .section-index,
+.lesson-section .section-index,
+.boundary-section .section-index { border-color: var(--white-line); }
+.force-path-section h2,
+.training-section h2,
+.lesson-section h2,
+.boundary-section h2 { color: var(--paper); }
+.force-path-section h2 em,
+.training-section h2 em,
+.lesson-section h2 em,
+.boundary-section h2 em { color: var(--orange-soft); }
+.force-path-section .path-statement,
+.training-section .training-statement,
+.lesson-section .lesson-intro { border: 1px solid var(--white-line); border-left: 3px solid var(--orange); color: var(--paper); background: rgba(245, 242, 233, .055); }
+.force-path-section .path-statement strong,
+.training-section .training-statement strong,
+.lesson-section .lesson-intro strong { color: var(--paper); }
+.force-path-section .path-statement p,
+.lesson-section .lesson-intro p { color: rgba(245, 242, 233, .68); }
+.force-path-section .path-layout,
+.training-section .training-layout { gap: 16px; }
+.force-path-section .path-visual,
+.training-section .training-visual { padding: 28px; border: 1px solid var(--white-line); background: rgba(245, 242, 233, .035); }
+.force-path-section .path-group,
+.training-section .training-node,
+.training-section .training-rules > div { border-color: var(--white-line); background: rgba(245, 242, 233, .035); }
+.force-path-section .path-node { border-color: var(--white-line); background: rgba(20, 37, 30, .42); }
+.force-path-section .path-node:hover,
+.force-path-section .path-node.active,
+.training-section .training-node:hover,
+.training-section .training-node.active { border-color: var(--orange-soft); background: var(--forest-2); }
+.force-path-section .path-reading,
+.training-section .training-reading { min-height: 100%; border: 1px solid var(--white-line); border-left: 3px solid var(--orange); color: var(--paper); background: rgba(245, 242, 233, .055); }
+.force-path-section .path-reading h3,
+.training-section .training-reading h3,
+.training-section .training-module-head strong { color: var(--paper); }
+.force-path-section .path-reading-lead,
+.force-path-section .path-reading-grid > div,
+.training-section .training-module,
+.training-section .training-sources,
+.training-section .training-rules > div { border-color: var(--white-line); }
+.force-path-section .path-reading-lead p,
+.training-section .training-goal p,
+.training-section .training-module p,
+.training-section .training-note,
+.training-section .training-sources a { color: rgba(245, 242, 233, .7); }
+.training-section .training-goal { border: 1px solid var(--white-line); border-left: 2px solid var(--orange); background: rgba(245, 242, 233, .055); }
+.training-section .training-goal span,
+.training-section .training-module span,
+.training-section .training-sources > span,
+.training-section .training-rules b { color: var(--orange-soft); }
+.training-section .training-photo { border-color: var(--white-line); }
+.lesson-section .phase-tabs { border-color: var(--white-line); }
+.lesson-section .phase-tab { border-color: var(--white-line); color: rgba(245, 242, 233, .66); }
+.lesson-section .phase-tab.active { color: var(--paper); background: var(--forest-2); box-shadow: inset 0 -3px 0 var(--orange-soft); }
+.lesson-section .phase-reading { border-top-color: var(--orange); border-bottom-color: var(--white-line); }
+.lesson-section .phase-status strong,
+.lesson-section .phase-main h3,
+.lesson-section .phase-action p,
+.lesson-section .coach-drill p,
+.lesson-section .verdict-head strong,
+.lesson-section .verdict-grid strong { color: var(--paper); }
+.lesson-section .phase-status span,
+.lesson-section .phase-action span,
+.lesson-section .coach-row span,
+.lesson-section .verdict-head span { color: var(--orange-soft); }
+.lesson-section .phase-status small,
+.lesson-section .coach-row p,
+.lesson-section .lesson-note { color: rgba(245, 242, 233, .68); }
+.lesson-section .phase-action { border-left-color: var(--orange); background: rgba(245, 242, 233, .075); }
+.lesson-section .phase-coach,
+.lesson-section .coach-row,
+.lesson-section .lesson-verdict,
+.lesson-section .verdict-grid > div { border-color: var(--white-line); }
+.lesson-section .lesson-verdict { background: rgba(245, 242, 233, .055); }
+.lesson-section .verdict-grid > div { background: rgba(245, 242, 233, .025); }
+.lesson-section .verdict-grid b,
+.lesson-section .verdict-grid p,
+.lesson-section .verdict-rule { color: rgba(245, 242, 233, .7); }
+.boundary-section .boundary-grid article { border-color: var(--white-line); background: rgba(245, 242, 233, .045); }
+.boundary-section .boundary-grid article > span,
+.boundary-section .source-strip span { color: var(--orange-soft); }
+.boundary-section .boundary-grid h3 { color: var(--paper); }
+.boundary-section .boundary-grid p,
+.boundary-section .source-strip a { color: rgba(245, 242, 233, .68); }
+.boundary-section .source-strip { border-color: var(--white-line); }
