@@ -243,8 +243,14 @@ export default function Home() {
         <div className="decision-board">
           <div className="decision-board-head"><div><span>现场问题</span><strong>这球现在具不具备完整发力条件？</strong></div><div className="decision-board-purpose"><span>本章作用</span><strong>检查这一拍，不给球员定级。</strong></div></div>
           <div className="principles-sequence-layout">
-            <div className="principles-sequence-grid">
-              {principleSequence.map((item) => <article className="sequence-card" key={item.number}><div className={`sequence-image sequence-frame-${item.number}`} role="img" aria-label={item.alt}><span>{item.number}</span></div><div className="sequence-copy"><b>{item.label}</b><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
+            <div className="sequence-board-shell">
+              <figure className="sequence-board-frame">
+                <img src="/principles-sequence-board.png" alt="同一名羽毛球运动员从移动制动、身体组织、触球前加速到击球衔接的四帧连续动作研究图" />
+                <figcaption>同一运动员 · 同一机位 · 四个连续时刻</figcaption>
+              </figure>
+              <div className="sequence-step-grid">
+                {principleSequence.map((item) => <article className="sequence-step" key={item.number}><div className="sequence-step-head"><b>{item.number}</b><span>{item.label}</span></div><h3>{item.title}</h3><p>{item.text}</p></article>)}
+              </div>
             </div>
             <div className="visual-reading-note"><span>按顺序看，不要跳步</span><strong>这不是四张姿势图，而是一拍动作的时间关系。</strong><p>身体先移动并制动，随后组织方向，再把速度集中到触球前；最后用碰撞和落地把这次击球接回下一拍。</p><div><b>图像读法</b><span>移动制动 → 身体组织 → 触球前加速 → 碰撞衔接</span></div></div>
           </div>
