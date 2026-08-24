@@ -93,10 +93,10 @@ const lessonSteps: LessonStep[] = [
 ];
 
 const principleSequence = [
-  { number: '01', label: '击球窗口', title: '移动与制动', text: '先到球的侧后方，再把速度吸收住；球点才能停在持拍肩前上方。', src: '/principles-window.png', alt: '羽毛球后场击球前的移动与制动阶段' },
-  { number: '02', label: '身体组织', title: '骨盆与胸廓组织方向', text: '脚下停住以后，身体不是僵住，而是为拍臂保留可用的加速空间。', src: '/principles-organise.png', alt: '羽毛球后场击球前的身体组织阶段' },
-  { number: '03', label: '触球前加速', title: '把最快一段留到最后', text: '肩、肘、前臂在短窗口内共同加速，让拍头速度靠近触球时刻。', src: '/principles-accelerate.png', alt: '羽毛球击球前拍头加速阶段' },
-  { number: '04', label: '击球与衔接', title: '速度进入碰撞，再回到下一拍', text: '稳定拍面完成中心触球，落地后仍然保留继续移动和选择的能力。', src: '/principles-impact.png', alt: '羽毛球拍面与羽毛球碰撞并准备衔接下一拍的阶段' },
+  { number: '01', label: '击球窗口', title: '移动与制动', text: '先到球的侧后方，再把速度吸收住；球点才能停在持拍肩前上方。', alt: '羽毛球后场击球前的移动与制动阶段' },
+  { number: '02', label: '身体组织', title: '骨盆与胸廓组织方向', text: '脚下停住以后，身体不是僵住，而是为拍臂保留可用的加速空间。', alt: '羽毛球后场击球前的身体组织阶段' },
+  { number: '03', label: '触球前加速', title: '把最快一段留到最后', text: '肩、肘、前臂在短窗口内共同加速，让拍头速度靠近触球时刻。', alt: '羽毛球击球前拍头加速阶段' },
+  { number: '04', label: '击球与衔接', title: '速度进入碰撞，再回到下一拍', text: '稳定拍面完成中心触球，落地后仍然保留继续移动和选择的能力。', alt: '羽毛球拍面与羽毛球碰撞并准备衔接下一拍的阶段' },
 ];
 
 const forceMarkers: StudyMarker[] = [
@@ -244,7 +244,7 @@ export default function Home() {
           <div className="decision-board-head"><div><span>现场问题</span><strong>这球现在具不具备完整发力条件？</strong></div><div className="decision-board-purpose"><span>本章作用</span><strong>检查这一拍，不给球员定级。</strong></div></div>
           <div className="principles-sequence-layout">
             <div className="principles-sequence-grid">
-              {principleSequence.map((item) => <article className="sequence-card" key={item.number}><div className="sequence-image"><img src={item.src} alt={item.alt} /><span>{item.number}</span></div><div className="sequence-copy"><b>{item.label}</b><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
+              {principleSequence.map((item) => <article className="sequence-card" key={item.number}><div className={`sequence-image sequence-frame-${item.number}`} role="img" aria-label={item.alt}><span>{item.number}</span></div><div className="sequence-copy"><b>{item.label}</b><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
             </div>
             <div className="visual-reading-note"><span>按顺序看，不要跳步</span><strong>这不是四张姿势图，而是一拍动作的时间关系。</strong><p>身体先移动并制动，随后组织方向，再把速度集中到触球前；最后用碰撞和落地把这次击球接回下一拍。</p><div><b>图像读法</b><span>移动制动 → 身体组织 → 触球前加速 → 碰撞衔接</span></div></div>
           </div>

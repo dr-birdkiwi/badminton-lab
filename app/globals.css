@@ -699,6 +699,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .sequence-copy b { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .08em; font-weight: 400; }
 .sequence-copy h3 { margin: 2px 0 0; color: var(--paper); font-size: 21px; font-weight: 400; letter-spacing: -.06em; }
 .sequence-copy p { margin: 0; color: rgba(245, 242, 233, .68); font-size: 12px; line-height: 1.65; }
+.sequence-image { background-image: url('/principles-sequence-board.png'); background-repeat: no-repeat; background-size: 400% 100%; }
+.sequence-frame-01 { background-position: 0 0; }
+.sequence-frame-02 { background-position: 33.3333% 0; }
+.sequence-frame-03 { background-position: 66.6667% 0; }
+.sequence-frame-04 { background-position: 100% 0; }
 
 @media (max-width: 900px) {
   .principles-visual-layout,
