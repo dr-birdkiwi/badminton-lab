@@ -94,8 +94,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .decision-board-head > div { display: grid; gap: 8px; }
 .decision-board-head > div > span, .decision-board-head > span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; }
 .decision-board-head > div > strong { color: var(--paper); font: 22px var(--serif); font-weight: 400; }
+.decision-board-purpose { min-width: 220px; padding-left: 19px; border-left: 1px solid var(--white-line); }
+.decision-board-head .decision-board-purpose > strong { color: rgba(245, 242, 233, .7); font: 13px/1.5 var(--sans); }
 .decision-board-head > span { white-space: nowrap; }
-.claim-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.claim-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .claim-card { position: relative; min-height: 218px; overflow: hidden; padding: 19px; border: 1px solid var(--white-line); background: rgba(245, 242, 233, .05); transition: background .2s ease, border-color .2s ease; }
 .claim-card::after { content: ''; position: absolute; top: 0; right: 0; left: 0; height: 3px; background: var(--orange-soft); }
 .claim-card:nth-child(2)::after { background: var(--mint); }
@@ -268,7 +270,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .mechanics-plate { min-height: 500px; }
   .plate-trunk { left: 41%; }
   .claim-grid { grid-template-columns: 1fr 1fr; }
-  .claim-card:last-child { grid-column: 1 / -1; }
+  .claim-card:last-child { grid-column: auto; }
   .path-layout { grid-template-columns: 1fr; }
   .training-layout { grid-template-columns: 1fr; }
   .phase-main { padding-right: 4vw; }
@@ -305,6 +307,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .section-index { display: block; margin-top: 19px; }
   .decision-board { padding: 15px; }
   .decision-board-head { display: grid; align-items: start; gap: 10px; }
+  .decision-board-purpose { min-width: 0; padding-top: 10px; padding-left: 0; border-top: 1px solid var(--white-line); border-left: 0; }
   .decision-board-head > span { white-space: normal; line-height: 1.5; }
   .claim-grid, .boundary-grid { grid-template-columns: 1fr; }
   .claim-card, .boundary-grid article { min-height: 0; }

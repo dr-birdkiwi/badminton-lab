@@ -79,9 +79,10 @@ const lessonSteps: LessonStep[] = [
 ];
 
 const claims = [
-  { number: '01', title: '先赢窗口', text: '顶级杀球先赢在到位：球必须留在拍侧肩前上方，身体不用后仰，才同时拥有角度、拍速和落地控制。' },
-  { number: '02', title: '再赢拍速', text: '更大的摆动不等于更快。高手把最快的拍头加速留在触球前，并让肩、肘、前臂在短时间内共同完成。' },
-  { number: '03', title: '最后赢碰撞', text: '拍头速度只有通过稳定拍面和接近甜区的触球，才会变成速度与落点；偏心触球会同时损失两者。' },
+  { number: '01', title: '击球窗口', text: '身体在球的侧后方，理想击球点位于持拍肩前上方；不用后仰，也能向下击球。' },
+  { number: '02', title: '身体组织', text: '躯干先转开，为拍臂留出通道；非持拍侧帮助定位来球，不让身体挤掉挥拍空间。' },
+  { number: '03', title: '触球前加速', text: '把最快的一段留在触球前；肩、肘、前臂共同加速，不是全程握死或只甩手腕。' },
+  { number: '04', title: '碰撞与衔接', text: '中心触球、拍面稳定，速度才会变成落点；落地后拍回身前，仍能接管下一拍。' },
 ];
 
 const forceNodes: ForceNode[] = [
@@ -193,13 +194,13 @@ export default function Home() {
       </section>
 
       <section id="principles" className="principles-section force-section">
-        <div className="section-heading"><div><span className="section-label">高手判断</span><h2>高手先过<br /><em>三道门。</em></h2></div><span className="section-index">击球窗口 · 拍速 · 碰撞</span></div>
+        <div className="section-heading"><div><span className="section-label">击球决策</span><h2>这球该怎么打？<br /><em>先看条件，再选出手。</em></h2></div><span className="section-index">检查 · 选择 · 衔接</span></div>
         <div className="decision-board">
-          <div className="decision-board-head"><div><span>从检查到出手</span><strong>三个质量检查，直接决定这球怎么打。</strong></div><span>窗口 → 拍速 → 碰撞 → 下一拍</span></div>
+          <div className="decision-board-head"><div><span>现场问题</span><strong>这球现在具不具备完整发力条件？</strong></div><div className="decision-board-purpose"><span>本章作用</span><strong>检查这一拍，不给球员定级。</strong></div></div>
           <div className="claim-grid">{claims.map((claim) => <article key={claim.number} className="claim-card"><span>{claim.number}</span><h3>{claim.title}</h3><p>{claim.text}</p></article>)}</div>
-          <div className="principle-line"><span>判断路线</span><strong>能否向下击球 → 拍头能否快速到达 → 甜区和方向是否稳定 → 能否接管第二拍。</strong></div>
+          <div className="principle-line"><span>判断路线</span><strong>窗口完整 + 有空间 + 碰撞可控 → 完整杀球；时间被压缩 → 点杀 / 半杀；窗口丢失或无法衔接 → 先过渡。</strong></div>
           <div className="shot-choice">
-            <div className="shot-choice-head"><span>根据结果选择打法</span><strong>别把所有后场高球，都当成完整杀球。</strong></div>
+            <div className="shot-choice-head"><span>根据结果选择打法</span><strong>每次出手先服从来球条件，再追求拍速。</strong></div>
             <div className="shot-choice-grid">
               <article><b>01 / 完整杀球</b><h3>完整杀球</h3><p><span>窗口</span>球在拍侧肩前上方，身体不用后仰，落地仍可控。</p><p><span>目标</span>用速度或落点直接得分，或制造确定的弱回球。</p></article>
               <article><b>02 / 点杀 · 半杀</b><h3>点杀 · 半杀</h3><p><span>窗口</span>时间或空间被压缩，但仍能在较高点向下触球。</p><p><span>目标</span>缩短准备，优先抢节奏、空档和下一拍。</p></article>
