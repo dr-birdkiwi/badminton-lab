@@ -808,3 +808,60 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .visual-reading-note > strong { font-size: 20px; }
   .visual-reading-note > p { font-size: 13px; }
 }
+
+/* Training prescription board: the selected stage owns both the image and the reading. */
+.training-section .training-layout { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 16px; align-items: start; }
+.training-section .training-visual { padding: 22px; border: 1px solid var(--white-line); background: rgba(8, 26, 19, .52); }
+.training-section .training-meta { align-items: baseline; }
+.training-section .training-track { margin: 20px 0 16px; }
+.training-section .training-node { min-height: 98px; padding: 12px; }
+.training-section .training-node strong { margin-top: 17px; font-size: 16px; }
+.training-section .training-node.active { box-shadow: inset 0 -3px 0 var(--orange-soft); }
+.training-stage-photo { position: relative; min-width: 0; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--white-line); background: #10251d; isolation: isolate; }
+.training-stage-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% center; filter: saturate(1.05) contrast(1.04); }
+.training-stage-photo::after { content: ''; position: absolute; z-index: 2; inset: 12px; border: 1px solid rgba(245, 242, 233, .23); pointer-events: none; }
+.training-stage-photo-meta { position: absolute; z-index: 4; top: 14px; right: 16px; left: 16px; display: flex; justify-content: space-between; gap: 12px; color: rgba(245, 242, 233, .8); font: 9px var(--mono); letter-spacing: .1em; }
+.training-photo-shade { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, rgba(8, 25, 18, .12) 34%, rgba(8, 25, 18, .8) 100%), linear-gradient(90deg, rgba(8, 25, 18, .36), transparent 60%); pointer-events: none; }
+.training-stage-photo-caption { position: absolute; z-index: 4; right: 16px; bottom: 15px; left: 16px; display: flex; align-items: end; justify-content: space-between; gap: 22px; }
+.training-stage-photo-caption > div { display: grid; gap: 6px; }
+.training-stage-photo-caption span { color: var(--orange-soft); font: 9px var(--mono); letter-spacing: .1em; }
+.training-stage-photo-caption strong { color: var(--paper); font: 22px/1.08 var(--serif); font-weight: 400; }
+.training-stage-photo-caption p { max-width: 275px; margin: 0; color: rgba(245, 242, 233, .82); font-size: 12px; line-height: 1.55; text-align: right; }
+.training-section .training-rules { margin-top: 15px; padding-top: 13px; }
+.training-section .training-rules > div { padding: 11px 12px 12px; }
+.training-section .training-rules strong { margin-top: 13px; font-size: 12px; }
+.training-section .training-rules p { margin-top: 6px; font-size: 10px; }
+.training-section .training-reading { min-height: 0 !important; align-self: start; padding: 22px; border: 1px solid var(--white-line); border-left: 3px solid var(--orange); background: rgba(245, 242, 233, .055); }
+.training-reading-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--white-line); }
+.training-reading-top > b { color: rgba(245, 242, 233, .62); font: 9px var(--mono); letter-spacing: .06em; font-weight: 400; text-align: right; }
+.training-section .training-reading h3 { max-width: none; margin: 17px 0 16px; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.03; }
+.training-section .training-goal { margin-bottom: 15px; padding: 13px 14px 14px; border: 1px solid var(--white-line); border-left: 2px solid var(--orange-soft); background: rgba(245, 242, 233, .055); }
+.training-section .training-goal p { margin-top: 7px; color: rgba(245, 242, 233, .76); font-size: 12px; line-height: 1.6; }
+.training-section .training-module-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.training-section .training-module { min-width: 0; padding: 13px 13px 14px; border: 1px solid var(--white-line); background: rgba(245, 242, 233, .035); }
+.training-section .training-module:nth-child(3):last-child { grid-column: 1 / -1; }
+.training-section .training-module-head { margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid var(--white-line); }
+.training-section .training-module-head strong { font-size: 15px; line-height: 1.3; }
+.training-section .training-module > div:not(.training-module-head) { grid-template-columns: 54px 1fr; gap: 7px; margin-top: 7px; }
+.training-section .training-module span { font-size: 8px; letter-spacing: .05em; }
+.training-section .training-module p { color: rgba(245, 242, 233, .68); font-size: 11px; line-height: 1.52; }
+
+@media (max-width: 900px) {
+  .training-section .training-layout { grid-template-columns: 1fr; }
+  .training-section .training-reading { padding: 22px; }
+}
+
+@media (max-width: 700px) {
+  .training-section .training-visual { padding: 14px; }
+  .training-section .training-track { margin-top: 18px; }
+  .training-section .training-node { min-height: 98px; }
+  .training-stage-photo { aspect-ratio: 1.38; }
+  .training-stage-photo-meta { top: 12px; right: 12px; left: 12px; display: grid; gap: 5px; }
+  .training-stage-photo-caption { right: 12px; bottom: 12px; left: 12px; display: grid; gap: 8px; }
+  .training-stage-photo-caption strong { font-size: 20px; }
+  .training-stage-photo-caption p { max-width: 300px; font-size: 12px; text-align: left; }
+  .training-section .training-module-list { grid-template-columns: 1fr; }
+  .training-section .training-module:nth-child(3):last-child { grid-column: auto; }
+  .training-reading-top { display: grid; gap: 7px; }
+  .training-reading-top > b { text-align: left; }
+}

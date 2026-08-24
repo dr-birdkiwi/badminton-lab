@@ -40,6 +40,10 @@ type TrainingStage = {
   label: string;
   title: string;
   goal: string;
+  image: string;
+  imageAlt: string;
+  visualLabel: string;
+  visualCue: string;
   modules: TrainingModule[];
 };
 
@@ -126,7 +130,7 @@ const forceNodes: ForceNode[] = [
 
 const trainingStages: TrainingStage[] = [
   {
-    number: '01', label: '到位与再启动', title: '先把击球窗口做稳定', goal: '这一阶段解决“能不能反复到球后、在前上方触球，并立刻接下一拍”。顶级脚下不是停得最死，而是到位后仍然保留调整能力。',
+    number: '01', label: '到位与再启动', title: '先把击球窗口做稳定', goal: '这一阶段解决“能不能反复到球后、在前上方触球，并立刻接下一拍”。顶级脚下不是停得最死，而是到位后仍然保留调整能力。', image: '/training-footwork.png', imageAlt: '羽毛球运动员在后场到位后进行单腿制动，准备再次启动', visualLabel: '脚下 · 制动 · 再启动', visualCue: '先把速度吸收住，再保留下一步的方向。',
     modules: [
       { phase: '后场到位 · 再启动', exercise: '随机启动到两个后场点 → 定住击球窗口 → 影子触球 → 教练再指一个方向启动。', dose: '3 组 × 4 次/侧；每次完整回位，组间休息 60–90 秒。', muscles: '臀肌、股四头肌、腘绳肌与小腿共同完成推进、制动和再次启动。', check: '触球位置不向后漂，第二次启动方向仍然清楚。' },
       { phase: '单腿 · 侧向制动', exercise: '低幅度侧向跳或跨步落地，单腿承载后立即向相反方向小步启动。', dose: '3 组 × 4 次/侧；落地声音和膝髋控制变差就停止。', muscles: '臀中肌、臀大肌、股四头肌、腘绳肌和小腿的离心控制。', check: '髋、膝、脚方向一致，身体没有塌向一侧。' },
@@ -134,14 +138,14 @@ const trainingStages: TrainingStage[] = [
     ],
   },
   {
-    number: '02', label: '旋转与肩胛', title: '让躯干为拍臂留出空间', goal: '这一阶段解决“躯干改变朝向时，拍臂是否仍能自由加速”。负荷要轻到足以保持速度，不用大重量复制杀球轨迹。',
+    number: '02', label: '旋转与肩胛', title: '让躯干为拍臂留出空间', goal: '这一阶段解决“躯干改变朝向时，拍臂是否仍能自由加速”。负荷要轻到足以保持速度，不用大重量复制杀球轨迹。', image: '/training-rotation.png', imageAlt: '羽毛球运动员用轻药球进行交错站姿旋转投掷训练，展示骨盆与胸廓的组织', visualLabel: '骨盆 · 胸廓 · 肩胛', visualCue: '不是把腰拧到最大，而是让转向为拍臂让出空间。',
     modules: [
       { phase: '交错站姿 · 旋转投掷', exercise: '用轻药球做侧向旋转投掷，强调快速出手和稳定回收；左右侧都练。', dose: '4 组 × 3 次/侧；每次追求速度，组间充分休息。', muscles: '臀肌、内收肌、腹斜肌与背部肌群共同改变朝向。', check: '球速快但脚下不乱，腰椎没有被迫拧到终点。' },
       { phase: '胸廓 · 肩胛协同', exercise: '交错站姿轻阻力 lift / chop，随后立刻做一次无阻力半挥拍。', dose: '3 组 × 5 次/侧；阻力只要能保持肩胛平顺移动。', muscles: '腹斜肌、前锯肌、下斜方肌和肩袖共同维持胸廓与上臂的关系。', check: '转体后手臂仍有空间，肩不耸、头部不被动作带走。' },
     ],
   },
   {
-    number: '03', label: '拍速与碰撞', title: '把速度送进稳定碰撞', goal: '这一阶段解决“能不能反复打出快拍头和干净碰撞”。先保留准确率，再缩短加速时间；不要用疲劳中的乱快冒充爆发力。',
+    number: '03', label: '拍速与碰撞', title: '把速度送进稳定碰撞', goal: '这一阶段解决“能不能反复打出快拍头和干净碰撞”。先保留准确率，再缩短加速时间；不要用疲劳中的乱快冒充爆发力。', image: '/training-speed.png', imageAlt: '羽毛球运动员进行过顶药球投掷速度训练，另一手持拍作为动作语境', visualLabel: '拍速 · 碰撞 · 准确率', visualCue: '先让速度可重复，再把速度送进中心触球。',
     modules: [
       { phase: '过顶投掷 · 无球快挥', exercise: '轻药球过顶投掷与无球快速半挥成对进行；投掷训练整体出手，挥拍训练具体拍速。', dose: '4 组 × 3 次；每次高质量，组间休息 60–90 秒。', muscles: '胸大肌、背阔肌、三角肌、肩袖、肱三头肌与前臂旋转肌群协同工作。', check: '速度提高时肩仍然放松，肘没有提前锁死。' },
       { phase: '十球 · 碰撞测试', exercise: '同一喂球点连续 10 球，记录目标命中和明显偏心触球；再提高一档速度重复。', dose: '2–3 轮 × 10 球；两项指标下降，就退回上一档速度。', muscles: '前臂旋转、握拍与手指屈伸配合肩袖，控制拍面和触球位置。', check: '更快一档仍能保持相近的目标命中和中心触球。' },
@@ -298,15 +302,20 @@ export default function Home() {
         <div className="training-statement"><span>训练原则</span><strong>先用球场结果定位瓶颈：到位不稳、旋转空间不足、拍速不够、碰撞不净或第二拍掉速。训练只补一个短板，最后必须回到真实击球验收。</strong></div>
         <div className="training-layout">
           <div className="training-visual" role="tablist" aria-label="杀球训练阶段">
-            <div className="training-meta"><span>三个训练阶段</span><span>只练一个短板</span></div>
+            <div className="training-meta"><span>三个训练阶段</span><span>点击阶段，查看对应训练画面</span></div>
             <div className="training-track">
               {trainingStages.map((item, index) => <div className="training-track-item" key={item.number}><button id={`training-tab-${item.number}`} className={activeTraining === index ? 'training-node active' : 'training-node'} onClick={() => setActiveTraining(index)} role="tab" aria-selected={activeTraining === index} aria-controls="training-panel"><b>{item.number}</b><strong>{item.label}</strong></button>{index < trainingStages.length - 1 && <span className="training-arrow" aria-hidden="true">→</span>}</div>)}
             </div>
+            <div className="training-stage-photo">
+              <div className="training-stage-photo-meta"><span>训练画面 · {trainingStage.number}</span><span>{trainingStage.visualLabel}</span></div>
+              <img src={trainingStage.image} alt={trainingStage.imageAlt} />
+              <div className="training-photo-shade" aria-hidden="true" />
+              <div className="training-stage-photo-caption"><div><span>这一张看什么</span><strong>{trainingStage.label}</strong></div><p>{trainingStage.visualCue}</p></div>
+            </div>
             <div className="training-rules"><div><b>01</b><strong>先有球场指标</strong><p>窗口 · 目标 · 第二拍。</p></div><div><b>02</b><strong>高质量再加量</strong><p>速度下降，就结束这一组。</p></div><div><b>03</b><strong>负荷不改动作</strong><p>离场训练，回场验收。</p></div></div>
-            <div className="training-photo"><img src="/training-study.png" alt="羽毛球运动员进行侧向跨步和单腿制动训练，展示脚、膝、髋的支撑关系" /><div className="training-photo-shade" aria-hidden="true" /><div className="training-photo-meta"><span>动作研究 / 04</span><span>制动 · 再启动</span></div><div className="training-photo-caption"><b>功能训练示例</b><strong>先能吸收速度，才有下一次启动。</strong></div></div>
           </div>
           <div id="training-panel" className="training-reading" role="tabpanel" tabIndex={0} aria-labelledby={`training-tab-${trainingStage.number}`}>
-            <span className="section-label">训练任务 · {trainingStage.number} · {trainingStage.label}</span>
+            <div className="training-reading-top"><span className="section-label">训练处方 · {trainingStage.number}</span><b>回场验收 · {trainingStage.label}</b></div>
             <h3>{trainingStage.title}</h3>
             <div className="training-goal"><span>本阶段目标</span><p>{trainingStage.goal}</p></div>
             <div className="training-module-list">
