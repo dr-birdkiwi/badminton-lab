@@ -257,10 +257,17 @@ export default function Home() {
           <div className="principle-line"><span>判断路线</span><strong>窗口完整 + 有空间 + 碰撞可控 → 完整杀球；时间被压缩 → 点杀 / 半杀；窗口丢失或无法衔接 → 先过渡。</strong></div>
           <div className="shot-choice">
             <div className="shot-choice-head"><span>根据结果选择打法</span><strong>每次出手先服从来球条件，再追求拍速。</strong></div>
+            <figure className="shot-choice-board">
+              <div className="shot-choice-board-visual">
+                <img src="/shot-choice-board.png" alt="三种后场击球条件对照：完整杀球、点杀或半杀、以及窗口丢失后的过渡处理" />
+                <div className="shot-choice-board-labels" aria-hidden="true"><span><b>01</b><em>完整杀球</em></span><span><b>02</b><em>点杀 · 半杀</em></span><span><b>03</b><em>先过渡</em></span></div>
+                <figcaption>窗口完整 → 时间压缩 → 窗口丢失</figcaption>
+              </div>
+            </figure>
             <div className="shot-choice-grid">
-              <article><div className="shot-choice-image"><img src="/shot-choice-full.png" alt="羽毛球运动员在击球窗口完整时完成高点击球" /></div><b>01 / 完整杀球</b><h3>完整杀球</h3><p><span>窗口</span>球在拍侧肩前上方，身体不用后仰，落地仍可控。</p><p><span>目标</span>用速度或落点直接得分，或制造确定的弱回球。</p></article>
-              <article><div className="shot-choice-image"><img src="/shot-choice-half.png" alt="羽毛球运动员在时间被压缩时用紧凑动作完成点杀或半杀" /></div><b>02 / 点杀 · 半杀</b><h3>点杀 · 半杀</h3><p><span>窗口</span>时间或空间被压缩，但仍能在较高点向下触球。</p><p><span>目标</span>缩短准备，优先抢节奏、空档和下一拍。</p></article>
-              <article><div className="shot-choice-image"><img src="/shot-choice-transition.png" alt="羽毛球运动员在来球过晚时选择过渡并准备重新站位" /></div><b>03 / 先过渡</b><h3>先过渡</h3><p><span>窗口</span>球已在身后、身体后仰，或落地后无法继续移动。</p><p><span>目标</span>用高远、吊球或安全落点重建位置，不勉强硬杀。</p></article>
+              <article><b>01 / 完整杀球</b><h3>完整杀球</h3><p><span>窗口</span>球在拍侧肩前上方，身体不用后仰，落地仍可控。</p><p><span>目标</span>用速度或落点直接得分，或制造确定的弱回球。</p></article>
+              <article><b>02 / 点杀 · 半杀</b><h3>点杀 · 半杀</h3><p><span>窗口</span>时间或空间被压缩，但仍能在较高点向下触球。</p><p><span>目标</span>缩短准备，优先抢节奏、空档和下一拍。</p></article>
+              <article><b>03 / 先过渡</b><h3>先过渡</h3><p><span>窗口</span>球已在身后、身体后仰，或落地后无法继续移动。</p><p><span>目标</span>用高远、吊球或安全落点重建位置，不勉强硬杀。</p></article>
             </div>
           </div>
         </div>
