@@ -231,6 +231,28 @@ function SmashVisual() {
   );
 }
 
+function SequenceArrowOverlay() {
+  return (
+    <svg className="sequence-arrow-overlay" viewBox="0 0 1774 887" aria-hidden="true" focusable="false">
+      <defs>
+        <marker id="sequence-arrow-coral" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L12,6 L0,12 Z" />
+        </marker>
+        <marker id="sequence-arrow-mint" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L12,6 L0,12 Z" />
+        </marker>
+        <marker id="sequence-arrow-gold" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L12,6 L0,12 Z" />
+        </marker>
+      </defs>
+      <path className="sequence-arrow sequence-arrow-brake" d="M 370 790 C 305 792 235 770 165 700" markerEnd="url(#sequence-arrow-coral)" />
+      <path className="sequence-arrow sequence-arrow-organise" d="M 505 640 C 555 700 650 720 715 660" markerEnd="url(#sequence-arrow-mint)" />
+      <path className="sequence-arrow sequence-arrow-accelerate" d="M 1035 505 C 1100 450 1170 345 1230 225" markerEnd="url(#sequence-arrow-coral)" />
+      <path className="sequence-arrow sequence-arrow-recover" d="M 1690 225 C 1680 390 1610 610 1535 780" markerEnd="url(#sequence-arrow-gold)" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
   const [activeNode, setActiveNode] = useState(0);
@@ -285,7 +307,8 @@ export default function Home() {
           <div className="principles-sequence-layout">
             <div className="sequence-board-shell">
               <figure className="sequence-board-frame">
-                <img src="principles-sequence-board-v2.png" alt="同一运动员四个观察任务的羽毛球过顶击球教学示意：移动制动、身体组织、触球前加速、碰撞与恢复" />
+                <img src="principles-sequence-board-v4.png" alt="同一右手持拍运动员四个观察任务的羽毛球过顶击球教学示意：移动制动、身体组织、触球前加速、碰撞与恢复" />
+                <SequenceArrowOverlay />
                 <figcaption>生成图 · 教学示意 · 同一视角的四个观察任务（非实测序列）</figcaption>
               </figure>
               <div className="sequence-step-grid">
