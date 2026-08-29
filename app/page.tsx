@@ -10,24 +10,25 @@ type Reference = {
   label: string;
   href: string;
   title: string;
+  kind: '研究' | '综述' | '教练资料';
 };
 
 const references: Record<ReferenceKey, Reference> = {
-  synergy: { label: '肌肉协同', href: 'https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2025.1596670/full', title: '2025 年精英羽毛球运动员上肢肌肉协同研究' },
-  xfactor: { label: '躯干旋转', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5260572/', title: '羽毛球杀球中的躯干旋转与肩带运动研究' },
-  shoulder: { label: '肩内旋与拍速', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6016291/', title: '肩部力量与羽毛球拍速度关系研究' },
-  jumpSmash: { label: '跳杀研究', href: 'https://pubmed.ncbi.nlm.nih.gov/33663330/', title: '精英羽毛球跳杀的运动学决定因素研究' },
-  impact: { label: '触球位置', href: 'https://oars.uos.ac.uk/1325/1/Effect%20of%20racket-shuttlecock%20impact%20location.pdf', title: '国际水平羽毛球杀球中的拍—球碰撞位置研究' },
-  lowerLimb: { label: '下肢研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9598458/', title: '羽毛球过顶动作中的下肢运动学与地面反作用力研究' },
-  plyometric: { label: '增强式训练', href: 'https://pubmed.ncbi.nlm.nih.gov/38533062/', title: '羽毛球增强式训练效果的系统综述与荟萃分析' },
-  upperSynergy: { label: '上肢协同', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6317092/', title: '羽毛球击球中的上肢肌肉协同研究' },
-  racket: { label: '球拍参数', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10462755/', title: '球拍惯量对拍头速度、触球位置与出球速度的影响研究' },
-  bwf: { label: 'BWF 教练手册', href: 'https://sfbadminton.tenniscity.org/wp-content/uploads/sites/29/2020/03/bwf_coach_education_coaches_manual_l1-2nd-edition-midres.pdf', title: 'BWF 教练教育手册（杀球与击球技术）' },
+  synergy: { label: '肌肉协同', kind: '研究', href: 'https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2025.1596670/full', title: '2025 年精英羽毛球运动员上肢肌肉协同研究' },
+  xfactor: { label: '躯干旋转', kind: '研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5260572/', title: '羽毛球杀球中的躯干旋转与肩带运动研究' },
+  shoulder: { label: '肩内旋与拍速', kind: '研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6016291/', title: '肩部力量与羽毛球拍速度关系研究' },
+  jumpSmash: { label: '跳杀研究', kind: '研究', href: 'https://pubmed.ncbi.nlm.nih.gov/33663330/', title: '精英羽毛球跳杀的运动学决定因素研究' },
+  impact: { label: '触球位置', kind: '研究', href: 'https://oars.uos.ac.uk/1325/1/Effect%20of%20racket-shuttlecock%20impact%20location.pdf', title: '国际水平羽毛球杀球中的拍—球碰撞位置研究' },
+  lowerLimb: { label: '下肢研究', kind: '研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9598458/', title: '羽毛球过顶动作中的下肢运动学与地面反作用力研究' },
+  plyometric: { label: '增强式训练', kind: '综述', href: 'https://pubmed.ncbi.nlm.nih.gov/38533062/', title: '羽毛球增强式训练效果的系统综述与荟萃分析' },
+  upperSynergy: { label: '上肢协同', kind: '研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6317092/', title: '羽毛球击球中的上肢肌肉协同研究' },
+  racket: { label: '球拍参数', kind: '研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10462755/', title: '球拍惯量对拍头速度、触球位置与出球速度的影响研究' },
+  bwf: { label: 'BWF 教练手册', kind: '教练资料', href: 'https://sfbadminton.tenniscity.org/wp-content/uploads/sites/29/2020/03/bwf_coach_education_coaches_manual_l1-2nd-edition-midres.pdf', title: 'BWF 教练教育手册（杀球与击球技术）' },
 };
 
 function InlineReferences({ refs, className = '' }: { refs: ReferenceKey[]; className?: string }) {
   const uniqueRefs = [...new Set(refs)];
-  return <span className={`inline-references ${className}`} aria-label="科学参考">{uniqueRefs.map((key) => <a key={key} href={references[key].href} target="_blank" rel="noreferrer" title={references[key].title}>参考·{references[key].label} ↗</a>)}</span>;
+  return <span className={`inline-references ${className}`} aria-label="科学参考">{uniqueRefs.map((key) => <a key={key} href={references[key].href} target="_blank" rel="noreferrer" title={references[key].title}>{references[key].kind}·{references[key].label} ↗</a>)}</span>;
 }
 
 type LessonStep = {
@@ -103,10 +104,10 @@ const lessonSteps: LessonStep[] = [
     number: '02',
     label: '拍速',
     title: '触球前，是否出现清晰的主要加速段？',
-    action: '验收速度时序：观察肩部、肘部、前臂和手部是否在一段连续动作中共同改变拍头速度，而不是用动作幅度或孤立甩腕解释拍速。研究没有证明所有球员都必须使用完全相同的分段时序。',
-    cue: '触球前出现清晰加速，身体没有提前僵住；拍速提升没有明显牺牲触球质量。',
+    action: '作为场上观察线索，检查拍头是否在触球前形成清晰加速，并观察肩部、肘部、前臂和手部是否在一段连续动作中共同参与，而不是用动作幅度或孤立甩腕解释拍速。研究没有证明所有球员都必须使用完全相同的分段时序。',
+    cue: '触球前能看到拍头逐步加速，身体没有提前僵住；拍速提升没有明显牺牲触球质量。',
     avoid: '从引拍开始就握死；过早把速度用完；把拍速归因于孤立甩腕。',
-    drill: '同一点 10 球：先以约 70% 速度找中心触球，再逐档提速；速度上升但中心率下降，就退回上一档。',
+    drill: '本站测试起点：同一点 10 球，先以约 70% 速度找中心触球，再逐档提速；速度上升但中心率下降，就退回上一档。',
     next: '回到训练：旋转与肩胛。',
     refs: ['shoulder', 'jumpSmash'],
   },
@@ -125,7 +126,7 @@ const lessonSteps: LessonStep[] = [
     number: '04',
     label: '下一拍',
     title: '击球后，是否仍保留下一拍的选择？',
-    action: '验收击球后的连续性：随挥不被强行截断，落地后能重新组织重心，球拍回到便于准备的位置，并根据落点、对手回球和战术站位调整下一步。',
+    action: '验收击球后的连续性：落地后能安全减速并重新组织重心，球拍回到便于准备的位置；随挥不必追求统一幅度，具体落地和衔接要随击球位置、来球与下一球调整。',
     cue: '在来球和战术允许时，对手触球前已回到可动的准备状态。',
     avoid: '落地后看球；每次都机械回到同一位置；为了急停而打断随挥。',
     drill: '杀球后随机接“挡网 / 挑后场”第二球，连续 3 组；以能否按时启动作为通过标准。',
@@ -146,7 +147,7 @@ type PrincipleSequenceStep = {
 const principleSequence: PrincipleSequenceStep[] = [
   { number: '01', label: '击球窗口', title: '先争取身前、上方的击球位置', text: '先用步法调整身体与来球的相对位置，目标是在持拍肩前方、上方触球；能否做到取决于来球高度、落点和到位质量。', alt: '羽毛球后场击球前的移动与制动阶段', refs: ['lowerLimb', 'jumpSmash', 'bwf'] },
   { number: '02', label: '身体组织', title: '骨盆与胸廓调整方向', text: '到位后不必把身体锁死；躯干与骨盆的相对转动可以改变上肢的工作范围，但不要求每球达到同一幅度或遵循固定先后。', alt: '羽毛球后场击球前的身体组织阶段', refs: ['xfactor', 'synergy'] },
-  { number: '03', label: '上肢形成拍头速度', title: '让肩、肘、前臂共同完成挥拍', text: '肩部、肘部、前臂和手部在连续动作中共同改变拍头速度与方向；研究观察到的是协调关系，不是每名球员完全相同的分段时序。', alt: '羽毛球击球前拍头加速阶段', refs: ['shoulder', 'synergy', 'upperSynergy'] },
+  { number: '03', label: '上肢形成拍头速度', title: '让肩、肘、前臂和手部动作共同参与挥拍', text: '肩部、肘部、前臂和手部动作在连续动作中共同参与拍头速度与方向的形成；研究观察到的是协调关系，不是每名球员完全相同的分段时序。', alt: '羽毛球击球前拍头加速阶段', refs: ['shoulder', 'synergy', 'upperSynergy'] },
   { number: '04', label: '击球与衔接', title: '把拍头状态送进碰撞，再准备下一拍', text: '拍头状态、拍面取向和触球位置共同影响出球结果；击球后的回位属于比赛要求，但具体落地和衔接方式要随击球位置与下一球调整。', alt: '羽毛球拍面与羽毛球碰撞并准备衔接下一拍的阶段', refs: ['impact', 'bwf', 'lowerLimb'] },
 ];
 
@@ -161,8 +162,8 @@ const forceNodes: ForceNode[] = [
   { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进击球位置', action: '踝、膝、髋的协调影响到位、起跳和落地的力学条件；它们帮助建立可用的击球位置，并不把速度直接传到拍头。', focus: '下肢整体 · 重心与制动', focusCue: '感受身体进入可用的击球位置，同时保留落地和再启动的余量。', principle: '下肢首先影响你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '在不明显后仰的情况下争取身前触球，落地后仍能调整。', image: 'force-action-02.png', imageAlt: '羽毛球后场击球前最后制动步与踝膝髋支撑动作', refs: ['lowerLimb', 'jumpSmash'] },
   { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服务击球点', action: '骨盆相对下肢和胸廓调整朝向，为躯干和击球臂提供合适的活动范围；具体调整取决于步法、来球和击球选择。', focus: '骨盆周围 · 躯干旋转协同', focusCue: '用身体朝向帮助定位，不为了“转体”把骨盆拧到最大。', principle: '躯干旋转与击球表现有关，但研究不支持每球统一的“先转骨盆”顺序。', cue: '身体朝向服务击球位置，而不是为了转体而转体。', image: 'force-action-03.png', imageAlt: '羽毛球后场击球前骨盆开始转向并组织身体方向', refs: ['xfactor', 'lowerLimb'] },
   { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动保留上肢空间', action: '胸廓与骨盆共同改变朝向；两者的相对转动可以改变上肢工作范围，但不要求复制同一幅姿势或达到最大幅度。', focus: '躯干 · 肩胛协同', focusCue: '让胸廓转向服务挥拍空间，保持可调，不把“拧得更多”当成更有力。', principle: 'X-factor 研究支持躯干旋转和活动范围与杀球质量的关系，但它没有证明相对旋转越大越好。', cue: '转体没有挤掉挥拍空间，身体与拍臂能在触球附近协调。', image: 'force-action-04.png', imageAlt: '羽毛球后场击球前胸廓与骨盆形成相对旋转并为拍臂留出空间', refs: ['xfactor', 'synergy'] },
-  { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '让上肢共同形成拍头速度', action: '肩部内旋、肘部伸展、前臂旋转和手部动作在连续挥拍中共同影响拍头速度与方向；研究不支持用一个固定时序解释所有球员。', focus: '肩带 · 肘部 · 前臂（训练关注区域）', focusCue: '感受上肢整体加速；不要把拍速简化成“只用手臂”或孤立甩腕。', principle: '研究支持多关节、多肌群协同，不支持把拍速归功于单一关节或单一肌肉。', cue: '拍头在触球附近形成有效速度；不主动把肘锁死，上臂也不必过度耸高。', image: 'force-action-05.png', imageAlt: '羽毛球击球前肩肘前臂协同加速动作', refs: ['synergy', 'shoulder', 'jumpSmash'] },
-  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍头状态成为可控出球', action: '拍头速度、拍面取向和触球在拍面上的位置共同影响出球速度与方向；出球轨迹还会受到来球和拍面运动方向影响。', focus: '前臂旋转 · 握拍变化 · 手指控制（训练关注区域）', focusCue: '不要把拍头速度理解成孤立甩腕；前臂、握拍与腕部动作在完整挥拍中协同出现，具体比例会随球员和击球类型变化。', principle: '拍头速度与出球速度不是相等值；触球位置、拍面状态和球拍参数都会改变碰撞结果。', cue: '在相近来球条件下，连续击球的触球位置、出球方向和目标命中保持稳定，而不是只看最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球拍面与羽毛球在高点击球点发生碰撞', refs: ['upperSynergy', 'impact', 'racket'] },
+  { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '让上肢共同形成拍头速度', action: '肩部内旋、肘部伸展、前臂旋转以及握拍和腕部调整，在连续挥拍中共同参与拍头速度与方向的形成；研究不支持用一个固定时序解释所有球员。', focus: '肩带 · 肘部 · 前臂（训练关注区域）', focusCue: '感受上肢整体加速；不要把拍速简化成“只用手臂”或孤立甩腕。', principle: '研究支持多关节、多肌群协同，不支持把拍速归功于单一关节或单一肌肉。', cue: '拍头在触球附近形成有效速度；不主动把肘锁死，上臂也不必过度耸高。', image: 'force-action-05.png', imageAlt: '羽毛球击球前肩肘前臂协同加速动作', refs: ['synergy', 'shoulder', 'jumpSmash'] },
+  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍头状态成为可控出球', action: '拍头速度、拍面取向和触球在拍面上的位置共同影响出球速度与方向；来球状态和触球瞬间的拍面运动方向也会改变出球结果。', focus: '前臂旋转 · 握拍变化 · 手指控制（训练关注区域）', focusCue: '不要把拍头速度理解成孤立甩腕；前臂、握拍与腕部动作在完整挥拍中协同出现，具体比例会随球员和击球类型变化。', principle: '拍头速度与出球速度不是相等值；触球位置、拍面状态和球拍参数都会改变碰撞结果。', cue: '在相近来球条件下，连续击球的触球位置、出球方向和目标命中保持稳定，而不是只看最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球拍面与羽毛球在高点击球点发生碰撞', refs: ['upperSynergy', 'impact', 'racket'] },
   { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '让击球结果延续到下一拍', action: '击球后的随挥和落地需要处理身体动量；随后根据落点、对手回球和战术站位调整下一步，不存在所有人相同的落地模板。', focus: '落地控制 · 重心恢复 · 下一步准备', focusCue: '把目标放在可控落地和重新获得移动选择，而不是硬停在原地。', principle: '杀球的比赛价值不只由首球速度决定；迫使对手形成较弱回球并保持下一拍准备，是本站的比赛评价框架，不是单一生物力学指标。', cue: '在来球和战术允许时，对手触球前回到可动的准备状态，球拍也回到便于准备的位置。', image: 'force-action-07.png', imageAlt: '羽毛球杀球后的剪式落地、收拍与下一拍衔接动作', refs: ['lowerLimb', 'bwf'] },
 ];
 
@@ -369,10 +370,10 @@ export default function Home() {
 
       <section id="lesson" className="lesson-section force-section">
         <div className="section-heading"><div><span className="section-label">上场验收</span><h2>更快之后，<br /><em>结果不能塌。</em></h2></div><span className="section-index">4 个结果 · 1 组球</span></div>
-        <div className="lesson-intro"><p>本站用一组真实回合作为验收，记录四个结果指标：击球窗口、拍头速度、触球位置与拍面控制、下一拍准备。哪一项先丢，就回到对应训练，不用继续加力补救。<InlineReferences refs={['jumpSmash', 'impact']} /></p><strong>动作可以不同，结果必须可复现。</strong></div>
+        <div className="lesson-intro"><p>本站用一组真实回合作为验收，记录四个结果指标：击球窗口、拍头速度、触球位置与拍面控制、下一拍准备。关于拍头速度与触球位置的研究，可帮助理解前两类结果；下一拍准备是本站的场上验收指标。哪一项先丢，就回到对应训练，不用继续加力补救。<InlineReferences refs={['jumpSmash', 'impact']} /></p><strong>动作可以不同，结果必须可复现。</strong></div>
         <div className="lesson-visual-layout">
           <StudyPlate src="impact-study.png" alt="羽毛球拍与羽毛球中心碰撞的高速动作研究图，展示拍面、触球位置和击球后的衔接关系" meta="动作研究 / 05" side="碰撞与衔接" footer="中心触球 → 稳定出球 → 回到下一拍" markers={lessonMarkers} className="lesson-study-plate" />
-          <div className="visual-reading-note lesson-result-note"><span>本章作用</span><strong>不评判姿势，只验收结果。</strong><p>动作可以因人而异，但触球质量、出球方向和下一拍准备必须在连续回合中保持可观察、可重复。<InlineReferences refs={['impact', 'lowerLimb']} /></p><div><b>验收顺序</b><span>击球窗口 → 拍头速度 → 中心碰撞 → 下一拍选择</span></div><div className="lesson-result-legend"><span><b>01</b>窗口</span><span><b>02</b>拍速</span><span><b>03</b>碰撞</span><span><b>04</b>下一拍</span></div></div>
+          <div className="visual-reading-note lesson-result-note"><span>本章作用</span><strong>不评判姿势，只验收结果。</strong><p>触球位置与出球方向的关系有研究支持；下一拍准备则是本站的场上验收指标。动作可以因人而异，但这些结果应在连续回合中保持可观察、可重复。<InlineReferences refs={['impact']} /></p><div><b>验收顺序</b><span>击球窗口 → 拍头速度 → 中心碰撞 → 下一拍选择</span></div><div className="lesson-result-legend"><span><b>01</b>窗口</span><span><b>02</b>拍速</span><span><b>03</b>碰撞</span><span><b>04</b>下一拍</span></div></div>
         </div>
         <div className="lesson-check-label"><span>现场检查</span><strong>点击一项，只看这一项是否仍然成立。</strong></div>
         <div className="phase-tabs" role="tablist" aria-label="上场验收的四项结果">
@@ -392,7 +393,7 @@ export default function Home() {
           <div className="visual-reading-note"><span>不要把模型当定律</span><strong>先区分观察到的结果，再解释身体机制。</strong><p>研究可以帮助我们知道哪些变量更接近击球结果，但不能替每个球员规定唯一姿势。专业性也包括知道结论在哪里停止。<InlineReferences refs={['synergy', 'xfactor', 'jumpSmash']} /></p><div><b>阅读层级</b><span>研究发现 · 生物力学解释 · 教练经验 · 个体差异</span></div></div>
         </div>
         <div className="boundary-grid"><article><span>可以说</span><h3>不同任务，有不同功能聚焦</h3><p>研究观察到的是多肌群协同。本站用下肢、躯干、肩胛、肩肘前臂和握拍提示当前任务，但不把它们写成单肌肉开关。<InlineReferences refs={['synergy', 'upperSynergy']} /></p></article><article><span>不能说</span><h3>某块肌肉负责把力传到拍头</h3><p>“躯干是引擎、手臂只是鞭绳”可以作为纠正抡臂的比喻，却不能替代真实的肩、肘、前臂和手部协同，也不能据此下伤病结论。<InlineReferences refs={['shoulder', 'synergy']} /></p></article><article><span>本站验收框架</span><h3>用感觉引导，用结果验证</h3><p>主观聚焦帮助你组织动作；窗口、拍速、触球位置与拍面控制、下一拍准备，用来判断这次发力是否真的转化。这是本站的教学框架，不是论文直接建立的评分量表。</p></article></div>
-        <p className="reference-disclaimer">页面内的链接只支持其相邻文字中标明的研究事实；动作口令、击球分类、训练任务和剂量是本站基于证据的教学转译或实践模板，不代表论文逐字验证了每一句话。BWF 手册属于教练教育资料，不等同于同行评审研究。</p>
+        <p className="reference-disclaimer">页面内的链接只支持其相邻文字中标明的研究事实；动作口令、击球分类、训练任务和剂量是本站基于证据的教学转译或实践模板，不代表论文逐字验证了每一句话。训练模块后的链接只说明相关能力或结果，不等于该练法本身已经被直接验证。BWF 手册属于教练教育资料，不等同于同行评审研究。</p>
         <div className="source-strip"><span>主要来源</span><a href="https://sfbadminton.tenniscity.org/wp-content/uploads/sites/29/2020/03/bwf_coach_education_coaches_manual_l1-2nd-edition-midres.pdf" target="_blank" rel="noreferrer">教练手册 · 杀球 ↗</a><a href="https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2025.1596670/full" target="_blank" rel="noreferrer">肌肉协同研究 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33663330/" target="_blank" rel="noreferrer">精英跳杀研究 ↗</a><a href="https://oars.uos.ac.uk/1325/" target="_blank" rel="noreferrer">触球位置研究 ↗</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10462755/" target="_blank" rel="noreferrer">球拍参数研究 ↗</a></div>
       </section>
 
