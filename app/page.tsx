@@ -159,12 +159,12 @@ const lessonMarkers: StudyMarker[] = [
 
 const forceNodes: ForceNode[] = [
   { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面交换力，使身体能够加速、减速和改变朝向；在一项精英男子跳杀研究中，垂直地面反作用力本身未与更快球速呈显著相关。', focus: '下肢整体 · 踝膝髋协同', focusCue: '把注意力放在支撑、减速和改变方向，不把跳得高当成杀球速度的替代指标。', principle: '地面提供外部约束；“更大的垂直反作用力”不能单独作为更快杀球的判据。', cue: '最后一步之后仍能微调或调整方向，而不是蹬死在原地。', image: 'force-action-01.png', imageAlt: '羽毛球后场击球前双脚分开、重心可调的准备状态教学示意', refs: ['lowerLimb', 'jumpSmash'] },
-  { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进击球位置', action: '踝、膝、髋的协调影响到位和起跳阶段的力学条件；在本页把它作为建立击球空间与制动能力的训练关注，不把下肢测得的力直接解读为拍头速度或固定的落地模板。', focus: '下肢整体 · 重心与制动', focusCue: '感受身体进入可用的击球位置，同时保留落地和再启动的余量。', principle: '下肢首先影响你在哪里、朝哪里以及能否制动；它与上肢挥拍的关系不能简化成一条直接的速度传送带。', cue: '在不明显后仰的情况下争取身前触球，落地后仍能调整。', image: 'force-action-02-v2.png', imageAlt: '羽毛球后场到位后双脚接地、屈膝减速并保留调整方向的教学示意，不代表固定步法', refs: ['lowerLimb', 'jumpSmash'] },
+  { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进击球位置', action: '踝、膝、髋的协调影响到位和起跳阶段的力学条件；在本页把它作为建立击球空间与制动能力的训练关注，不把下肢测得的力直接解读为拍头速度或固定的落地模板。', focus: '下肢整体 · 重心与制动', focusCue: '感受身体进入可用的击球位置，同时保留落地和再启动的余量。', principle: '下肢首先影响你在哪里、朝哪里以及能否制动；它与上肢挥拍的关系不能简化成一条直接的速度传送带。', cue: '在不明显后仰的情况下争取身前触球，落地后仍能调整。', image: 'force-action-02-v2.png', imageAlt: '羽毛球后场击球前双脚接地、膝髋屈曲并保留调整方向的姿态示意，不代表固定减速时序', refs: ['lowerLimb', 'jumpSmash'] },
   { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服务击球点', action: '本页把骨盆相对下肢和胸廓的朝向调整，作为组织躯干和击球臂活动范围的观察线索；具体调整取决于步法、来球和击球选择。', focus: '骨盆周围 · 躯干旋转协同', focusCue: '用身体朝向帮助定位，不为了“转体”把骨盆拧到最大。', principle: '在一项正手杀球研究中，技能组使用了更多躯干旋转；这支持“旋转与表现相关”的观察，但不支持每球统一的“先转骨盆”顺序。', cue: '身体朝向服务击球位置，而不是为了转体而转体。', image: 'force-action-03.png', imageAlt: '羽毛球后场击球准备姿势：身体呈侧后方关系，非持拍臂指向来球，球拍置于身后', refs: ['xfactor'] },
   { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动检查上肢空间', action: '胸廓与骨盆共同改变朝向；本页把两者的相对运动作为观察上肢工作空间是否被保留的线索，但不要求复制同一幅姿势或达到最大幅度。', focus: '躯干 · 肩胛协同', focusCue: '让胸廓转向服务挥拍空间，保持可调，不把“拧得更多”当成更有力。', principle: 'X-factor 研究支持躯干旋转和活动范围与杀球质量的关系，但它没有证明相对旋转越大越好。', cue: '转体没有挤掉挥拍空间，身体与拍臂能在触球附近协调。', image: 'force-action-04.png', imageAlt: '羽毛球后场击球准备姿势：非持拍臂上举，击球臂屈曲置于头后，双脚与地面接触', refs: ['xfactor', 'synergy'] },
   { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把上肢作为协同系统观察', action: '在连续过顶挥拍中，肩、肘、前臂与握拍/手部需要作为一个上肢系统一起观察。不同研究测量的关节和肌肉并不相同，不能由此推出每个人固定的分段时序。', focus: '肩带 · 肘部 · 前臂（训练关注区域）', focusCue: '感受上肢整体加速；不要把拍速简化成“只用手臂”或孤立甩腕。', principle: '一项 14 名大学生研究发现，特定角度的肩内旋等长力量与拍速相关；这不等于主动把肩拧得更多就会更快。', cue: '拍头在触球附近形成有效速度；不主动把肘锁死，上臂也不必过度耸高。', image: 'force-action-05.png', imageAlt: '羽毛球击球前肩、肘、前臂位置的教学示意，不代表固定时序', refs: ['synergy', 'shoulder', 'jumpSmash'] },
-  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍头状态成为可控出球', action: '拍头速度、拍面取向和触球在拍面上的位置共同影响出球速度与方向；来球状态和触球瞬间的拍面运动方向也会改变出球结果。', focus: '拍面 · 前臂 · 握拍控制（训练关注区域）', focusCue: '不要把拍头速度理解成孤立甩腕；在完整挥拍中观察前臂、握拍与手部的协同，但具体动作会随球员和击球类型变化。', principle: '拍头速度与出球速度不是相等值；触球位置、拍面状态和球拍参数都会改变碰撞结果。', cue: '在相近来球条件下，连续击球的触球位置、出球方向和目标命中保持稳定，而不是只看最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球拍面与羽毛球发生碰撞的教学示意', refs: ['upperSynergy', 'impact', 'racket'] },
-  { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '让击球结果延续到下一拍', action: '击球后的随挥和落地需要处理身体动量；随后根据落点、对手回球和战术站位调整下一步，不存在所有人相同的落地模板。', focus: '落地控制 · 重心恢复 · 下一步准备', focusCue: '把目标放在可控落地和重新获得移动选择，而不是硬停在原地。', principle: '杀球的比赛价值不只由首球速度决定；迫使对手形成较弱回球并保持下一拍准备，是本站的比赛评价框架，不是单一生物力学指标。', cue: '在来球和战术允许时，击球后尽快回到可动的准备状态，球拍也回到便于准备的位置。', image: 'force-action-07.png', imageAlt: '羽毛球击球后的落地、收拍与下一拍衔接动作的教学示意', refs: ['lowerLimb', 'bwf'] },
+  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍头状态成为可控出球', action: '拍头速度、拍面取向和触球在拍面上的位置共同影响出球速度与方向；来球状态和触球瞬间的拍面运动方向也会改变出球结果。', focus: '拍面 · 前臂 · 握拍控制（训练关注区域）', focusCue: '不要把拍头速度理解成孤立甩腕；在完整挥拍中观察前臂、握拍与手部的协同，但具体动作会随球员和击球类型变化。', principle: '拍头速度与出球速度不是相等值；触球位置、拍面状态和球拍参数都会改变碰撞结果。', cue: '在相近来球条件下，连续击球的触球位置、出球方向和目标命中保持稳定，而不是只看最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球跳杀触球瞬间的教学示意，不代表所有杀球都需要起跳', refs: ['upperSynergy', 'impact', 'racket'] },
+  { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '让击球结果延续到下一拍', action: '击球后的随挥和落地需要处理身体动量；随后根据落点、对手回球和战术站位调整下一步，不存在所有人相同的落地模板。', focus: '落地控制 · 重心恢复 · 下一步准备', focusCue: '把目标放在可控落地和重新获得移动选择，而不是硬停在原地。', principle: '杀球的比赛价值不只由首球速度决定；迫使对手形成较弱回球并保持下一拍准备，是本站的比赛评价框架，不是单一生物力学指标。', cue: '在来球和战术允许时，击球后尽快回到可动的准备状态，球拍也回到便于准备的位置。', image: 'force-action-07.png', imageAlt: '羽毛球随挥后单脚承重与准备衔接的教学示意，不代表固定落地模板', refs: ['lowerLimb', 'bwf'] },
 ];
 
 const trainingStages: TrainingStage[] = [
@@ -219,7 +219,7 @@ function StudyPlate({ src, alt, meta, side, footer, markers, className = '' }: {
 function SmashVisual() {
   return (
     <div className="mechanics-plate hero-visual">
-      <img src="smash-hero.png" alt="右手羽毛球选手完成一次后场过顶击球的教学示意，标注击球窗口、身体定向、触球前加速与落地衔接四个观察任务" />
+      <img src="smash-hero.png" alt="右手羽毛球运动员处于后场过顶击球过程中的身体位置教学示意，不代表固定击球时刻" />
       <div className="hero-visual-shade" aria-hidden="true" />
       <div className="plate-meta"><span>教学示意 / 01</span><span>右手杀球</span></div>
       <div className="visual-label visual-label-base"><i aria-hidden="true" /><div><b>01 / 击球窗口</b><strong>争取在持拍肩前方、上方触球</strong><small>这是技术目标，不是固定坐标<br />是否做到取决于来球和到位质量</small></div></div>
@@ -285,8 +285,8 @@ export default function Home() {
           <div className="principles-sequence-layout">
             <div className="sequence-board-shell">
               <figure className="sequence-board-frame">
-                <img src="principles-sequence-board.png" alt="四帧羽毛球过顶击球教学示意，从移动制动、身体组织、触球前加速到击球衔接" />
-                <figcaption>生成图 · 教学示意 · 四个观察时刻（非实测序列）</figcaption>
+                <img src="principles-sequence-board-v2.png" alt="同一运动员四个观察任务的羽毛球过顶击球教学示意：移动制动、身体组织、触球前加速、碰撞与恢复" />
+                <figcaption>生成图 · 教学示意 · 同一视角的四个观察任务（非实测序列）</figcaption>
               </figure>
               <div className="sequence-step-grid">
                 {principleSequence.map((item) => <article className="sequence-step" key={item.number}><div className="sequence-step-head"><b>{item.number}</b><span>{item.label}</span></div><h3>{item.title}</h3><p>{item.text}<InlineReferences refs={item.refs} /></p></article>)}
@@ -299,9 +299,9 @@ export default function Home() {
             <div className="shot-choice-head"><span>根据结果选择打法</span><strong>每次出手先服从来球条件，再追求拍速。</strong></div>
             <figure className="shot-choice-board">
               <div className="shot-choice-board-visual">
-                <img src="shot-choice-board-v3.png" alt="三种后场击球条件的教学示意，不是动作标准图：完整杀球、时间空间受限时的点杀或半杀、以及击球窗口偏后时的过渡选择" />
+                <img src="shot-choice-board-v5.png" alt="三种后场击球条件的空间示意，不是动作标准图：完整杀球条件、时间空间受限时的点杀或半杀条件、以及击球窗口偏后时的过渡条件" />
                 <div className="shot-choice-board-labels"><span><b>01</b><em>完整杀球<small>身前较远 · 完整加载</small></em></span><span><b>02</b><em>点杀 · 半杀<small>非完全侧身 · 短引拍</small></em></span><span><b>03</b><em>先过渡<small>击球窗口偏后 · 先恢复条件</small></em></span></div>
-                <figcaption>生成图 · 条件示意：身前较远 → 身前较近 → 窗口偏后</figcaption>
+                <figcaption>生成图 · 条件示意：完整窗口 → 窗口压缩 → 窗口丢失</figcaption>
               </div>
             </figure>
             <div className="shot-choice-grid">
