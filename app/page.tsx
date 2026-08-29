@@ -322,7 +322,7 @@ export default function Home() {
             <div className="shot-choice-head"><span>根据结果选择打法</span><strong>每次出手先服从来球条件，再追求拍速。</strong></div>
             <figure className="shot-choice-board">
               <div className="shot-choice-board-visual">
-                <img src="shot-choice-board-v5.png" alt="三种后场击球条件的空间示意，不是动作标准图：完整杀球条件、时间空间受限时的点杀或半杀条件、以及击球窗口偏后时的过渡条件" />
+                <img src="shot-choice-board-v6.png" alt="三种后场击球条件与动作的教学示意：完整杀球、时间空间受限时的点杀或半杀（非完全侧身、短引拍）、以及击球窗口偏后时的过渡；不是固定技术标准图" />
                 <div className="shot-choice-board-labels"><span><b>01</b><em>完整杀球<small>身前较远 · 完整加载</small></em></span><span><b>02</b><em>点杀 · 半杀<small>非完全侧身 · 短引拍</small></em></span><span><b>03</b><em>先过渡<small>击球窗口偏后 · 先恢复条件</small></em></span></div>
                 <figcaption>生成图 · 条件示意：完整窗口 → 窗口压缩 → 窗口丢失</figcaption>
               </div>
