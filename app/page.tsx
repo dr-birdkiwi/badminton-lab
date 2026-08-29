@@ -235,14 +235,14 @@ function SequenceArrowOverlay() {
   return (
     <svg className="sequence-arrow-overlay" viewBox="0 0 1774 887" aria-hidden="true" focusable="false">
       <defs>
-        <marker id="sequence-arrow-coral" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
-          <path d="M0,0 L12,6 L0,12 Z" />
+        <marker id="sequence-arrow-coral" markerWidth="13" markerHeight="13" viewBox="0 0 13 13" refX="10.5" refY="6.5" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L13,6.5 L0,13 Z" />
         </marker>
-        <marker id="sequence-arrow-mint" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
-          <path d="M0,0 L12,6 L0,12 Z" />
+        <marker id="sequence-arrow-mint" markerWidth="13" markerHeight="13" viewBox="0 0 13 13" refX="10.5" refY="6.5" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L13,6.5 L0,13 Z" />
         </marker>
-        <marker id="sequence-arrow-gold" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
-          <path d="M0,0 L12,6 L0,12 Z" />
+        <marker id="sequence-arrow-gold" markerWidth="13" markerHeight="13" viewBox="0 0 13 13" refX="10.5" refY="6.5" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0,0 L13,6.5 L0,13 Z" />
         </marker>
       </defs>
       <path className="sequence-arrow sequence-arrow-brake" d="M 370 790 C 305 792 235 770 165 700" markerEnd="url(#sequence-arrow-coral)" />
