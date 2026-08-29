@@ -195,6 +195,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .path-reading-grid { display: grid; gap: 16px; }
 .path-reading-grid > div { padding-top: 12px; border-top: 1px solid var(--line); }
 .path-reading-grid p { max-width: 360px; margin: 9px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.path-reading-focus { display: grid; grid-template-columns: minmax(220px, .78fr) minmax(0, 1.22fr); gap: 12px 24px; align-items: center; margin-top: 18px; padding: 13px 15px 14px; border: 1px solid var(--line); border-left: 2px solid var(--orange-soft); background: rgba(245, 242, 233, .045); }
+.path-reading-focus > div { display: grid; gap: 7px; min-width: 0; }
+.path-reading-focus span { color: var(--orange); font: 9px var(--mono); letter-spacing: .1em; }
+.path-reading-focus strong { color: var(--ink); font-size: 15px; line-height: 1.35; font-weight: 400; }
+.path-reading-focus p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
 
 .training-section { position: relative; overflow: hidden; background: #e6dfd0; }
 .training-section::before { content: '02'; position: absolute; top: 3vw; right: 4vw; color: rgba(20, 37, 30, .055); font: 220px/.8 var(--mono); letter-spacing: -.16em; pointer-events: none; }
@@ -462,9 +467,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .training-section .training-module-head strong { color: var(--paper); }
 .force-path-section .path-reading-lead,
 .force-path-section .path-reading-grid > div,
+.force-path-section .path-reading-focus,
 .training-section .training-module,
 .training-section .training-sources,
 .training-section .training-rules > div { border-color: var(--white-line); }
+.force-path-section .path-reading-focus { background: rgba(245, 242, 233, .045); }
+.force-path-section .path-reading-focus strong { color: var(--paper); }
+.force-path-section .path-reading-focus p { color: rgba(245, 242, 233, .7); }
 .force-path-section .path-reading-lead p,
 .training-section .training-goal p,
 .training-section .training-module p,
@@ -764,6 +773,9 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .path-reading-inline h3 { margin-top: 18px; }
   .path-reading-inline .path-reading-lead { margin-top: 18px; }
   .path-reading-inline .path-reading-grid { grid-template-columns: 1fr; gap: 0; margin-top: 0; }
+  .path-reading-focus { grid-template-columns: 1fr; gap: 8px; margin-top: 16px; padding: 12px 13px 13px; }
+  .path-reading-focus strong { font-size: 14px; }
+  .path-reading-focus p { font-size: 13px; }
 }
 
 @media (max-width: 900px) {

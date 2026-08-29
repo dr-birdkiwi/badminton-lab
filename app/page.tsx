@@ -21,6 +21,8 @@ type ForceNode = {
   group: string;
   title: string;
   action: string;
+  focus: string;
+  focusCue: string;
   principle: string;
   cue: string;
   image: string;
@@ -112,13 +114,13 @@ const lessonMarkers: StudyMarker[] = [
 ];
 
 const forceNodes: ForceNode[] = [
-  { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面建立支撑和制动，让身体能够加速、减速、改变朝向，而不是只把力量往上顶。', principle: '地面提供外部约束；更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后还能微调，不是蹬死在原地。', image: 'force-action-01.png', imageAlt: '羽毛球后场击球前分腿进入与脚下支撑动作' },
-  { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进攻击窗口', action: '踝、膝、髋共同管理重心，把球留在拍侧肩前上方，同时保留落地和再启动的空间。', principle: '下肢首先决定你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '不用后仰就能触球，落地后还能启动。', image: 'force-action-02.png', imageAlt: '羽毛球后场击球前最后制动步与踝膝髋支撑动作' },
-  { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服从击球点', action: '骨盆随步法和来球条件调整朝向，为躯干和击球臂提供可用空间。', principle: '不同步法、起跳方式和击球选择会改变时序；不存在每球统一的“先转骨盆”。', cue: '身体朝向服务击球点，而不是为了转体而转体。', image: 'force-action-03.png', imageAlt: '羽毛球后场击球前骨盆开始转向并组织身体方向' },
-  { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动创造挥拍空间', action: '胸廓与骨盆共同改变朝向，并在需要时保留相对旋转，让拍臂有一条不被身体挤掉的加速通道。', principle: '骨盆—胸廓的相对运动可能帮助加速，但不是越大越好，也不是每种来球都要复制同一幅姿势。', cue: '转体没有挤掉挥拍空间，身体和拍臂能在触球前合流。', image: 'force-action-04.png', imageAlt: '羽毛球后场击球前胸廓与骨盆形成相对旋转并为拍臂留出空间' },
-  { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把最快的一段留到触球前', action: '肩内旋、肘伸与前臂旋转在短暂的加速窗口内协同，提高拍头速度。', principle: '研究支持多关节协同，不支持把拍速归功于单一关节或孤立“甩腕”。', cue: '拍头快但身体不僵；触球时肘不过度锁死，上臂不过度耸高。', image: 'force-action-05.png', imageAlt: '羽毛球击球前肩肘前臂协同加速动作' },
-  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍速成为可控的出球', action: '拍头速度、拍面方向和实际触球位置共同决定出球速度、方向和下压角度。', principle: '拍头速度与出球速度高度相关，但并非一一相等；触球位置、拍面和器材特性都会改变碰撞效率。', cue: '连续 10 球的声音、方向和目标命中都稳定，而不是只看其中最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球拍面与羽毛球在高点击球点发生碰撞' },
-  { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '为第二拍完成这次杀球', action: '随挥与落地吸收速度，再根据落点和对手回球方向选择跟进位置。', principle: '杀球不是只看首球速度；能否迫使弱回球并接管下一拍，才是动作在比赛中的完整价值。', cue: '对手触球前完成分腿，球拍回到身体前方。', image: 'force-action-07.png', imageAlt: '羽毛球杀球后的剪式落地、收拍与下一拍衔接动作' },
+  { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面建立支撑和制动，让身体能够加速、减速、改变朝向，而不是只把力量往上顶。', focus: '臀大肌 · 臀中肌 · 股四头肌 · 小腿', focusCue: '把注意力放在支撑、吸收和改变方向，不追求跳得高。', principle: '地面提供外部约束；更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后还能微调，不是蹬死在原地。', image: 'force-action-01.png', imageAlt: '羽毛球后场击球前分腿进入与脚下支撑动作' },
+  { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进攻击窗口', action: '踝、膝、髋共同管理重心，把球留在拍侧肩前上方，同时保留落地和再启动的空间。', focus: '臀大肌 · 腘绳肌 · 内收肌', focusCue: '感受身体被送进窗口，同时保留落地和再启动的余量。', principle: '下肢首先决定你在哪里、朝哪里以及能否制动，而不是直接把速度“送到拍头”。', cue: '不用后仰就能触球，落地后还能启动。', image: 'force-action-02.png', imageAlt: '羽毛球后场击球前最后制动步与踝膝髋支撑动作' },
+  { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服从击球点', action: '骨盆随步法和来球条件调整朝向，为躯干和击球臂提供可用空间。', focus: '臀肌 · 内收肌 · 腹斜肌', focusCue: '用这些区域调方向，不要为了“转体”把骨盆拧到终点。', principle: '不同步法、起跳方式和击球选择会改变时序；不存在每球统一的“先转骨盆”。', cue: '身体朝向服务击球点，而不是为了转体而转体。', image: 'force-action-03.png', imageAlt: '羽毛球后场击球前骨盆开始转向并组织身体方向' },
+  { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动创造挥拍空间', action: '胸廓与骨盆共同改变朝向，并在需要时保留相对旋转，让拍臂有一条不被身体挤掉的加速通道。', focus: '腹斜肌 · 背阔肌 · 前锯肌 · 下斜方肌', focusCue: '胸廓转向为拍臂让路，躯干保持可调，不把腰椎拧成固定姿势。', principle: '骨盆—胸廓的相对运动可能帮助加速，但不是越大越好，也不是每种来球都要复制同一幅姿势。', cue: '转体没有挤掉挥拍空间，身体和拍臂能在触球前合流。', image: 'force-action-04.png', imageAlt: '羽毛球后场击球前胸廓与骨盆形成相对旋转并为拍臂留出空间' },
+  { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把最快的一段留到触球前', action: '肩内旋、肘伸与前臂旋转在短暂的加速窗口内协同，提高拍头速度。', focus: '胸大肌 · 背阔肌 · 三角肌 · 肩袖 · 肱三头肌', focusCue: '肩、肘与前臂共同完成最后加速；肩膀放松，不等于手臂被动。', principle: '研究支持多关节协同，不支持把拍速归功于单一关节或孤立“甩腕”。', cue: '拍头快但身体不僵；触球时肘不过度锁死，上臂不过度耸高。', image: 'force-action-05.png', imageAlt: '羽毛球击球前肩肘前臂协同加速动作' },
+  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍速成为可控的出球', action: '拍头速度、拍面方向和实际触球位置共同决定出球速度、方向和下压角度。', focus: '前臂旋前 / 旋后肌 · 握拍手指', focusCue: '触球前放松，接触瞬间调整握拍和拍面；用前臂旋转，不靠“甩手腕”。', principle: '拍头速度与出球速度高度相关，但并非一一相等；触球位置、拍面和器材特性都会改变碰撞效率。', cue: '连续 10 球的声音、方向和目标命中都稳定，而不是只看其中最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球拍面与羽毛球在高点击球点发生碰撞' },
+  { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '为第二拍完成这次杀球', action: '随挥与落地吸收速度，再根据落点和对手回球方向选择跟进位置。', focus: '臀肌 · 股四头肌 · 腘绳肌 · 小腿 · 躯干稳定肌', focusCue: '用下肢和躯干吸收速度，回到可动位置，而不是硬停在原地。', principle: '杀球不是只看首球速度；能否迫使弱回球并接管下一拍，才是动作在比赛中的完整价值。', cue: '对手触球前完成分腿，球拍回到身体前方。', image: 'force-action-07.png', imageAlt: '羽毛球杀球后的剪式落地、收拍与下一拍衔接动作' },
 ];
 
 const trainingStages: TrainingStage[] = [
@@ -268,7 +270,7 @@ export default function Home() {
 
       <section id="force-path" className="force-path-section force-section">
         <div className="section-heading"><div><span className="section-label">表现链</span><h2>这不是传送带，<br /><em>是一组相互约束。</em></h2></div><span className="section-index">07 个动作任务</span></div>
-        <div className="path-statement"><span>先定义模型</span><strong>每个节点不是“把力传给下一个关节”，而是在当下解决一个问题：位置、方向、空间、拍速、碰撞，最后回到下一拍。</strong><p>研究支持多关节协同和近端—远端的速度关系；不支持一套每球固定、单向、分毫不差的时序。</p></div>
+        <div className="path-statement"><span>先定义模型</span><strong>每个节点不是“把力传给下一个关节”，而是在当下解决一个问题：位置、方向、空间、拍速、碰撞，最后回到下一拍。</strong><p>研究支持多关节协同和近端—远端的速度关系；肌肉名称在这里用于注意力和训练设计，不代表一块肌肉单独“接管”一拍，也不支持每球固定、单向、分毫不差的时序。</p></div>
         <div className="path-layout">
           <div className="path-visual">
             <div className="path-meta"><span>按任务读，不按关节背</span><span>组间有关联 · 组内会重叠</span></div>
@@ -285,6 +287,7 @@ export default function Home() {
             <div className="path-reading-top"><span className="section-label">当前任务 · {node.number} · {node.group}</span><b>{node.label}</b></div>
             <h3>{node.title}</h3>
             <div className="path-reading-lead"><span>动作任务</span><p>{node.action}</p></div>
+            <div className="path-reading-focus"><div><span>主观聚焦 · 训练提示</span><strong>{node.focus}</strong></div><p>{node.focusCue}</p></div>
             <div className="path-reading-grid"><div><span>科学边界</span><p>{node.principle}</p></div><div><span>场上检查</span><p>{node.cue}</p></div></div>
           </div>
         </div>
@@ -292,7 +295,7 @@ export default function Home() {
 
       <section id="training" className="training-section force-section">
         <div className="section-heading"><div><span className="section-label">训练瓶颈</span><h2>训练不追疲劳，<br /><em>只追可转化。</em></h2></div><span className="section-index">03 个训练阶段</span></div>
-        <div className="training-statement"><span>训练原则</span><strong>先用球场结果定位瓶颈：到位不稳、旋转空间不足、拍速不够、碰撞不净或第二拍掉速。训练只补一个短板，最后必须回到真实击球验收。</strong></div>
+        <div className="training-statement"><span>训练原则</span><strong>先用球场结果定位瓶颈：到位不稳、旋转空间不足、拍速不够、碰撞不净或第二拍掉速。训练只补一个短板；肌肉名称只作功能聚焦，最后必须回到真实击球验收。</strong></div>
         <div className="training-layout">
           <div className="training-visual" role="tablist" aria-label="杀球训练阶段">
             <div className="training-meta"><span>三个训练阶段</span><span>点击阶段，查看对应训练画面</span></div>
@@ -316,7 +319,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <p className="training-note">增强式训练可能改善力量表现、敏捷、速度和平衡，但现有羽毛球研究的证据确定性较低；本站把它作为补充，不把它直接等同于杀球变快。疼痛、麻木或明显不稳时停止，并寻求专业评估。</p>
+        <p className="training-note">增强式训练可能改善力量表现、敏捷、速度和平衡，但现有羽毛球研究的证据确定性较低；本站把它作为补充，不把它直接等同于杀球变快。不要用某块肌肉的酸胀判断技术正确；疼痛、麻木或明显不稳时停止，并寻求专业评估。</p>
         <div className="training-sources"><span>训练证据</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12170632/" target="_blank" rel="noreferrer">2025 / 肌肉协同 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/38533062/" target="_blank" rel="noreferrer">2024 / 增强式训练综述 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33663330/" target="_blank" rel="noreferrer">2024 / 精英跳杀决定因素 ↗</a></div>
       </section>
 
@@ -344,8 +347,8 @@ export default function Home() {
           <StudyPlate src="evidence-study.png" alt="羽毛球拍、羽毛球和场地测量网格组成的运动科学证据研究图" meta="证据研究 / 06" side="测量与边界" footer="观察 → 测量 → 解释 → 保留边界" markers={[]} className="boundary-study-plate" />
           <div className="visual-reading-note"><span>不要把模型当定律</span><strong>先区分观察到的结果，再解释身体机制。</strong><p>研究可以帮助我们知道哪些变量更接近击球结果，但不能替每个球员规定唯一姿势。专业性也包括知道结论在哪里停止。</p><div><b>阅读层级</b><span>研究发现 · 生物力学解释 · 教练经验 · 个体差异</span></div></div>
         </div>
-        <div className="boundary-grid"><article><span>可以说</span><h3>拍速、触球配置与碰撞效率最接近结果</h3><p>精英研究反复指出，拍头速度、触球时的上肢配置，以及拍床上的实际触球位置，都与球速和方向有关。</p></article><article><span>不能说</span><h3>蹬地越大，不等于球一定越快</h3><p>精英跳杀研究中，垂直地面反作用力与力发展率并未和球速相关；“脚到手的固定传力链”不能当成已证实定律。</p></article><article><span>本站原则</span><h3>先看比赛结果，再解释关节动作</h3><p>先判断窗口、拍速、碰撞和第二拍，再用生物力学寻找瓶颈；不同打法、步法和个体可以有不同解法。</p></article></div>
-        <div className="source-strip"><span>主要来源</span><a href="https://sfbadminton.tenniscity.org/wp-content/uploads/sites/29/2020/03/bwf_coach_education_coaches_manual_l1-2nd-edition-midres.pdf" target="_blank" rel="noreferrer">教练手册 · 杀球 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33663330/" target="_blank" rel="noreferrer">精英跳杀研究 ↗</a><a href="https://oars.uos.ac.uk/1325/" target="_blank" rel="noreferrer">触球位置研究 ↗</a><a href="https://figshare.com/articles/journal_contribution/28759388" target="_blank" rel="noreferrer">击球稳定性研究 ↗</a></div>
+        <div className="boundary-grid"><article><span>可以说</span><h3>不同阶段，有不同功能聚焦</h3><p>研究观察到的是多肌群协同。本站用下肢、躯干、肩胛、肩肘前臂和握拍分别提示当前任务，不把它们写成单肌肉开关。</p></article><article><span>不能说</span><h3>某块肌肉负责把力传到拍头</h3><p>“躯干是引擎、手臂只是鞭绳”适合作为纠正抡臂的比喻，却不能替代真实的肩、肘、前臂主动协同，也不能据此下伤病结论。</p></article><article><span>本站原则</span><h3>用感觉引导，用结果验证</h3><p>主观聚焦帮助你组织动作；窗口、拍速、中心碰撞和下一拍，才用来判断这次发力是否真的转化。</p></article></div>
+        <div className="source-strip"><span>主要来源</span><a href="https://sfbadminton.tenniscity.org/wp-content/uploads/sites/29/2020/03/bwf_coach_education_coaches_manual_l1-2nd-edition-midres.pdf" target="_blank" rel="noreferrer">教练手册 · 杀球 ↗</a><a href="https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2025.1596670/full" target="_blank" rel="noreferrer">肌肉协同研究 ↗</a><a href="https://pubmed.ncbi.nlm.nih.gov/33663330/" target="_blank" rel="noreferrer">精英跳杀研究 ↗</a><a href="https://oars.uos.ac.uk/1325/" target="_blank" rel="noreferrer">触球位置研究 ↗</a><a href="https://figshare.com/articles/journal_contribution/28759388" target="_blank" rel="noreferrer">击球稳定性研究 ↗</a></div>
       </section>
 
       <footer className="force-footer"><span>力场 / 羽毛球发力实验室</span><strong>高手表现复盘</strong><span>专家修订 · 2026.08</span></footer>
