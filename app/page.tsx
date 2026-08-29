@@ -158,12 +158,12 @@ const lessonMarkers: StudyMarker[] = [
 ];
 
 const forceNodes: ForceNode[] = [
-  { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面交换力，使身体能够加速、减速和改变朝向；在跳杀中，垂直地面反作用力本身并不能预测更快的球速。', focus: '下肢整体 · 踝膝髋协同', focusCue: '把注意力放在支撑、减速和改变方向，不把跳得高当成杀球速度的替代指标。', principle: '地面提供外部约束；更大的垂直反作用力并不自动等于更快的杀球。', cue: '最后一步之后仍能微调或调整方向，而不是蹬死在原地。', image: 'force-action-01.png', imageAlt: '羽毛球后场击球前分腿进入与脚下支撑动作的教学示意', refs: ['lowerLimb', 'jumpSmash'] },
+  { number: '01', label: '脚下', group: '建立条件', title: '建立可移动的支撑', action: '脚与地面交换力，使身体能够加速、减速和改变朝向；在一项精英男子跳杀研究中，垂直地面反作用力本身未与更快球速呈显著相关。', focus: '下肢整体 · 踝膝髋协同', focusCue: '把注意力放在支撑、减速和改变方向，不把跳得高当成杀球速度的替代指标。', principle: '地面提供外部约束；“更大的垂直反作用力”不能单独作为更快杀球的判据。', cue: '最后一步之后仍能微调或调整方向，而不是蹬死在原地。', image: 'force-action-01.png', imageAlt: '羽毛球后场击球前双脚分开、重心可调的准备状态教学示意', refs: ['lowerLimb', 'jumpSmash'] },
   { number: '02', label: '下肢 · 髋', group: '建立条件', title: '把身体送进击球位置', action: '踝、膝、髋的协调影响到位、起跳和落地的力学条件；在本页把它作为建立击球空间与制动能力的训练关注，不把下肢测得的力直接解读为拍头速度。', focus: '下肢整体 · 重心与制动', focusCue: '感受身体进入可用的击球位置，同时保留落地和再启动的余量。', principle: '下肢首先影响你在哪里、朝哪里以及能否制动；它与上肢挥拍的关系不能简化成一条直接的速度传送带。', cue: '在不明显后仰的情况下争取身前触球，落地后仍能调整。', image: 'force-action-02.png', imageAlt: '羽毛球后场击球前最后制动步与踝膝髋支撑动作的教学示意', refs: ['lowerLimb', 'jumpSmash'] },
-  { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服务击球点', action: '骨盆相对下肢和胸廓调整朝向，用于组织躯干和击球臂的活动范围；具体调整取决于步法、来球和击球选择。', focus: '骨盆周围 · 躯干旋转协同', focusCue: '用身体朝向帮助定位，不为了“转体”把骨盆拧到最大。', principle: '在一项正手杀球研究中，技能组使用了更多躯干旋转；这支持“旋转与表现相关”的观察，但不支持每球统一的“先转骨盆”顺序。', cue: '身体朝向服务击球位置，而不是为了转体而转体。', image: 'force-action-03.png', imageAlt: '羽毛球后场击球前骨盆开始转向并组织身体方向的教学示意', refs: ['xfactor', 'lowerLimb'] },
-  { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动检查上肢空间', action: '胸廓与骨盆共同改变朝向；两者的相对运动可作为观察上肢工作空间是否被保留的线索，但不要求复制同一幅姿势或达到最大幅度。', focus: '躯干 · 肩胛协同', focusCue: '让胸廓转向服务挥拍空间，保持可调，不把“拧得更多”当成更有力。', principle: 'X-factor 研究支持躯干旋转和活动范围与杀球质量的关系，但它没有证明相对旋转越大越好。', cue: '转体没有挤掉挥拍空间，身体与拍臂能在触球附近协调。', image: 'force-action-04.png', imageAlt: '羽毛球后场击球前胸廓与骨盆形成相对运动并为拍臂留出空间的教学示意', refs: ['xfactor', 'synergy'] },
+  { number: '03', label: '骨盆', group: '建立条件', title: '让身体朝向服务击球点', action: '骨盆相对下肢和胸廓调整朝向，用于组织躯干和击球臂的活动范围；具体调整取决于步法、来球和击球选择。', focus: '骨盆周围 · 躯干旋转协同', focusCue: '用身体朝向帮助定位，不为了“转体”把骨盆拧到最大。', principle: '在一项正手杀球研究中，技能组使用了更多躯干旋转；这支持“旋转与表现相关”的观察，但不支持每球统一的“先转骨盆”顺序。', cue: '身体朝向服务击球位置，而不是为了转体而转体。', image: 'force-action-03.png', imageAlt: '羽毛球后场击球准备姿势：身体呈侧后方关系，非持拍臂指向来球，球拍置于身后', refs: ['xfactor'] },
+  { number: '04', label: '胸廓', group: '建立条件', title: '用相对运动检查上肢空间', action: '胸廓与骨盆共同改变朝向；两者的相对运动可作为观察上肢工作空间是否被保留的线索，但不要求复制同一幅姿势或达到最大幅度。', focus: '躯干 · 肩胛协同', focusCue: '让胸廓转向服务挥拍空间，保持可调，不把“拧得更多”当成更有力。', principle: 'X-factor 研究支持躯干旋转和活动范围与杀球质量的关系，但它没有证明相对旋转越大越好。', cue: '转体没有挤掉挥拍空间，身体与拍臂能在触球附近协调。', image: 'force-action-04.png', imageAlt: '羽毛球后场击球准备姿势：非持拍臂上举，击球臂屈曲置于头后，双脚与地面接触', refs: ['xfactor', 'synergy'] },
   { number: '05', label: '肩 · 肘 · 前臂', group: '组织拍速', title: '把上肢作为协同系统观察', action: '在连续过顶挥拍中，肩、肘、前臂与握拍/手部需要作为一个上肢系统一起观察。不同研究测量的关节和肌肉并不相同，不能由此推出每个人固定的分段时序。', focus: '肩带 · 肘部 · 前臂（训练关注区域）', focusCue: '感受上肢整体加速；不要把拍速简化成“只用手臂”或孤立甩腕。', principle: '一项 14 名大学生研究发现，特定角度的肩内旋等长力量与拍速相关；这不等于主动把肩拧得更多就会更快。', cue: '拍头在触球附近形成有效速度；不主动把肘锁死，上臂也不必过度耸高。', image: 'force-action-05.png', imageAlt: '羽毛球击球前肩、肘、前臂位置的教学示意，不代表固定时序', refs: ['synergy', 'shoulder', 'jumpSmash'] },
-  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍头状态成为可控出球', action: '拍头速度、拍面取向和触球在拍面上的位置共同影响出球速度与方向；来球状态和触球瞬间的拍面运动方向也会改变出球结果。', focus: '前臂旋转 · 握拍变化 · 手指控制（训练关注区域）', focusCue: '不要把拍头速度理解成孤立甩腕；前臂、握拍与腕部动作在完整挥拍中协同出现，具体比例会随球员和击球类型变化。', principle: '拍头速度与出球速度不是相等值；触球位置、拍面状态和球拍参数都会改变碰撞结果。', cue: '在相近来球条件下，连续击球的触球位置、出球方向和目标命中保持稳定，而不是只看最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球拍面与羽毛球发生碰撞的教学示意', refs: ['upperSynergy', 'impact', 'racket'] },
+  { number: '06', label: '球拍 · 羽毛球', group: '组织拍速', title: '让拍头状态成为可控出球', action: '拍头速度、拍面取向和触球在拍面上的位置共同影响出球速度与方向；来球状态和触球瞬间的拍面运动方向也会改变出球结果。', focus: '拍面 · 前臂 · 握拍控制（训练关注区域）', focusCue: '不要把拍头速度理解成孤立甩腕；在完整挥拍中观察前臂、握拍与手部的协同，但具体动作会随球员和击球类型变化。', principle: '拍头速度与出球速度不是相等值；触球位置、拍面状态和球拍参数都会改变碰撞结果。', cue: '在相近来球条件下，连续击球的触球位置、出球方向和目标命中保持稳定，而不是只看最快一球。', image: 'force-action-06.png', imageAlt: '羽毛球拍面与羽毛球发生碰撞的教学示意', refs: ['upperSynergy', 'impact', 'racket'] },
   { number: '07', label: '落地 · 衔接', group: '回到下一拍', title: '让击球结果延续到下一拍', action: '击球后的随挥和落地需要处理身体动量；随后根据落点、对手回球和战术站位调整下一步，不存在所有人相同的落地模板。', focus: '落地控制 · 重心恢复 · 下一步准备', focusCue: '把目标放在可控落地和重新获得移动选择，而不是硬停在原地。', principle: '杀球的比赛价值不只由首球速度决定；迫使对手形成较弱回球并保持下一拍准备，是本站的比赛评价框架，不是单一生物力学指标。', cue: '在来球和战术允许时，对手触球前回到可动的准备状态，球拍也回到便于准备的位置。', image: 'force-action-07.png', imageAlt: '羽毛球击球后的落地、收拍与下一拍衔接动作的教学示意', refs: ['lowerLimb', 'bwf'] },
 ];
 
@@ -177,7 +177,7 @@ const trainingStages: TrainingStage[] = [
     ],
   },
   {
-    number: '02', label: '旋转与肩胛', title: '让躯干为拍臂保留空间', goal: '研究观察到躯干旋转、活动范围与杀球表现有关；另有研究在精英选手的肩部肌群中观察到协同活动。这一阶段不要求把躯干转到最大，而是练习转向后上肢仍能自由工作。', image: 'training-rotation.png', imageAlt: '羽毛球运动员进行交错站姿轻药球旋转投掷准备与组织的教学示意', visualLabel: '骨盆 · 胸廓 · 肩胛', visualCue: '不是把腰拧到最大，而是让转向不挤掉挥拍空间。', refs: ['xfactor', 'synergy'],
+    number: '02', label: '旋转与肩胛', title: '让躯干为拍臂保留空间', goal: '研究观察到躯干旋转、活动范围与杀球表现有关；另有研究在精英选手的肩部肌群中观察到协同活动。这一阶段不要求把躯干转到最大，而是练习转向后上肢仍能自由工作。', image: 'training-rotation.png', imageAlt: '羽毛球场上以宽站姿双手持药球进行躯干旋转准备的教学示意', visualLabel: '骨盆 · 胸廓 · 肩胛', visualCue: '不是把腰拧到最大，而是让转向不挤掉挥拍空间。', refs: ['xfactor', 'synergy'],
     modules: [
       { phase: '交错站姿 · 旋转投掷', exercise: '用轻药球做侧向旋转投掷，强调快速出手和稳定回收；左右侧都练。', dose: '本站起始模板：4 组 × 3 次/侧；每次追求速度，组间充分休息。', muscles: '训练关注：髋与躯干改变朝向的协调，以及旋转后的回收控制。', check: '球速快但脚下不乱，腰椎没有被迫拧到终点。', refs: ['xfactor', 'synergy'] },
       { phase: '胸廓 · 肩胛协同', exercise: '交错站姿轻阻力 lift / chop，随后做一次无阻力半挥拍；它是协调练习，不是杀球动作的唯一模板。', dose: '本站起始模板：3 组 × 5 次/侧；阻力只要能保持肩胛平顺移动。', muscles: '训练关注：肩胛与上肢在低负荷下的协调，不把某一块肌肉视为单独动力源。', check: '转向后手臂仍有空间，肩不耸，头部不被动作明显带走。', refs: ['xfactor', 'upperSynergy'] },
@@ -224,7 +224,7 @@ function SmashVisual() {
       <div className="plate-meta"><span>教学示意 / 01</span><span>右手杀球</span></div>
       <div className="visual-label visual-label-base"><i aria-hidden="true" /><div><b>01 / 击球窗口</b><strong>争取在持拍肩前方、上方触球</strong><small>这是技术目标，不是固定坐标<br />是否做到取决于来球和到位质量</small></div></div>
       <div className="visual-label visual-label-rotation"><i aria-hidden="true" /><div><b>02 / 身体定向</b><strong>让身体朝向服务击球位置</strong><small>躯干与骨盆的相对运动可能保留上肢空间<br />不要求每球达到同一幅度</small></div></div>
-      <div className="visual-label visual-label-release"><i aria-hidden="true" /><div><b>03 / 上肢加速</b><strong>肩、肘、前臂共同参与拍头加速</strong><small>研究支持多关节协同<br />不支持用孤立甩腕解释拍速</small></div></div>
+      <div className="visual-label visual-label-release"><i aria-hidden="true" /><div><b>03 / 上肢加速</b><strong>观察肩、肘、前臂的协同加速</strong><small>研究支持多关节协同<br />不支持用孤立甩腕解释拍速</small></div></div>
       <div className="visual-label visual-label-recovery"><i aria-hidden="true" /><div><b>04 / 落地衔接</b><strong>恢复到便于处理下一球的位置</strong><small>落地方式随击球和站位变化<br />目标是保留调整与移动选择</small></div></div>
       <div className="plate-footer"><span>生成图 · 教学示意，不是实测数据</span><strong>位置 → 组织 → 加速 → 碰撞与回位</strong></div>
     </div>
@@ -269,6 +269,7 @@ export default function Home() {
       <section id="top" className="force-hero force-section">
         <div className="hero-copy">
           <span className="eyebrow">进阶发力技术</span>
+          <span className="hero-scope">适用范围：右手持拍 · 后场正手过顶击球 / 杀球</span>
           <h1>先争窗口<br /><em>再争拍速</em></h1>
           <p>先用步法和身体位置争取在持拍肩前方、上方触球；在可用的时间和空间内，躯干与上肢协同参与拍头运动。拍头状态、拍面取向和触球位置共同影响出球结果；杀球通常追求向下，但具体轨迹取决于来球、击球位置、拍面运动和球拍参数。<InlineReferences refs={['lowerLimb', 'xfactor', 'shoulder', 'synergy', 'impact', 'racket']} /></p>
           <div className="hero-question"><span>高手先问</span><strong>来球条件允许身前、上方触球吗？触球前还有可用空间吗？击球后还能准备下一拍吗？</strong></div>

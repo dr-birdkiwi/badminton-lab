@@ -46,6 +46,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .force-hero::after { content: '窗口  →  拍速  →  碰撞  →  下一拍'; position: absolute; right: 5vw; bottom: 22px; color: rgba(245, 242, 233, .42); font: 8px var(--mono); letter-spacing: .16em; }
 .eyebrow, .section-label { color: var(--orange); font: 700 10px var(--mono); letter-spacing: .15em; text-transform: uppercase; }
 .force-hero .eyebrow { color: var(--orange-soft); }
+.hero-scope { display: block; margin-top: 12px; color: rgba(245, 242, 233, .56); font: 10px/1.5 var(--mono); letter-spacing: .05em; }
 .hero-copy { position: relative; z-index: 2; align-self: center; max-width: 570px; transform: translateY(-3vw); }
 .hero-copy h1 { margin: 18px 0 0; color: var(--paper); font-size: clamp(69px, 8.5vw, 132px); font-weight: 400; line-height: .86; letter-spacing: -.1em; }
 .hero-copy h1 em, h2 em { color: var(--forest-2); font-family: var(--serif); font-weight: 400; }
