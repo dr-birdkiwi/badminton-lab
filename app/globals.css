@@ -520,6 +520,21 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
 .boundary-section .source-strip a { color: rgba(245, 242, 233, .68); }
 .boundary-section .source-strip { border-color: var(--white-line); }
 
+/* Evidence links sit after the claim they support, without turning the page into a bibliography. */
+.inline-references { display: inline; margin-left: .62em; }
+.inline-references a { display: inline-block; color: var(--orange); font: 500 10px/1.45 var(--mono); letter-spacing: .015em; text-decoration: none; white-space: nowrap; transition: color .2s ease, border-color .2s ease; }
+.inline-references a:hover { color: var(--orange-soft); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.reference-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; margin-top: 11px; padding-top: 9px; border-top: 1px solid var(--line); }
+.reference-row > span:first-child { color: var(--orange); font: 9px/1.4 var(--mono); letter-spacing: .08em; white-space: nowrap; }
+.reference-row .inline-references { margin-left: 0; }
+.principle-line > .inline-references { margin-left: 0; }
+.reference-disclaimer { margin: 22px 0 0; padding-top: 14px; border-top: 1px solid var(--white-line); color: rgba(245, 242, 233, .58); font-size: 11px; line-height: 1.65; }
+.force-section .inline-references a { color: var(--orange-soft); }
+.force-section .inline-references a:hover { color: var(--paper); }
+.force-section .reference-row { border-color: var(--white-line); }
+.force-section .reference-row > span:first-child { color: var(--orange-soft); }
+.force-section .reference-disclaimer { color: rgba(245, 242, 233, .58); }
+
 /* Type and rhythm calibration: slightly larger reading type, tighter editorial spacing. */
 .force-section:not(.force-hero) {
   padding-top: clamp(68px, 6.8vw, 96px);
