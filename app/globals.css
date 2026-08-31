@@ -1130,3 +1130,156 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
     min-height: 76px;
   }
 }
+
+/* Evidence legend: state what is measured, translated, or templated before the reader starts. */
+.evidence-key {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 12px;
+  border: 1px solid var(--white-line);
+  background: var(--white-line);
+}
+
+.evidence-key span {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 9px 10px;
+  color: rgba(245, 242, 233, .58);
+  background: rgba(9, 24, 18, .72);
+  font: 9px/1.35 var(--mono);
+}
+
+.evidence-key b {
+  color: var(--orange-soft);
+  font-weight: 500;
+}
+
+/* Three conditions now use independent, auditable pictures instead of one ambiguous collage. */
+.shot-choice-grid {
+  gap: 10px;
+  border: 0;
+  background: transparent;
+}
+
+.shot-choice article,
+.shot-choice article + article {
+  padding: 0 16px 18px;
+  border: 1px solid var(--white-line);
+  border-top: 2px solid var(--orange-soft);
+}
+
+.shot-choice article:nth-child(2) { border-top-color: var(--mint); }
+.shot-choice article:nth-child(3) { border-top-color: var(--orange); }
+
+.shot-choice-figure {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  margin: 0 -16px;
+  border-bottom: 1px solid var(--white-line);
+  background: #10251d;
+}
+
+.shot-choice-figure::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(9, 24, 18, .08) 54%, rgba(9, 24, 18, .62));
+}
+
+.shot-choice-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shot-choice-figure > div {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  left: 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  border-left: 2px solid var(--orange-soft);
+  background: rgba(9, 24, 18, .8);
+  backdrop-filter: blur(5px);
+}
+
+.shot-choice article:nth-child(2) .shot-choice-figure > div { border-left-color: var(--mint); }
+.shot-choice article:nth-child(3) .shot-choice-figure > div { border-left-color: var(--orange); }
+.shot-choice-figure b { color: var(--orange-soft); font: 10px var(--mono); font-weight: 500; }
+.shot-choice-figure div span { color: var(--paper); font-size: 13px; }
+.shot-choice-figure figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 13px;
+  bottom: 12px;
+  left: 13px;
+  color: rgba(245, 242, 233, .82);
+  font: 9px/1.4 var(--mono);
+  letter-spacing: .06em;
+}
+
+.shot-choice article h3 { margin: 18px 0 14px; }
+.shot-choice-disclaimer {
+  margin: 11px 0 0;
+  padding: 11px 13px;
+  border-left: 2px solid var(--orange);
+  color: rgba(245, 242, 233, .62);
+  background: rgba(245, 242, 233, .04);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+/* Seven task pictures are large enough to inspect: four establish conditions, then three finish the rally. */
+.path-action-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+.path-action-card { grid-column: span 3; }
+.path-action-card:nth-child(n + 5) { grid-column: span 4; }
+.path-action-card-image { aspect-ratio: 2 / 3; }
+.path-action-card-caption { min-height: 84px; padding: 11px 12px 13px; }
+.path-action-card-caption strong { font-size: 13px; }
+
+/* The new macro image deliberately leaves the left side for quiet annotation. */
+.lesson-study-plate .marker-impact { top: 34%; right: auto; left: 4%; }
+.lesson-study-plate .marker-face { top: 56%; right: auto; left: 4%; }
+
+@media (max-width: 900px) {
+  .path-action-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .path-action-card,
+  .path-action-card:nth-child(n + 5) { grid-column: auto; }
+}
+
+@media (max-width: 700px) {
+  .evidence-key { grid-template-columns: 1fr; }
+  .shot-choice-grid { grid-template-columns: 1fr; }
+  .shot-choice-figure { aspect-ratio: 4 / 5; }
+  .shot-choice-figure img { object-position: center 35%; }
+  .shot-choice-disclaimer { font-size: 12px; }
+  .lesson-study-plate,
+  .boundary-study-plate { width: 100%; min-height: 0; }
+  .lesson-section .lesson-study-plate { aspect-ratio: 1.35; }
+  .boundary-study-plate { aspect-ratio: 1.5; }
+  .study-plate-footer { display: grid; gap: 5px; }
+  .study-plate-footer strong { max-width: none; text-align: left; line-height: 1.2; }
+  .lesson-study-plate .marker-impact { top: 30%; left: 3%; }
+  .lesson-study-plate .marker-face { top: 55%; left: 3%; }
+}
+
+@media (max-width: 520px) {
+  .path-action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .path-action-card,
+  .path-action-card:nth-child(n + 5) { grid-column: auto; }
+}
