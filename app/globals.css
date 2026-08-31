@@ -1283,3 +1283,352 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outlin
   .path-action-card,
   .path-action-card:nth-child(n + 5) { grid-column: auto; }
 }
+
+/* Technique × muscle coordination: a text-led reference surface, deliberately without generated anatomy. */
+.muscle-map-section {
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 86% 8%, rgba(205, 223, 188, .09), transparent 25%),
+    linear-gradient(135deg, #10271e 0%, #173a2b 54%, #14251e 100%);
+}
+
+.muscle-map-section::before {
+  content: '15';
+  position: absolute;
+  top: 2vw;
+  right: 4vw;
+  color: rgba(245, 242, 233, .055);
+  font: 240px/.8 var(--mono);
+  letter-spacing: -.16em;
+  pointer-events: none;
+}
+
+.muscle-map-section > * { position: relative; z-index: 1; }
+.muscle-map-section .section-label,
+.muscle-map-section .section-index { color: var(--orange-soft); }
+.muscle-map-section .section-index { border-color: var(--white-line); }
+.muscle-map-section h2,
+.muscle-map-section h2 em { color: var(--paper); }
+.muscle-map-section h2 em { color: var(--mint); }
+
+.muscle-method {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.muscle-method-lead {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 21px 22px 20px;
+  border: 1px solid var(--white-line);
+  border-left: 3px solid var(--orange);
+  background: rgba(245, 242, 233, .055);
+}
+
+.muscle-method-lead > span,
+.muscle-family-summary span,
+.muscle-route > span,
+.muscle-technique-body span,
+.muscle-boundary-note b {
+  color: var(--orange-soft);
+  font: 9px var(--mono);
+  letter-spacing: .1em;
+}
+
+.muscle-method-lead strong {
+  max-width: 720px;
+  color: var(--paper);
+  font: 25px/1.35 var(--serif);
+  font-weight: 400;
+}
+
+.muscle-method-lead p {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(245, 242, 233, .68);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.muscle-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--white-line);
+  background: var(--white-line);
+}
+
+.muscle-role-grid article {
+  min-width: 0;
+  padding: 18px 16px;
+  background: rgba(245, 242, 233, .055);
+}
+
+.muscle-role-grid b {
+  color: var(--orange-soft);
+  font: 9px var(--mono);
+  font-weight: 400;
+  letter-spacing: .08em;
+}
+
+.muscle-role-grid strong {
+  display: block;
+  margin-top: 39px;
+  color: var(--paper);
+  font: 19px var(--serif);
+  font-weight: 400;
+}
+
+.muscle-role-grid p {
+  margin: 9px 0 0;
+  color: rgba(245, 242, 233, .58);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.muscle-family-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.muscle-family-tabs button {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 15px 16px;
+  border: 1px solid var(--white-line);
+  border-top: 3px solid rgba(245, 242, 233, .28);
+  color: rgba(245, 242, 233, .56);
+  background: rgba(245, 242, 233, .035);
+  text-align: left;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.muscle-family-tabs button:nth-child(1) { border-top-color: var(--orange-soft); }
+.muscle-family-tabs button:nth-child(2) { border-top-color: var(--mint); }
+.muscle-family-tabs button:nth-child(3) { border-top-color: var(--orange); }
+.muscle-family-tabs button:hover,
+.muscle-family-tabs button.active { color: var(--paper); background: rgba(245, 242, 233, .1); }
+.muscle-family-tabs button.active { border-color: var(--orange-soft); }
+.muscle-family-tabs b { color: var(--orange-soft); font: 10px var(--mono); font-weight: 400; }
+.muscle-family-tabs strong { font-size: 16px; font-weight: 400; }
+.muscle-family-tabs span { color: rgba(245, 242, 233, .48); font: 9px var(--mono); }
+
+.muscle-family-panel {
+  padding: 24px;
+  border: 1px solid var(--white-line);
+  background: rgba(7, 23, 17, .34);
+}
+
+.muscle-family-panel:focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
+
+.muscle-family-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+  gap: 28px;
+  align-items: start;
+  padding-bottom: 21px;
+  border-bottom: 1px solid var(--white-line);
+}
+
+.muscle-family-summary h3 {
+  max-width: 760px;
+  margin: 10px 0 12px;
+  color: var(--paper);
+  font: clamp(27px, 3vw, 42px)/1.08 var(--serif);
+  font-weight: 400;
+  letter-spacing: -.045em;
+}
+
+.muscle-family-summary p {
+  max-width: 780px;
+  margin: 0;
+  color: rgba(245, 242, 233, .66);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.muscle-family-summary aside {
+  padding: 15px 16px;
+  border-left: 2px solid var(--mint);
+  background: rgba(205, 223, 188, .055);
+}
+
+.muscle-family-summary aside span { color: var(--mint); }
+.muscle-family-summary aside p { margin-top: 8px; }
+
+.muscle-route {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--white-line);
+}
+
+.muscle-route > div {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.muscle-route > div > span {
+  position: relative;
+  min-width: 0;
+  padding: 10px 24px 10px 10px;
+  color: rgba(245, 242, 233, .73);
+  border: 1px solid var(--white-line);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.muscle-route b {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--orange-soft);
+  font: 9px var(--mono);
+  font-weight: 400;
+}
+
+.muscle-route i {
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  z-index: 2;
+  color: var(--orange);
+  font-style: normal;
+  transform: translateY(-50%);
+}
+
+.muscle-technique-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.muscle-technique-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--white-line);
+  border-top: 2px solid var(--orange-soft);
+  background: rgba(245, 242, 233, .045);
+}
+
+.muscle-technique-card:nth-child(even) { border-top-color: var(--mint); }
+
+.muscle-technique-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+}
+
+.muscle-technique-head > span {
+  color: var(--orange-soft);
+  font: 10px var(--mono);
+}
+
+.evidence-level {
+  padding: 5px 7px;
+  border: 1px solid var(--white-line);
+  color: rgba(245, 242, 233, .63);
+  font: 8px/1.25 var(--mono);
+  font-weight: 400;
+  text-align: right;
+}
+
+.evidence-direct { color: var(--mint); border-color: rgba(205, 223, 188, .45); }
+.evidence-partial { color: var(--orange-soft); border-color: rgba(242, 170, 120, .45); }
+.evidence-inference { color: rgba(245, 242, 233, .5); }
+
+.muscle-technique-card > h3 {
+  margin: 18px 0 8px;
+  color: var(--paper);
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -.055em;
+}
+
+.muscle-technique-context {
+  min-height: 44px;
+  margin: 0;
+  color: rgba(245, 242, 233, .62);
+  font: 14px/1.55 var(--serif);
+}
+
+.muscle-technique-body {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.muscle-technique-body > div {
+  padding-top: 11px;
+  border-top: 1px solid var(--white-line);
+}
+
+.muscle-technique-body p {
+  margin: 7px 0 0;
+  color: rgba(245, 242, 233, .65);
+  font-size: 11px;
+  line-height: 1.72;
+}
+
+.muscle-technique-card .reference-row {
+  margin-top: 14px;
+  padding-top: 12px;
+}
+
+.muscle-boundary-note {
+  margin: 12px 0 0;
+  padding: 13px 15px;
+  border-left: 2px solid var(--orange);
+  color: rgba(245, 242, 233, .58);
+  background: rgba(245, 242, 233, .04);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.muscle-boundary-note b { margin-right: 12px; }
+
+@media (max-width: 1000px) {
+  .muscle-method { grid-template-columns: 1fr; }
+  .muscle-family-summary { grid-template-columns: 1fr; gap: 14px; }
+  .muscle-route { grid-template-columns: 1fr; gap: 10px; }
+  .muscle-route > div { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .muscle-map-section::before { font-size: 150px; }
+  .muscle-method-lead { padding: 17px 16px; }
+  .muscle-method-lead strong { font-size: 22px; }
+  .muscle-method-lead p { font-size: 13px; }
+  .muscle-role-grid { grid-template-columns: 1fr; }
+  .muscle-role-grid article { padding: 14px; }
+  .muscle-role-grid strong { margin-top: 16px; }
+  .muscle-family-tabs { gap: 5px; }
+  .muscle-family-tabs button { grid-template-columns: 1fr; gap: 6px; padding: 12px 10px; }
+  .muscle-family-tabs strong { font-size: 14px; }
+  .muscle-family-tabs span { font-size: 8px; }
+  .muscle-family-panel { padding: 15px; }
+  .muscle-family-summary h3 { font-size: 29px; }
+  .muscle-family-summary p { font-size: 13px; }
+  .muscle-route > div { grid-template-columns: 1fr; }
+  .muscle-route > div > span { padding-right: 10px; font-size: 12px; }
+  .muscle-route i { top: auto; right: 12px; bottom: -14px; transform: rotate(90deg); }
+  .muscle-technique-grid { grid-template-columns: 1fr; }
+  .muscle-technique-card { padding: 16px; }
+  .muscle-technique-context { min-height: 0; font-size: 15px; }
+  .muscle-technique-body p { font-size: 13px; line-height: 1.68; }
+  .muscle-boundary-note { font-size: 12px; }
+}

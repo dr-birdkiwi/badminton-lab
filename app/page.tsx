@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 /* eslint-disable @next/next/no-img-element */
 
-type ReferenceKey = 'synergy' | 'xfactor' | 'shoulder' | 'jumpSmash' | 'impact' | 'collision' | 'lowerLimb' | 'plyometric' | 'injuryReview' | 'upperSynergy' | 'racket' | 'bwf';
+type ReferenceKey = 'synergy' | 'xfactor' | 'shoulder' | 'jumpSmash' | 'impact' | 'collision' | 'lowerLimb' | 'plyometric' | 'injuryReview' | 'upperSynergy' | 'racket' | 'bwf' | 'strokeMotion' | 'strokeEmgPilot' | 'backhandMotion' | 'backhandClear' | 'netMotion' | 'lungeReview' | 'lungeEmg' | 'emgLimits';
 
 type Reference = {
   label: string;
@@ -26,6 +26,14 @@ const references: Record<ReferenceKey, Reference> = {
   upperSynergy: { label: '上肢协同', kind: '研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6317092/', title: '精英与非精英选手：五块上肢肌肉的协同研究' },
   racket: { label: '球拍参数', kind: '研究', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10462755/', title: '球拍惯量、拍头速度与触球位置；群体出球速度未见显著差异' },
   bwf: { label: 'BWF 教练资料', kind: '教练资料', href: 'https://www.badminton.org.au/wp-content/uploads/2022/11/1.-BWF-ST-Teachers-Manual_Inclusivity_ENGLISH.pdf', title: 'BWF Schools 教练手册（澳大利亚羽协镜像）' },
+  strokeMotion: { label: '正手三类过顶球', kind: '研究', href: 'https://doi.org/10.24776/jcoaching.30.2_193', title: '7 名日本高水平男子：杀球、高远球与吊球的上肢运动学差异' },
+  strokeEmgPilot: { label: '多技术上肢肌电', kind: '研究', href: 'https://commons.nmu.edu/isbs/vol41/iss1/71/', title: '单人先导研究：正反手抽球、高远球、杀球与吊球的七组上肢肌电；只作探索性参考' },
+  backhandMotion: { label: '反手三类过顶球', kind: '研究', href: 'https://ojs.ub.uni-konstanz.de/cpa/article/view/686', title: '反手杀球、高远球与吊球的三维运动学会议研究' },
+  backhandClear: { label: '反手高远球肌电', kind: '研究', href: 'https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002291742', title: '不同水平球员反手高远球的运动学与上肢肌电比较' },
+  netMotion: { label: '正手网前运动学', kind: '研究', href: 'https://ojs.ub.uni-konstanz.de/cpa/article/view/5367', title: '8 名精英大学男子：三类正手网前球的上肢运动学比较' },
+  lungeReview: { label: '弓步生物力学', kind: '综述', href: 'https://pubmed.ncbi.nlm.nih.gov/33194445/', title: '20 项研究的羽毛球弓步下肢生物力学范围综述' },
+  lungeEmg: { label: '专项步法肌电', kind: '研究', href: 'https://doi.org/10.3390/app16021120', title: '12 名精英男子：网前、侧向防守与后场交叉步中的股四头肌、腘绳肌和臀肌相对贡献' },
+  emgLimits: { label: '肌电解释边界', kind: '综述', href: 'https://pubmed.ncbi.nlm.nih.gov/39069427/', title: 'CEDE 共识：利用肌电估计肌力时的实验设计与解释边界' },
 };
 
 function InlineReferences({ refs, className = '' }: { refs: ReferenceKey[]; className?: string }) {
@@ -193,9 +201,90 @@ const trainingStages: TrainingStage[] = [
   },
 ];
 
+type MuscleEvidenceLevel = 'direct' | 'partial' | 'inference';
+
+type MuscleTechnique = {
+  number: string;
+  name: string;
+  context: string;
+  muscles: string;
+  transfer: string;
+  footwork: string;
+  evidence: string;
+  level: MuscleEvidenceLevel;
+  refs: ReferenceKey[];
+};
+
+type MuscleFamily = {
+  id: string;
+  number: string;
+  label: string;
+  title: string;
+  summary: string;
+  route: string[];
+  footwork: string;
+  refs: ReferenceKey[];
+  techniques: MuscleTechnique[];
+};
+
+const muscleFamilies: MuscleFamily[] = [
+  {
+    id: 'forehand',
+    number: '01',
+    label: '正手技术',
+    title: '同一套过顶准备，按出球任务重新分配速度与制动。',
+    summary: '正手杀球的上肢肌肉协同已有直接研究；高远球、吊球和抽球有部分运动学或小样本肌电资料。其余项目按相邻技术、关节任务与场上条件谨慎转译，不把肌肉名单写成固定启动顺序。',
+    route: ['脚下定位与制动', '髋与躯干改变朝向', '肩胛稳定并允许肩运动', '肘与前臂调整拍速', '手指与握拍控制拍面'],
+    footwork: '后场技术先用分腿垫步、并步/交叉步和最后一步争取窗口；平抽挡更依赖短距离侧向启动。股四头肌参与承载与伸膝，腘绳肌参与减速和膝部控制，臀肌参与髋部与骨盆控制；具体左右差异会随移动方向变化。',
+    refs: ['synergy', 'strokeMotion', 'strokeEmgPilot', 'lungeEmg'],
+    techniques: [
+      { number: '01', name: '杀球', context: '较高拍头速度的过顶下压；准备、加速、碰撞后制动与落地都属于动作。', muscles: '肩胛与肩带：斜方肌、前锯肌、肩袖；肩与上臂：胸大肌、背阔肌、三角肌、肱三头肌，并由肱二头肌等参与控制；前臂旋前肌群与握拍/指屈肌群调节拍头和拍面。下肢与躯干肌群负责位置、朝向、支撑和落地，不应被解释成“把力直接送到手腕”。', transfer: '支撑改变身体状态，躯干与肩胛为上肢保留运动空间；肩、肘、前臂和握拍在时间上重叠加速，触球后由拮抗肌和肩胛稳定肌共同制动。', footwork: '到位后可站立、剪式或起跳击球；臀肌、股四头肌和小腿肌群参与起跳/支撑，腘绳肌与髋膝踝肌群共同处理落地和再启动。', evidence: '直接研究较多，但没有统一单肌肉排名', level: 'direct', refs: ['synergy', 'upperSynergy', 'shoulder', 'jumpSmash'] },
+      { number: '02', name: '高远球', context: '用较高弧线和足够长度把球送至后场；动作外观可与杀球保持相似准备。', muscles: '沿用过顶击球的肩胛—肩—肘—前臂网络：斜方肌、前锯肌与肩袖稳定肩胛和肱骨；胸大肌、背阔肌、三角肌和肱三头肌参与挥拍；前臂旋前与握拍肌群完成末端控制。', transfer: '不是把每个环节都做到最大，而是在较完整窗口中让身体朝向、上肢加速和拍面控制连续发生；出球高度和长度来自整套动作与碰撞结果。', footwork: '后场到位和回位通常比“手上更用力”更先决定能否打到底线；最后一步要既能制动，也能让击球后恢复移动。', evidence: '动作学直接，肌肉分工主要为相邻任务推断', level: 'partial', refs: ['strokeMotion', 'strokeEmgPilot', 'bwf', 'lowerLimb'] },
+      { number: '03', name: '吊球', context: '过顶准备下改变拍头状态、拍面与碰撞，使球短落；不是单纯“少用力”。', muscles: '仍需要肩胛稳定肌、肩袖、三角肌、肱二/三头肌及前臂屈伸和旋转肌群；与杀球相比，重点转向对拍头速度的及时调节、制动和拍面精细控制，而非追求最大加速。', transfer: '身体与上肢提供相似准备，末端肌群和拮抗肌共同限制多余速度；切吊时前臂旋转和握拍变化还会改变拍面运动方向。', footwork: '先争取与高远/杀球相近的到位条件，才容易保持出手隐蔽；击球后重心仍须可回收。', evidence: '运动学直接；肌肉制动属于功能性转译', level: 'partial', refs: ['strokeMotion', 'strokeEmgPilot', 'bwf'] },
+      { number: '04', name: '抽球', context: '中前场或中场的平快球，准备短、时间压缩，通常不需要完整过顶链。', muscles: '臀中肌、臀大肌和股四头肌帮助侧向支撑；腹斜肌群与竖脊肌稳定躯干；胸大肌、三角肌、肱二/三头肌与前臂旋前/旋后肌群共同完成短幅加速和快速回收，手指屈肌调节握拍。', transfer: '脚下和躯干先稳定击球平台，上肢在较短距离内完成加速—碰撞—回收；不应用大幅摆臂牺牲下一拍。', footwork: '分腿垫步后用小范围侧向蹬跨；外侧臀肌控制骨盆，股四头肌承载，腘绳肌参与制动，击球后立即回到球拍在前的准备位。', evidence: '仅有小样本肌电；按平快任务谨慎转译', level: 'partial', refs: ['strokeEmgPilot', 'lungeEmg', 'bwf'] },
+      { number: '05', name: '挡球', context: '借来球速度完成短幅阻挡或改向，核心是拍面稳定与及时回收。', muscles: '肩袖、斜方肌和前锯肌稳定肩带；肱二/三头肌共同控制肘位；前臂旋转肌、腕屈伸肌和手指肌群微调拍面。此时“共同收缩保持稳定”可能比某块肌肉主动加速更重要。', transfer: '脚下把身体送到可控距离，上肢提供稳定平台，拍面和握拍吸收或重新定向来球动量；幅度越小越需要时机而非僵硬。', footwork: '短侧移或小弓步后先减速，再回收；髋外展肌、股四头肌和腘绳肌共同控制侧向承载。', evidence: '缺少该动作的直接肌电，属于任务推断', level: 'inference', refs: ['lungeEmg', 'bwf', 'emgLimits'] },
+      { number: '06', name: '被动回球', context: '“被动”不是单一技术；这里指来球挤压时间和空间、需要伸展或晚点击球的正手回球。', muscles: '下肢减速与跨步肌群承担快速到位；臀肌和躯干稳定肌限制失衡；肩胛稳定肌、肩袖、肘屈伸肌和前臂/握拍肌群在较差位置下维持拍面，不宜再追求最大幅度。', transfer: '先把身体带到仍能碰到球的位置，再以较短上肢动作完成可控出球；目标是恢复时间或站位，而不是证明“还能发全力”。', footwork: '常见为跨步、侧弓步或后场追球后的单脚承载；股四头肌承担较多膝伸展任务，腘绳肌与臀肌参与制动和骨盆控制。', evidence: '下肢证据较直接，上肢为情境推断', level: 'inference', refs: ['lungeReview', 'lungeEmg', 'bwf'] },
+    ],
+  },
+  {
+    id: 'backhand',
+    number: '02',
+    label: '反手技术',
+    title: '反手不是正手镜像；肩胛、肘与前臂的任务会重新组合。',
+    summary: '反手过顶杀、高远、吊已有少量运动学资料，反手高远也有小样本肌电研究；证据仍远少于正手杀球。这里重点描述肩胛稳定、肘伸与前臂旋后/握拍控制的协同，不把“拇指发力”写成单一动力来源。',
+    route: ['脚下转向并争取身侧窗口', '躯干稳定或回转', '肩胛为上臂留空间', '肘伸与前臂旋后', '拇指与手指控制拍面'],
+    footwork: '后场反手常需要转身、交叉步或并步进入；中场反手抽挡和被动防守多用交叉或侧向弓步。下肢仍承担定位、制动和再启动，但左右肌肉贡献会随反手侧方向和步法改变。',
+    refs: ['backhandMotion', 'backhandClear', 'strokeEmgPilot', 'lungeEmg'],
+    techniques: [
+      { number: '01', name: '反手杀球', context: '后场反手过顶下压；可用窗口和可用活动范围通常比正手更受限制。', muscles: '斜方肌、前锯肌与肩袖稳定肩胛和肩关节；三角肌后束等帮助组织上臂；肱三头肌参与肘伸，旋后肌与肱二头肌参与前臂旋后，腕/指肌群控制握拍和拍面。躯干与髋部帮助转向和保持平衡。', transfer: '转身到位后，肩胛和上臂先建立可用空间，肘伸、前臂旋后与握拍在短时窗内重叠；随挥由肩袖和肘部拮抗肌控制。', footwork: '后场转身后必须保留回位路径；若击球点已过身后，优先选择恢复时间的回球，不应靠腰椎过伸和抡臂补偿。', evidence: '少量运动学；具体肌肉分工多为任务推断', level: 'partial', refs: ['backhandMotion', 'bwf', 'emgLimits'] },
+      { number: '02', name: '反手高远球', context: '在反手过顶位置把球送深；完整性依赖到位、触球高度与末端拍速。', muscles: '现有小样本研究涉及斜方肌、三角肌、肱二/三头肌以及腕屈伸肌；教学上还应把肩袖和前锯肌视为肩胛/肩关节稳定系统。肘伸、前臂旋后和手指握拍共同影响拍头。', transfer: '身体转向提供空间，肩胛与上臂维持击球臂位置，肘伸—前臂旋后—握拍共同形成末端速度；这不是只靠拇指顶出去。', footwork: '尽早转身并让身体到球的侧后方；后场蹬跨和落地时由臀肌、股四头肌、腘绳肌与小腿肌群共同处理重心。', evidence: '有小样本运动学与肌电，仍不足以建立统一时序', level: 'direct', refs: ['backhandClear', 'backhandMotion', 'bwf'] },
+      { number: '03', name: '反手吊球', context: '以反手过顶准备完成较短落点；重点是相似准备下的速度与拍面调节。', muscles: '肩胛稳定肌、肩袖、三角肌、肱二/三头肌和前臂旋后/腕指肌群都参与；相较高远与杀球，拮抗肌制动和握拍控制的重要性上升，不能理解成完全不发力。', transfer: '上臂与肘部维持相似准备，前臂和握拍在接触前改变速度与拍面；身体保持可回收，避免以大幅侧弯换取触球。', footwork: '尽量用与反手高远相近的到位与准备减少预判线索，击球后用交叉/并步回到可守位置。', evidence: '动作学少量，肌肉分工为功能性转译', level: 'partial', refs: ['backhandMotion', 'backhandClear', 'bwf'] },
+      { number: '04', name: '反手抽球', context: '身体一侧的短幅平快回击，常在来球速度高、准备时间短时使用。', muscles: '臀中肌、股四头肌与躯干稳定肌建立侧向平台；肩胛稳定肌和三角肌控制上臂；肱三头肌、旋后肌/肱二头肌及拇指—手指握拍肌群共同完成短幅加速和拍面控制。', transfer: '侧向支撑减少身体漂移，上肢在身体前侧用短幅肘伸、前臂旋后和握拍完成碰撞；随后立即回收球拍。', footwork: '分腿垫步后以交叉或侧向一步到位；外侧髋稳定、膝踝制动，避免身体继续横向冲出击球窗口。', evidence: '仅有先导肌电与相邻技术证据', level: 'partial', refs: ['strokeEmgPilot', 'lungeEmg', 'bwf'] },
+      { number: '05', name: '反手挡球', context: '用较小动作阻挡、卸力或改向；常见于平抽挡和防守。', muscles: '肩袖与肩胛稳定肌维持拍臂位置；肱二/三头肌共同控制肘；前臂旋后/旋前肌、腕屈伸肌和拇指—手指肌群对拍面做小幅调整。主要任务是稳定和定向，不是最大加速。', transfer: '脚下将身体带到球后，上肢形成稳定但不僵硬的拍面；来球动量由拍面方向、握拍顺应性与短促回送共同处理。', footwork: '小交叉步、侧弓步或原地防守都可能出现；下肢负责降低重心、制动并为下一球保留启动方向。', evidence: '直接研究不足，属于任务推断', level: 'inference', refs: ['lungeEmg', 'bwf', 'emgLimits'] },
+      { number: '06', name: '反手被动回球', context: '来球进入身体侧后方或挤压时间时的救球；不是一种固定标准动作。', muscles: '股四头肌、臀肌、腘绳肌和小腿肌群处理跨步与急停；腹斜肌与竖脊肌控制躯干；肩胛稳定肌、肩袖、肘屈伸肌及前臂/握拍肌群在伸展位置维持拍面。', transfer: '优先让脚下和躯干把拍面送到球旁，再以有限的肘、前臂和手指动作完成高远、挡或过渡；不要把被动球强行做成完整反手杀。', footwork: '反手侧交叉弓步和后场转身可能造成较高的单侧承载；减速、足踝稳定和击球后第一步回收比“站定发力”更重要。', evidence: '步法研究较直接，上肢为情境推断', level: 'inference', refs: ['lungeReview', 'lungeEmg', 'injuryReview'] },
+    ],
+  },
+  {
+    id: 'net',
+    number: '03',
+    label: '网前技术',
+    title: '网前不是只动手指；先用弓步稳定距离，再让拍面做小动作。',
+    summary: '网前正手动作有精英运动学研究，前向弓步也有较多下肢力学和肌电资料。不同搓、切和挑球方向会改变前臂旋转与腕部运动，因此这里不规定一个适用于正反手和所有旋转方向的“固定搓法”。',
+    route: ['分腿垫步与前向启动', '弓步制动并控制骨盆', '肩胛稳定伸拍距离', '前臂与腕改变拍面', '手指调节握拍并快速回收'],
+    footwork: '网前弓步常呈现较高的股四头肌相对贡献；腘绳肌参与制动和膝稳定，臀肌参与髋与骨盆控制。前脚承载之后仍要能蹬离地面，而不是把膝盖停在最深位置。',
+    refs: ['netMotion', 'lungeReview', 'lungeEmg', 'bwf'],
+    techniques: [
+      { number: '01', name: '搓球', context: '在网前以短小拍面运动制造翻滚或贴网落点；正反手和旋转方向并非同一动作。', muscles: '股四头肌、腘绳肌、臀肌和小腿肌群完成弓步承载与退出；斜方肌、前锯肌与肩袖稳定伸出的上肢；旋前/旋后肌、腕屈伸肌和手指肌群调节拍面。', transfer: '脚下先稳定身体与球的距离，肩胛和肘保持伸拍平台，前臂、腕与手指只做完成旋转所需的小幅动作；切向方向取决于持拍侧与目标旋转。', footwork: '分腿垫步后前向弓步，落地阶段股四头肌承载，腘绳肌与臀肌共同减速；触球后用前脚蹬离并回收后脚。', evidence: '网前运动学与弓步证据较直接，单肌肉推断有限', level: 'partial', refs: ['netMotion', 'lungeReview', 'lungeEmg'] },
+      { number: '02', name: '切球', context: '这里指网前以切向拍面做直线或对角改向；不是后场切吊。', muscles: '下肢与躯干稳定肌先控制弓步；肩胛稳定肌和三角肌维持击球臂；前臂旋前/旋后肌、腕部尺桡偏肌群及手指肌群根据切向方向改变拍面。', transfer: '身体不能继续冲过触球点；稳定的伸拍距离让前臂和握拍完成小幅切向运动。研究显示不同网前球的肩内旋、前臂旋转和腕部角速度并不相同。', footwork: '对角切送可能需要更靠近身体中线的触球与更明显的躯干调整；仍应保持前膝和足部可控，并给蹬回留空间。', evidence: '正手网前运动学直接；肌肉归属为关节任务转译', level: 'partial', refs: ['netMotion', 'lungeReview', 'bwf'] },
+      { number: '03', name: '挑球', context: '从网前把球送高、送深；正手挑与反手挑的前臂方向不同。', muscles: '弓步腿的股四头肌、臀肌、腘绳肌和小腿肌群支持承载与蹬回；肩胛稳定肌维持伸拍。正手挑更多使用前臂旋前与腕部伸直，反手挑更多使用肘伸、前臂旋后和拇指/手指握拍协同。', transfer: '先用脚下保持球在身体前侧，再由肩胛—肘—前臂—握拍完成短促向上的拍头运动；高度和长度来自触球位置、拍面与速度共同作用，不是只靠手腕。', footwork: '前向弓步后要能从前脚蹬回；弓步过长会增加膝踝负荷并压缩手上空间，不能把“跨得更远”当成更有力。', evidence: 'BWF 技术资料直接；下肢肌电与力学证据较直接', level: 'direct', refs: ['bwf', 'lungeReview', 'lungeEmg'] },
+    ],
+  },
+];
+
 const navItems = [
   { id: 'principles', label: '先判断' },
   { id: 'force-path', label: '动作任务' },
+  { id: 'muscle-map', label: '肌肉协同' },
   { id: 'training', label: '瓶颈训练' },
   { id: 'lesson', label: '上场验收' },
   { id: 'boundary', label: '证据边界' },
@@ -257,10 +346,12 @@ function SequenceArrowOverlay() {
 export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
   const [activeNode, setActiveNode] = useState(0);
+  const [activeMuscleFamily, setActiveMuscleFamily] = useState(0);
   const [activeTraining, setActiveTraining] = useState(0);
   const [activeSection, setActiveSection] = useState('top');
   const step = lessonSteps[activeStep];
   const node = forceNodes[activeNode];
+  const muscleFamily = muscleFamilies[activeMuscleFamily];
   const trainingStage = trainingStages[activeTraining];
 
   useEffect(() => {
@@ -286,7 +377,7 @@ export default function Home() {
       <header className="force-header">
         <button className="force-brand" onClick={() => navigateTo('top')} aria-label="返回顶部"><span className="force-mark">↗</span><span><strong>力场</strong><small>羽毛球发力教学</small></span></button>
         <nav aria-label="页面导航">{navItems.map((item) => <button key={item.id} className={activeSection === item.id ? 'active' : ''} onClick={() => navigateTo(item.id)} aria-current={activeSection === item.id ? 'location' : undefined}>{item.label}</button>)}</nav>
-        <span className="header-index">01 / 杀球</span>
+        <span className="header-index">15 / 技术</span>
       </header>
 
       <section id="top" className="force-hero force-section">
@@ -356,6 +447,33 @@ export default function Home() {
             <div className="reference-row"><span>证据与参考</span><InlineReferences refs={node.refs} /></div>
           </div>
         </div>
+      </section>
+
+      <section id="muscle-map" className="muscle-map-section force-section">
+        <div className="section-heading"><div><span className="section-label">技术 × 肌肉协同</span><h2>不是找一块主力肌，<br /><em>而是看任务如何重排。</em></h2></div><span className="section-index">15 项技术 · 不配姿势图</span></div>
+        <div className="muscle-method">
+          <div className="muscle-method-lead"><span>先校正“主动用力”</span><strong>肌肉不只负责加速，也负责稳定、制动与重新获得下一步。</strong><p>表面肌电记录的是电活动，不能在动态动作中直接换算成肌肉拉力；没有被电极测到的深层肌，也不能因此被视为没有工作。所以下面的“重点肌群”用于理解任务和安排训练，不是用酸胀感判断动作对错。<InlineReferences refs={['emgLimits', 'synergy']} /></p></div>
+          <div className="muscle-role-grid" aria-label="肌肉在技术中的三类任务"><article><b>01 / 驱动</b><strong>改变速度</strong><p>让身体段或球拍产生角速度与线速度。</p></article><article><b>02 / 稳定</b><strong>保留路径</strong><p>让关节和拍面在高速中维持可控方向。</p></article><article><b>03 / 制动</b><strong>结束并衔接</strong><p>吸收动量、回收球拍，并为下一步重新组织。</p></article></div>
+        </div>
+
+        <div className="muscle-family-tabs" role="tablist" aria-label="选择技术类别">
+          {muscleFamilies.map((family, index) => <button id={`muscle-tab-${family.id}`} key={family.id} className={activeMuscleFamily === index ? 'active' : ''} onClick={() => setActiveMuscleFamily(index)} role="tab" aria-selected={activeMuscleFamily === index} aria-controls="muscle-family-panel"><b>{family.number}</b><strong>{family.label}</strong><span>{family.techniques.length.toString().padStart(2, '0')} 项技术</span></button>)}
+        </div>
+
+        <div id="muscle-family-panel" className="muscle-family-panel" role="tabpanel" tabIndex={0} aria-labelledby={`muscle-tab-${muscleFamily.id}`}>
+          <div className="muscle-family-summary"><div><span>当前类别 · {muscleFamily.number}</span><h3>{muscleFamily.title}</h3><p>{muscleFamily.summary}<InlineReferences refs={muscleFamily.refs} /></p></div><aside><span>步伐底座</span><p>{muscleFamily.footwork}</p></aside></div>
+          <div className="muscle-route" aria-label={`${muscleFamily.label}的任务路径`}><span>任务路径</span><div>{muscleFamily.route.map((item, index) => <span key={item}><b>{(index + 1).toString().padStart(2, '0')}</b>{item}{index < muscleFamily.route.length - 1 && <i aria-hidden="true">→</i>}</span>)}</div></div>
+          <div className="muscle-technique-grid">
+            {muscleFamily.techniques.map((technique) => <article className="muscle-technique-card" key={technique.number}>
+              <div className="muscle-technique-head"><span>{muscleFamily.number}.{technique.number}</span><b className={`evidence-level evidence-${technique.level}`}>{technique.evidence}</b></div>
+              <h3>{technique.name}</h3>
+              <p className="muscle-technique-context">{technique.context}</p>
+              <div className="muscle-technique-body"><div><span>重点肌群 · 驱动与稳定</span><p>{technique.muscles}</p></div><div><span>力如何贯穿</span><p>{technique.transfer}</p></div><div><span>步伐如何配合</span><p>{technique.footwork}</p></div></div>
+              <div className="reference-row"><span>证据与边界</span><InlineReferences refs={technique.refs} /></div>
+            </article>)}
+          </div>
+        </div>
+        <p className="muscle-boundary-note"><b>阅读边界</b> “杀、高远、吊、抽、挡、被动”是教学与比赛语境中的任务分类；不同持拍法、击球点、步法和战术会改变肌肉活动。带有“任务推断”的卡片明确表示目前没有足够的该技术直接肌电证据，不能用来诊断个人动作或开具单肌肉训练处方。</p>
       </section>
 
       <section id="training" className="training-section force-section">
